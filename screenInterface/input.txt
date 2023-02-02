@@ -1,5 +1,32 @@
+%%%%%%% Options %%%%%%%
+option - 1 - "Let's Talk!" - 1001
+option - 2 - "Show me where the bathroom is" - 2001
+option - 3 - "Go Away" - 3001
+
+%%%%%%% Intro messages %%%%%%%
+
+101 - "Hey, I'm Stevan" - [] - []
+102 - "This party sucks!" - [] - []
+103 - "Hey you, can I bum a ciggarette?" - [] - []
+104 - "WAzzzzzuuUUUp" - [] - []
+105 - "Evenin'" - [] - []
+
+%%%%%%% Conversation %%%%%%%
+
 1001 - "How are you?" - ["Good", "Bad"] - [1002, 1003]
 
 1002 - "Thats good!" - [] - []
 
 1003 - "How sad!" - [] - []
+
+%%%%%%% Toilet %%%%%%%
+
+2001 - "The toilet is either to the lxeft or to the right. Or maybe its behind you! If not, try infront of you." - [] - []
+
+
+%%%%%%% Go Away %%%%%%%
+
+3001 - "Wow, are you a robotist? Rude." - [] - []
+
+
+
