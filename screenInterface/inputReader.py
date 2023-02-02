@@ -10,9 +10,9 @@ def readInputNodes(filename):
 
     for line in read:
         currentLine = (line.strip()).split(" - ")
-        if len(currentLine) > 1 and currentLine[0][0] != '%' and currentLine[0][0] != 'o':
-            nodes.update({currentLine[0]: classes.convNode(currentLine[0], currentLine[1],
-                                                           currentLine[2], currentLine[3])})
+        if len(currentLine) > 1 and currentLine[0][0] != '%' and currentLine[0][0] != 'o' and currentLine[0][0] != 'i':
+            nodes.update({int(currentLine[0]): classes.convNode(currentLine[0], currentLine[1],
+                                                                currentLine[2], currentLine[3])})
     return nodes
 
 
@@ -24,6 +24,19 @@ def readInputOptions(filename):
     for line in read:
         currentLine = (line.strip()).split(" - ")
         if len(currentLine) > 1 and currentLine[0][0] == 'o':
-            options.update({currentLine[1]: classes.option(
+            options.update({int(currentLine[1]): classes.option(
                 currentLine[1], currentLine[2], currentLine[3])})
     return options
+
+
+def readInputIntros(filename):
+    file = open(filename, 'r')
+    read = file.readlines()
+    intros = {}
+
+    for line in read:
+        currentLine = (line.strip()).split(" - ")
+        if len(currentLine) > 1 and currentLine[0][0] == 'i':
+            intros.update({int(currentLine[1]): classes.intro(
+                currentLine[1], currentLine[2])})
+    return intros

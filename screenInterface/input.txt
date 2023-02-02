@@ -5,11 +5,11 @@ option - 3 - "Go Away" - 3001
 
 %%%%%%% Intro messages %%%%%%%
 
-101 - "Hey, I'm Stevan" - [] - []
-102 - "This party sucks!" - [] - []
-103 - "Hey you, can I bum a ciggarette?" - [] - []
-104 - "WAzzzzzuuUUUp" - [] - []
-105 - "Evenin'" - [] - []
+intro - 1 - "Hey, I'm Stevan"
+intro - 2 - "This party sucks!"
+intro - 3 - "Hey you, can I bum a ciggarette?"
+intro - 4 - "WAzzzzzuuUUUp"
+intro - 5 - "Evenin'"
 
 %%%%%%% Conversation %%%%%%%
 

@@ -12,3 +12,9 @@ class option:
         self.ID = ID
         self.Text = Text
         self.ConvID = ConvID
+
+
+class intro:
+    def __init__(self, ID, Text):
+        self.ID = ID
+        self.Text = Text
