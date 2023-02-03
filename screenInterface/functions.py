@@ -1,6 +1,5 @@
 import random
 
-
 def printNodes():
     for key in nodes.keys():
         c = nodes.get(key)
@@ -14,6 +13,10 @@ def printOptions():
         print("ID: " + o.ID + ", Text: " + o.Text +
               ", ConvID: " + o.ConvID)
 
+def getOptions(options):
+    options = inputReader.readInputOptions('input.txt')
+    return options
+
 
 def printInput():
     print("-----Options")
@@ -26,6 +29,11 @@ def getRandomintroNode(intros):
     r = random.randrange(1, len(intros) + 1)
     return intros.get(r)
 
+def getNode(nodes, nodeID):
+    if nodeID == "[]":
+        return None 
+    else:
+        return nodes.get(nodeID)
 
 def introPhrase(intros):
     print(getRandomintroNode(intros).Text)

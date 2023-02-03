@@ -1,32 +1,32 @@
 %%%%%%% Options %%%%%%%
-option - 1 - "Let's Talk!" - 1001
-option - 2 - "Show me where the bathroom is" - 2001
-option - 3 - "Go Away" - 3001
+option - 1 - Let's Talk! - 1001
+option - 2 - Show me where the bathroom is - 2001
+option - 3 - Go Away - 3001
 
 %%%%%%% Intro messages %%%%%%%
 
-intro - 1 - "Hey, I'm Stevan"
-intro - 2 - "This party sucks!"
-intro - 3 - "Hey you, can I bum a ciggarette?"
-intro - 4 - "WAzzzzzuuUUUp"
-intro - 5 - "Evenin'"
+intro - 1 - Hey, I'm S.T.E.V.A.N, Service Tech Event Assistant Negotiator??
+intro - 2 - This party sucks!
+intro - 3 - Hey you, can I bum a ciggarette?
+intro - 4 - WAzzzzzuuUUUp
+intro - 5 - Evenin'
 
 %%%%%%% Conversation %%%%%%%
 
-1001 - "How are you?" - ["Good", "Bad"] - [1002, 1003]
+1001 - How are you? - Good, Bad - 1002, 1003
 
-1002 - "Thats good!" - [] - []
+1002 - Thats good! - [] - []
 
-1003 - "How sad!" - [] - []
+1003 - How sad! - [] - []
 
 %%%%%%% Toilet %%%%%%%
 
-2001 - "The toilet is either to the lxeft or to the right. Or maybe its behind you! If not, try infront of you." - [] - []
+2001 - The toilet is either to the lxeft or to the right. Or maybe its behind you! If not, try infront of you. - [] - []
 
 
 %%%%%%% Go Away %%%%%%%
 
-3001 - "Wow, are you a robotist? Rude." - [] - []
+3001 - Wow, are you a robotist? Rude. - [] - []
 
 
 

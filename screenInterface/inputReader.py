@@ -11,8 +11,12 @@ def readInputNodes(filename):
     for line in read:
         currentLine = (line.strip()).split(" - ")
         if len(currentLine) > 1 and currentLine[0][0] != '%' and currentLine[0][0] != 'o' and currentLine[0][0] != 'i':
+            # Turn Answers into a list of answers
+            answText = currentLine[2].split(", ")
+            #Turn AnswerIDs into a list if IDs
+            answIDs = currentLine[3].split(", ")
             nodes.update({int(currentLine[0]): classes.convNode(currentLine[0], currentLine[1],
-                                                                currentLine[2], currentLine[3])})
+                                                                answText, answIDs)})
     return nodes
 
 
