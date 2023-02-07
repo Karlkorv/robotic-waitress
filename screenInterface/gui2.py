@@ -5,14 +5,17 @@ from kivy.uix.label import Label
 from kivy.uix.image import Image
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
+from kivy.clock import Clock
 import inputReader
 import functions
 
+class MyButton(Button):
+    def __init__(self, AnswID, **kwargs):
+        super(MyButton, self).__init__(**kwargs)
+        self.AnswID = AnswID
 
 class ConversationWindow(App):
     def build(self):
-        ## Globalish
-        inOptions = 1
  
         widget_root = BoxLayout(orientation = "vertical")
         label_op = Label(size_hint_y = 15, font_size=51)
@@ -21,15 +24,25 @@ class ConversationWindow(App):
         for key in options:
             opt = options.get(key)
             optionTexts.append(opt.Text)
+        
+        optionConvIDs = []
+        for key1 in options:
+            opt = options.get(key1)
+            optionConvIDs.append(opt.ConvID)
+
+        print(optionConvIDs)
 
         grid_button = GridLayout(cols = 2, size_hint_y = 20)
-        for text in optionTexts :
-            grid_button.add_widget(Button(
+        counter = 0
+        for text in optionTexts:
+            grid_button.add_widget(MyButton(
                                             text = text,
+                                            AnswID = int(optionConvIDs[counter]),
                                             size_hint = (0.7, 0.6),
                                             bold = True,
                                             background_color = '#00FFCE'
                                             ))
+            counter = counter + 1
         label_op.text = functions.getRandomintroNode(intros).Text
 
         def reset_buttons():
@@ -37,52 +50,61 @@ class ConversationWindow(App):
 
         def add_buttons(node):
             reset_buttons()
+
+            counter = 0
             for text in node.AnswText:
-                grid_button.add_widget(Button(
+                grid_button.add_widget(MyButton(
                                             text = text,
+                                            AnswID = node.AnswID[counter],
                                             size_hint = (0.7, 0.6),
                                             bold = True,
                                             background_color = '#00FFCE'
                                             ))
+                counter = counter + 1
 
         def add_new_text(node):
             label_op.text = node.Text
 
         def select_conversation_node(instance):
-            currentNode = "placeholder" #placeholder
-            for key in options.keys():
-                option = options.get(key)
-                if instance.text == option.Text:
-                    currentNode = functions.getNode(nodes, int(option.ConvID))
-                    break
+            currentNode = functions.get_node(nodes, instance.AnswID)
             add_buttons(currentNode)
             add_new_text(currentNode)
-            inOptions = 2
+            button_loop()
 
         def quit_conversation():
-            label_op.text = "Bye Bye"
-            grid_button.clear_widgets
+            ConversationWindow().exit()
+
+
+        def error_conversation():
+            label_op.text = "You don't seem to be interested, see you never!"
+            grid_button.clear_widgets()
+            Clock.schedule_once(quit_conversation, 3)
+
+        def bye_conversation():
+            label_op.text = "Bye bye now"
+            grid_button.clear_widgets()
+            Clock.schedule_once(quit_conversation, 3)
+
 
         def next_conversation_node(instance):
-            currentNode = "placeholder" #placeholder
-            print("hoppla")
-            for key in nodes.keys():
-                node = nodes.get(key)
-                if instance.text == node.AnswText:
-                    currentNode = functions.getNode(nodes, node.AnswID)
-                    break
+            currentNode = functions.get_node(nodes, int(instance.AnswID)) #placeholder
             if currentNode == None:
-                quit_conversation()
+                error_conversation()
                 return
+            if int(currentNode.AnswID[0])/1000 == 9:
+                bye_conversation()
+                return
+
             add_buttons(currentNode)
             add_new_text(currentNode)
-        
-
+            button_loop()
 
         for button in grid_button.children:
-            if inOptions == 1:
+                print("in options buttonLoop")
                 button.bind(on_press = select_conversation_node)
-            else:
+
+        def button_loop():
+            for button in grid_button.children:
                 button.bind(on_press = next_conversation_node)
 
         def label_text_size(label, new_height):

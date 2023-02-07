@@ -13,7 +13,7 @@ def printOptions():
         print("ID: " + o.ID + ", Text: " + o.Text +
               ", ConvID: " + o.ConvID)
 
-def getOptions(options):
+def get_options(options):
     options = inputReader.readInputOptions('input.txt')
     return options
 
@@ -29,7 +29,7 @@ def getRandomintroNode(intros):
     r = random.randrange(1, len(intros) + 1)
     return intros.get(r)
 
-def getNode(nodes, nodeID):
+def get_node(nodes, nodeID):
     if nodeID == "[]":
         return None 
     else:
