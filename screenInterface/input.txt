@@ -15,9 +15,12 @@ intro - 5 - Evenin'
 
 1001 - How are you? - Good, Bad - 1002, 1003
 
-1002 - Thats good! - [] - []
+1002 - Thats good! - Bye! - 9001
 
-1003 - How sad! - [] - []
+1003 - How sad! - Cya - 9001
+
+%%%%%%% FareWell %%%%%%%
+9001 - Bye Bye Now - [] - []
 
 %%%%%%% Toilet %%%%%%%
 
