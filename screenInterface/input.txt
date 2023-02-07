@@ -11,16 +11,20 @@ intro - 3 - Hey you, can I bum a ciggarette?
 intro - 4 - WAzzzzzuuUUUp
 intro - 5 - Evenin'
 
+%%%%%%% Farewell messages %%%%%%%
+farewell - 1 - Bye Bye Now
+farewell - 2 - See ya later, Alligator
+farewell - 3 - In a while, Crocodile
+
 %%%%%%% Conversation %%%%%%%
 
 1001 - How are you? - Good, Bad - 1002, 1003
 
-1002 - Thats good! - Bye! - 9001
+1002 - Thats good! - Bye! - 9999
 
-1003 - How sad! - Cya - 9001
+1003 - How sad! - Cya - 9999
 
-%%%%%%% FareWell %%%%%%%
-9001 - Bye Bye Now - [] - []
+
 
 %%%%%%% Toilet %%%%%%%
 
