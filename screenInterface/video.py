@@ -17,12 +17,12 @@ video.bind(
 
 class VideoWindow(App):
     def Build(self):
-        video = Video(source = 'robot_eye_loop.avi')
+        video = Video(source = 'test.MOV')
         video.loaded = True
-        video.options = {'eos':'loop'}
         video.allow_stretch = True
         video.volume = 0
         video.state = "play"
+        video.options = {'eos':'loop'}
 
         return video
 
