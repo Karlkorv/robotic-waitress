@@ -5,6 +5,7 @@ from kivy.uix.label import Label
 from kivy.uix.image import Image
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
+from kivy.graphics import BorderImage
 from kivy.clock import Clock
 import inputReader
 import functions
@@ -33,13 +34,21 @@ class ConversationWindow(App):
             reset_buttons()
             counter = 0
             for text in node.AnswText:
-                grid_button.add_widget(MyButton(
+                b = MyButton(
                     text=text,
                     ButtonAnswID=node.AnswID[counter],
                     size_hint=(0.7, 0.6),
                     bold=True,
                     background_color='#00FFCE'
-                ))
+                )
+                grid_button.add_widget(b)
+                with b.canvas.before:
+                    BorderImage(
+                        size=(b.width, b.height),
+                        pos=(b.x, b.y),
+                        border=(16, 8, 16, 8),
+                        source='button.png')
+
                 counter = counter + 1
 
         def add_new_text(node):
@@ -83,13 +92,20 @@ class ConversationWindow(App):
         grid_button = GridLayout(cols=2, size_hint_y=20)
         for key in options:
             opt = options.get(key)
-            grid_button.add_widget(MyButton(
+            b = MyButton(
                 text=opt.Text,
                 ButtonAnswID=opt.ConvID,
                 size_hint=(0.7, 0.6),
                 bold=True,
                 background_color='#00FFCE'
-            ))
+            )
+            grid_button.add_widget(b)
+            with b.canvas.before:
+                BorderImage(
+                    size=(b.width, b.height),
+                    pos=(b.x, b.y),
+                    border=(16, 8, 16, 8),
+                    source='button.png')
 
         for button in grid_button.children:
             button.bind(on_press=next_conversation_node)
