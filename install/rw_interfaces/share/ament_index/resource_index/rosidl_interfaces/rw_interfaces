@@ -1,0 +1,4 @@
+msg/DetectionsVector.idl
+msg/DetectionsVector.msg
+msg/Ultrasonic.idl
+msg/Ultrasonic.msg
