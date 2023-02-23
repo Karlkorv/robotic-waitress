@@ -1,0 +1,33 @@
+[1.475s] Invoking command in '/home/gake/robotic-waitress/src/rw_movement': PYTHONPATH=/home/gake/robotic-waitress/build/rw_movement/prefix_override:/home/gake/robotic-waitress/install/rw_movement/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/rw_movement build --build-base /home/gake/robotic-waitress/build/rw_movement/build install --record /home/gake/robotic-waitress/build/rw_movement/install.log --single-version-externally-managed
+[2.063s] running egg_info
+[2.064s] creating ../../build/rw_movement/rw_movement.egg-info
+[2.065s] writing ../../build/rw_movement/rw_movement.egg-info/PKG-INFO
+[2.065s] writing dependency_links to ../../build/rw_movement/rw_movement.egg-info/dependency_links.txt
+[2.065s] writing entry points to ../../build/rw_movement/rw_movement.egg-info/entry_points.txt
+[2.065s] writing requirements to ../../build/rw_movement/rw_movement.egg-info/requires.txt
+[2.066s] writing top-level names to ../../build/rw_movement/rw_movement.egg-info/top_level.txt
+[2.066s] writing manifest file '../../build/rw_movement/rw_movement.egg-info/SOURCES.txt'
+[2.152s] reading manifest file '../../build/rw_movement/rw_movement.egg-info/SOURCES.txt'
+[2.155s] writing manifest file '../../build/rw_movement/rw_movement.egg-info/SOURCES.txt'
+[2.155s] running build
+[2.155s] running build_py
+[2.156s] creating /home/gake/robotic-waitress/build/rw_movement/build
+[2.156s] creating /home/gake/robotic-waitress/build/rw_movement/build/lib
+[2.157s] creating /home/gake/robotic-waitress/build/rw_movement/build/lib/rw_movement
+[2.157s] copying rw_movement/__init__.py -> /home/gake/robotic-waitress/build/rw_movement/build/lib/rw_movement
+[2.157s] running install
+[2.157s] running install_lib
+[2.159s] creating /home/gake/robotic-waitress/install/rw_movement/lib/python3.10/site-packages/rw_movement
+[2.160s] copying /home/gake/robotic-waitress/build/rw_movement/build/lib/rw_movement/__init__.py -> /home/gake/robotic-waitress/install/rw_movement/lib/python3.10/site-packages/rw_movement
+[2.161s] byte-compiling /home/gake/robotic-waitress/install/rw_movement/lib/python3.10/site-packages/rw_movement/__init__.py to __init__.cpython-310.pyc
+[2.161s] running install_data
+[2.162s] creating /home/gake/robotic-waitress/install/rw_movement/share/ament_index
+[2.163s] creating /home/gake/robotic-waitress/install/rw_movement/share/ament_index/resource_index
+[2.163s] creating /home/gake/robotic-waitress/install/rw_movement/share/ament_index/resource_index/packages
+[2.163s] copying resource/rw_movement -> /home/gake/robotic-waitress/install/rw_movement/share/ament_index/resource_index/packages
+[2.163s] copying package.xml -> /home/gake/robotic-waitress/install/rw_movement/share/rw_movement
+[2.163s] running install_egg_info
+[2.167s] Copying ../../build/rw_movement/rw_movement.egg-info to /home/gake/robotic-waitress/install/rw_movement/lib/python3.10/site-packages/rw_movement-0.0.0-py3.10.egg-info
+[2.169s] running install_scripts
+[2.212s] writing list of installed files to '/home/gake/robotic-waitress/build/rw_movement/install.log'
+[2.279s] Invoked command in '/home/gake/robotic-waitress/src/rw_movement' returned '0': PYTHONPATH=/home/gake/robotic-waitress/build/rw_movement/prefix_override:/home/gake/robotic-waitress/install/rw_movement/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/rw_movement build --build-base /home/gake/robotic-waitress/build/rw_movement/build install --record /home/gake/robotic-waitress/build/rw_movement/install.log --single-version-externally-managed
