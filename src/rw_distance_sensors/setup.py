@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'hello_world = rw_distance_sensors.hello_world:main'
+            'sonar = rw_distance_sensors.ROS_sonar:main'
         ],
     },
 )
