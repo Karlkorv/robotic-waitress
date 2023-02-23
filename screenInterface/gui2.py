@@ -18,6 +18,18 @@ class MyButton(Button):
     def __init__(self, ButtonAnswID, **kwargs):
         super(MyButton, self).__init__(**kwargs)
         self.ButtonAnswID = ButtonAnswID
+        self.background_color=(0,0,0,0)
+        self.background_normal = ''
+        self.background_down
+        """  self.canvas.before: BorderImage(
+                    size=(self.width, self.height),
+                    pos=(self.x, self.y),
+                    border=(16, 8, 16, 8),
+                    source='button.png',
+                    auto_scale = 'both',
+                    display_border = True ) """
+                    
+        
 
 
 class ConversationWindow(App):
@@ -37,35 +49,32 @@ class ConversationWindow(App):
                 b = MyButton(
                     text=text,
                     ButtonAnswID=node.AnswID[counter],
-                    size_hint=(0.7, 0.6),
                     bold=True,
-                    background_color='#00FFCE'
+                    #background_color='#000FFF'
                 )
                 grid_button.add_widget(b)
-                with b.canvas.before:
+                """ with b.canvas.before:
                     BorderImage(
                         size=(b.width, b.height),
                         pos=(b.x, b.y),
                         border=(16, 8, 16, 8),
                         source='button.png')
 
-                counter = counter + 1
+                counter = counter + 1 """
 
         def add_new_text(node):
             """Adds text to the top of the screen"""
             label_op.text = node.Text
 
-        """ def quit_conversation():
-            ConversationWindow().exit()
-
-            label_op.text = "Bye bye now"
-            grid_button.clear_widgets()
-            Clock.schedule_once(quit_conversation, 3) """
+        def quit_conversation(temp):
+            ConversationWindow().stop()
 
         def next_conversation_node(instance):
             """Updates the screen when button 'instance' is clicked"""
             if int(instance.ButtonAnswID) == 9999:  # Exit code
                 currentNode = functions.getRandomFarewell(farewells)
+                grid_button.clear_widgets()
+                Clock.schedule_once(quit_conversation, 1)
                 # TODO : Restart application as robot walks away
             else:
                 currentNode = functions.get_node(
@@ -95,17 +104,18 @@ class ConversationWindow(App):
             b = MyButton(
                 text=opt.Text,
                 ButtonAnswID=opt.ConvID,
-                size_hint=(0.7, 0.6),
-                bold=True,
-                background_color='#00FFCE'
+                pos_hint = {'center_x': 0.5},
+                bold = True,
+                #background_color = '#00FFCE',
+                #background_normal = ''
             )
             grid_button.add_widget(b)
-            with b.canvas.before:
+            """ with b.canvas.before:
                 BorderImage(
                     size=(b.width, b.height),
                     pos=(b.x, b.y),
                     border=(16, 8, 16, 8),
-                    source='button.png')
+                    source='button.png') """
 
         for button in grid_button.children:
             button.bind(on_press=next_conversation_node)
