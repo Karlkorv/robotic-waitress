@@ -7,7 +7,7 @@
 
 
 import rclpy
-from rw_distance_sensors import Sonar    
+from rw_distance_sensors.Sonar import Sonar
 from rw_interfaces.msg import Ultrasonic
 from rclpy.node import Node
 
@@ -16,7 +16,7 @@ class Sonar_Publisher(Node):
     def __init__(self):
         super().__init__('Sonar_Publisher')
         #Create publisher that publishes to the topic 'Sonar value' with a queue limit of 10
-        self.publisher_ = self.create_publisher(Ultrasonic, 'Sonar_Value', 10)
+        self.publisher_ = self.create_publisher(msg_type=Ultrasonic, topic='sonar_value', qos_profile=10)
         # Publish message every 0.5 seconds 
         timer_period = 0.5 
         # A timer that calls the function timer_callback in periods of time_period. 
@@ -24,9 +24,10 @@ class Sonar_Publisher(Node):
 
     def timer_callback(self):
         # lägg in data från sonar
-        sonar = Sonar('COM3', 9600)
+        sonar = Sonar('/dev/ttyACM0', 9600)
         sonarvalue = Ultrasonic()
-        sonarvalue.data = sonar.getDistance()
+        sonarvalue.distance = sonar.getDistance()
+        self.get_logger().info('Sonar value: "%f"' % sonarvalue.distance)
         self.publisher_.publish(sonarvalue) # publicera datan från sonar till topic 'Sonar value' 
 
 
