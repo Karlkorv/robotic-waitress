@@ -4,8 +4,13 @@
   <name>rw_movement</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
-  <maintainer email="gustavakerstrom@gmail.com">gake</maintainer>
+  <maintainer email="gustavakerstrom@gmail.com">Gustav Åkerström</maintainer>
+  <maintainer email="wilhelmson.aya@gmail.com">Aya Wilhelmson</maintainer>
   <license>TODO: License declaration</license>
+
+  <depend>rclpy</depend>
+  <depend>geometry_msgs</depend>
+  <depend>irobot_create_msgs</depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
