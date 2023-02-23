@@ -7,7 +7,7 @@
 
 
 import rclpy
-from Sonar import Sonar    
+from rw_distance_sensors import Sonar    
 from rw_interfaces.msg import Ultrasonic
 from rclpy.node import Node
 
