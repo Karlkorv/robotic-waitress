@@ -1,0 +1,61 @@
+[0.000000] (-) TimerEvent: {}
+[0.000247] (rw_movement) JobQueued: {'identifier': 'rw_movement', 'dependencies': OrderedDict()}
+[0.001174] (rw_movement) JobStarted: {'identifier': 'rw_movement'}
+[0.099008] (-) TimerEvent: {}
+[0.199419] (-) TimerEvent: {}
+[0.299799] (-) TimerEvent: {}
+[0.400216] (-) TimerEvent: {}
+[0.500723] (-) TimerEvent: {}
+[0.601037] (-) TimerEvent: {}
+[0.708150] (-) TimerEvent: {}
+[0.808807] (-) TimerEvent: {}
+[0.909486] (-) TimerEvent: {}
+[1.009874] (-) TimerEvent: {}
+[1.110239] (-) TimerEvent: {}
+[1.210637] (-) TimerEvent: {}
+[1.311026] (-) TimerEvent: {}
+[1.411640] (-) TimerEvent: {}
+[1.471900] (rw_movement) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/rw_movement', 'build', '--build-base', '/home/gake/robotic-waitress/build/rw_movement/build', 'install', '--record', '/home/gake/robotic-waitress/build/rw_movement/install.log', '--single-version-externally-managed'], 'cwd': '/home/gake/robotic-waitress/src/rw_movement', 'env': {'LC_TIME': 'sv_SE.UTF-8', 'TTY': '/dev/pts/6', 'USER': 'gake', 'GIT_ASKPASS': '/usr/share/code/resources/app/extensions/git/dist/askpass.sh', 'XDG_SESSION_TYPE': 'x11', 'LD_LIBRARY_PATH': '/usr/local/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/local/lib:', 'SHLVL': '2', 'CHROME_DESKTOP': 'code-url-handler.desktop', 'HOME': '/home/gake', 'LESS': '-R', 'OLDPWD': '/home/gake/robotic-waitress/src', 'DESKTOP_SESSION': 'pop', 'TERM_PROGRAM_VERSION': '1.75.1', 'LSCOLORS': 'Gxfxcxdxbxegedabagacad', 'ZSH': '/home/gake/.local/share/fig/plugins/ohmyzsh', 'GNOME_SHELL_SESSION_MODE': 'pop', 'GTK_MODULES': 'gail:atk-bridge', 'PAGER': 'less', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js', 'LC_MONETARY': 'sv_SE.UTF-8', 'MANAGERPID': '7215', 'VSCODE_GIT_ASKPASS_NODE': '/usr/share/code/code', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'FIG_SET_PARENT_CHECK': '1', 'GLFW_IM_MODULE': 'ibus', 'SYSTEMD_EXEC_PID': '7969', 'COLORTERM': 'truecolor', 'FIG_PID': '430450', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '34130', 'TERMINATOR_DBUS_NAME': 'net.tenshu.Terminator23558193cd9818af7fe4d2c2f5bd9d00f', 'MANDATORY_PATH': '/usr/share/gconf/pop.mandatory.path', 'ROS_DISTRO': 'humble', 'GTK_IM_MODULE': 'ibus', 'LOGNAME': 'gake', 'JOURNAL_STREAM': '8:65848', '_': '/usr/bin/colcon', 'DEFAULTS_PATH': '/usr/share/gconf/pop.default.path', 'PKG_CONFIG_PATH': '/usr/local/lib/pkgconfig:/usr/local/lib/pkgconfig:', 'ROS_VERSION': '2', 'USER_ZDOTDIR': '/home/gake', 'XDG_SESSION_CLASS': 'user', 'LC_FIG_SET_PARENT': '2bb445f1-33f6-4a40-b696-963946218c56', 'TERM': 'xterm-256color', 'USERNAME': 'gake', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'WINDOWPATH': '2', 'PATH': '/home/gake/.cabal/bin:/home/gake/.ghcup/bin:/opt/ros/humble/bin:/home/gake/.local/bin:/home/gake/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/gake/.fig/bin:/usr/local/texlive/2022/bin/x86_64-linux:/usr/local/go/bin:/home/gake/.spicetify:/usr/local/texlive/2022/bin/x86_64-linux:/usr/local/go/bin:/home/gake/.spicetify', 'INVOCATION_ID': 'e42a2a7941bb45389ab0303c7e87051c', 'PAPERSIZE': 'a4', 'SESSION_MANAGER': 'local/xps-9300:@/tmp/.ICE-unix/7630,unix/xps-9300:/tmp/.ICE-unix/7630', 'GDK_BACKEND': 'x11', 'LC_ADDRESS': 'sv_SE.UTF-8', 'XDG_MENU_PREFIX': 'gnome-', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'IBUS_DISABLE_SNOOPER': '1', 'LANG': 'en_US.UTF-8', 'LC_TELEPHONE': 'sv_SE.UTF-8', 'RMW_IMPLEMENTATION': 'rmw_fastrtps_cpp', 'TERMINATOR_DBUS_PATH': '/net/tenshu/Terminator2', 'VSCODE_INJECTION': '1', 'XDG_CURRENT_DESKTOP': 'Unity', 'FIG_TERM': '2.14.2', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'TERM_PROGRAM': 'vscode', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-cbff31704e.sock', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'XDG_SESSION_DESKTOP': 'pop', 'XMODIFIERS': '@im=ibus', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'ORIGINAL_XDG_CURRENT_DESKTOP': 'pop:GNOME', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'LC_NAME': 'sv_SE.UTF-8', 'ROS_DISCOVERY_SERVER': '192.168.12.23:11811', 'SHELL': '/usr/bin/zsh', 'TERMINATOR_UUID': 'urn:uuid:97b9657d-0850-428c-950d-b80125262fc4', 'GDMSESSION': 'pop', 'NO_AT_BRIDGE': '1', 'QT_ACCESSIBILITY': '1', 'ROS_MASTER_URI': '192.168.12.23', 'FIGTERM_SESSION_ID': '2bb445f1-33f6-4a40-b696-963946218c56', 'LC_MEASUREMENT': 'sv_SE.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'sv_SE.UTF-8', 'QT_IM_MODULE': 'ibus', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '--ms-enable-electron-run-as-node', 'PWD': '/home/gake/robotic-waitress/build/rw_movement', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-pop:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/pop:/usr/share/gnome:/home/gake/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'ZDOTDIR': '/home/gake', 'FIG_SET_PARENT': '2bb445f1-33f6-4a40-b696-963946218c56', 'LC_NUMERIC': 'sv_SE.UTF-8', 'PYTHONPATH': '/home/gake/robotic-waitress/build/rw_movement/prefix_override:/home/gake/robotic-waitress/install/rw_movement/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'ROS_HOSTNAME': '192.168.12.23', 'LC_PAPER': 'sv_SE.UTF-8', 'COLCON': '1', 'VTE_VERSION': '6800'}, 'shell': False}
+[1.511753] (-) TimerEvent: {}
+[1.612215] (-) TimerEvent: {}
+[1.712834] (-) TimerEvent: {}
+[1.813535] (-) TimerEvent: {}
+[1.914303] (-) TimerEvent: {}
+[2.014873] (-) TimerEvent: {}
+[2.064011] (rw_movement) StdoutLine: {'line': b'running egg_info\n'}
+[2.065293] (rw_movement) StdoutLine: {'line': b'creating ../../build/rw_movement/rw_movement.egg-info\n'}
+[2.065707] (rw_movement) StdoutLine: {'line': b'writing ../../build/rw_movement/rw_movement.egg-info/PKG-INFO\n'}
+[2.066046] (rw_movement) StdoutLine: {'line': b'writing dependency_links to ../../build/rw_movement/rw_movement.egg-info/dependency_links.txt\n'}
+[2.066376] (rw_movement) StdoutLine: {'line': b'writing entry points to ../../build/rw_movement/rw_movement.egg-info/entry_points.txt\n'}
+[2.066671] (rw_movement) StdoutLine: {'line': b'writing requirements to ../../build/rw_movement/rw_movement.egg-info/requires.txt\n'}
+[2.066846] (rw_movement) StdoutLine: {'line': b'writing top-level names to ../../build/rw_movement/rw_movement.egg-info/top_level.txt\n'}
+[2.067169] (rw_movement) StdoutLine: {'line': b"writing manifest file '../../build/rw_movement/rw_movement.egg-info/SOURCES.txt'\n"}
+[2.115066] (-) TimerEvent: {}
+[2.153361] (rw_movement) StdoutLine: {'line': b"reading manifest file '../../build/rw_movement/rw_movement.egg-info/SOURCES.txt'\n"}
+[2.155518] (rw_movement) StdoutLine: {'line': b"writing manifest file '../../build/rw_movement/rw_movement.egg-info/SOURCES.txt'\n"}
+[2.156166] (rw_movement) StdoutLine: {'line': b'running build\n'}
+[2.156562] (rw_movement) StdoutLine: {'line': b'running build_py\n'}
+[2.157033] (rw_movement) StdoutLine: {'line': b'creating /home/gake/robotic-waitress/build/rw_movement/build\n'}
+[2.157587] (rw_movement) StdoutLine: {'line': b'creating /home/gake/robotic-waitress/build/rw_movement/build/lib\n'}
+[2.157856] (rw_movement) StdoutLine: {'line': b'creating /home/gake/robotic-waitress/build/rw_movement/build/lib/rw_movement\n'}
+[2.158040] (rw_movement) StdoutLine: {'line': b'copying rw_movement/__init__.py -> /home/gake/robotic-waitress/build/rw_movement/build/lib/rw_movement\n'}
+[2.158278] (rw_movement) StdoutLine: {'line': b'running install\n'}
+[2.158659] (rw_movement) StdoutLine: {'line': b'running install_lib\n'}
+[2.160394] (rw_movement) StdoutLine: {'line': b'creating /home/gake/robotic-waitress/install/rw_movement/lib/python3.10/site-packages/rw_movement\n'}
+[2.160787] (rw_movement) StdoutLine: {'line': b'copying /home/gake/robotic-waitress/build/rw_movement/build/lib/rw_movement/__init__.py -> /home/gake/robotic-waitress/install/rw_movement/lib/python3.10/site-packages/rw_movement\n'}
+[2.161776] (rw_movement) StdoutLine: {'line': b'byte-compiling /home/gake/robotic-waitress/install/rw_movement/lib/python3.10/site-packages/rw_movement/__init__.py to __init__.cpython-310.pyc\n'}
+[2.162235] (rw_movement) StdoutLine: {'line': b'running install_data\n'}
+[2.163611] (rw_movement) StdoutLine: {'line': b'creating /home/gake/robotic-waitress/install/rw_movement/share/ament_index\n'}
+[2.163875] (rw_movement) StdoutLine: {'line': b'creating /home/gake/robotic-waitress/install/rw_movement/share/ament_index/resource_index\n'}
+[2.164011] (rw_movement) StdoutLine: {'line': b'creating /home/gake/robotic-waitress/install/rw_movement/share/ament_index/resource_index/packages\n'}
+[2.164251] (rw_movement) StdoutLine: {'line': b'copying resource/rw_movement -> /home/gake/robotic-waitress/install/rw_movement/share/ament_index/resource_index/packages\n'}
+[2.164382] (rw_movement) StdoutLine: {'line': b'copying package.xml -> /home/gake/robotic-waitress/install/rw_movement/share/rw_movement\n'}
+[2.164503] (rw_movement) StdoutLine: {'line': b'running install_egg_info\n'}
+[2.168147] (rw_movement) StdoutLine: {'line': b'Copying ../../build/rw_movement/rw_movement.egg-info to /home/gake/robotic-waitress/install/rw_movement/lib/python3.10/site-packages/rw_movement-0.0.0-py3.10.egg-info\n'}
+[2.169699] (rw_movement) StdoutLine: {'line': b'running install_scripts\n'}
+[2.213332] (rw_movement) StdoutLine: {'line': b"writing list of installed files to '/home/gake/robotic-waitress/build/rw_movement/install.log'\n"}
+[2.215258] (-) TimerEvent: {}
+[2.279114] (rw_movement) CommandEnded: {'returncode': 0}
+[2.315399] (-) TimerEvent: {}
+[2.329264] (rw_movement) JobEnded: {'identifier': 'rw_movement', 'rc': 0}
+[2.330842] (-) EventReactorShutdown: {}
