@@ -14,9 +14,13 @@ find_package(irobot_create_msgs REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-rosidl_generate_interfaces(${PROJECT_NAME}
+set(msg_files
     "msg/Ultrasonic.msg"
     "msg/DetectionsVector.msg"
+)
+
+rosidl_generate_interfaces(${PROJECT_NAME}
+    ${msg_files}
     DEPENDENCIES std_msgs irobot_create_msgs 
 ) 
 
