@@ -18,9 +18,10 @@ class MyButton(Button):
     def __init__(self, ButtonAnswID, **kwargs):
         super(MyButton, self).__init__(**kwargs)
         self.ButtonAnswID = ButtonAnswID
-        self.background_color=(0,0,0,0)
-        self.background_normal = ''
         self.background_down
+        self.markup = True
+        self.font_size = 40
+
         """  self.canvas.before: BorderImage(
                     size=(self.width, self.height),
                     pos=(self.x, self.y),
@@ -46,21 +47,20 @@ class ConversationWindow(App):
             reset_buttons()
             counter = 0
             for text in node.AnswText:
+                if counter == 0:
+                    frame = "frame_green.png"
+                elif counter == 1:
+                    frame = "frame_red.png"
+                else :
+                    frame = "frame_orange.png"
                 b = MyButton(
-                    text=text,
-                    ButtonAnswID=node.AnswID[counter],
-                    bold=True,
-                    #background_color='#000FFF'
+                    text = text,
+                    background_normal = frame,
+                    ButtonAnswID = node.AnswID[counter],
+                    bold = True
                 )
                 grid_button.add_widget(b)
-                """ with b.canvas.before:
-                    BorderImage(
-                        size=(b.width, b.height),
-                        pos=(b.x, b.y),
-                        border=(16, 8, 16, 8),
-                        source='button.png')
-
-                counter = counter + 1 """
+                counter = counter + 1
 
         def add_new_text(node):
             """Adds text to the top of the screen"""
@@ -74,15 +74,25 @@ class ConversationWindow(App):
             if int(instance.ButtonAnswID) == 9999:  # Exit code
                 currentNode = functions.getRandomFarewell(farewells)
                 grid_button.clear_widgets()
-                Clock.schedule_once(quit_conversation, 1)
+                Clock.schedule_once(quit_conversation, 2)
                 # TODO : Restart application as robot walks away
             else:
                 currentNode = functions.get_node(
                     nodes, int(instance.ButtonAnswID))
-                add_buttons(currentNode)
+                #Show button that was pressed
+                reset_buttons()
+                b = MyButton(
+                    text = instance.text,
+                    ButtonAnswID = instance.ButtonAnswID,
+                    bold = True,
+                    #background_color = '#000FFF'
+                )
+                grid_button.add_widget(b)
+                # Delay the addition of new buttons
+                Clock.schedule_once(lambda dt: add_buttons(currentNode), 1)
 
-            add_new_text(currentNode)
-            button_loop()
+            Clock.schedule_once(lambda dt: add_new_text(currentNode), 1)
+            Clock.schedule_once(lambda dt: button_loop(), 1)
 
         def button_loop():
             """Continously binds buttons to call next_conversation_node on click"""
@@ -98,24 +108,25 @@ class ConversationWindow(App):
         label_op = Label(size_hint_y=15, font_size=51)
 
         # Initial button setup on startup
-        grid_button = GridLayout(cols=2, size_hint_y=20)
+        grid_button = GridLayout(cols=1, size_hint_y=20, padding = 10, spacing = 10)
+        counter = 0
         for key in options:
             opt = options.get(key)
+            if counter == 0:
+                frame = "frame_green.png"
+            elif counter == 1:
+                frame = "frame_red.png"
+            else :
+                frame = "frame_orange.png"
             b = MyButton(
-                text=opt.Text,
+                text = opt.Text,
+                background_normal = frame,
                 ButtonAnswID=opt.ConvID,
                 pos_hint = {'center_x': 0.5},
                 bold = True,
-                #background_color = '#00FFCE',
-                #background_normal = ''
             )
             grid_button.add_widget(b)
-            """ with b.canvas.before:
-                BorderImage(
-                    size=(b.width, b.height),
-                    pos=(b.x, b.y),
-                    border=(16, 8, 16, 8),
-                    source='button.png') """
+            counter = counter + 1
 
         for button in grid_button.children:
             button.bind(on_press=next_conversation_node)
@@ -137,3 +148,5 @@ nodes = inputReader.readInputNodes('input.txt')
 farewells = inputReader.readInputFarewells('input.txt')
 
 ConversationWindow().run()
+
+
