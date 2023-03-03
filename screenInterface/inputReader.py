@@ -18,7 +18,7 @@ def readInputNodes(filename):
             answText = currentLine[2].split(", ")
             # Turn AnswerIDs into a list if IDs
             answIDs = currentLine[3].split(", ")
-            nodes.update({int(currentLine[0]): classes.convNode(currentLine[0], currentLine[1],
+            nodes.update({int(currentLine[0]): classes.convNode(currentLine[0],  split_long_sentence(currentLine[1]),
                                                                 answText, answIDs)})
     return nodes
 
@@ -53,7 +53,8 @@ def readInputIntros(filename):
         currentLine = (line.strip()).split(" - ")
         if len(currentLine) > 1 and currentLine[0][0] == 'i':
             intros.update({int(currentLine[1]): classes.intro(
-                currentLine[1], currentLine[2])})
+                currentLine[1], split_long_sentence(currentLine[2]))})
+    
     return intros
 
 
@@ -70,5 +71,15 @@ def readInputFarewells(filename):
         currentLine = (line.strip()).split(" - ")
         if len(currentLine) > 1 and currentLine[0][0] == 'f':
             farewells.update({int(currentLine[1]): classes.farewell(
-                currentLine[1], currentLine[2])})
+                currentLine[1],  split_long_sentence(currentLine[2]))})
     return farewells
+
+
+def split_long_sentence(sentence):
+    if len(sentence) <= 70:
+        return sentence
+    else:
+        last_space_index = sentence.rfind(' ', 0, 70)
+        if last_space_index == -1:
+            last_space_index = 70
+        return sentence[:last_space_index].strip() + '\n' + split_long_sentence(sentence[last_space_index:].strip())
