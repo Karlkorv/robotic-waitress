@@ -76,10 +76,10 @@ def readInputFarewells(filename):
 
 
 def split_long_sentence(sentence):
-    if len(sentence) <= 70:
+    if len(sentence) <= 30:
         return sentence
     else:
-        last_space_index = sentence.rfind(' ', 0, 70)
+        last_space_index = sentence.rfind(' ', 0, 30)
         if last_space_index == -1:
-            last_space_index = 70
+            last_space_index = 30
         return sentence[:last_space_index].strip() + '\n' + split_long_sentence(sentence[last_space_index:].strip())
