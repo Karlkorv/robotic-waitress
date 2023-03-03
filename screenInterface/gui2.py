@@ -9,6 +9,7 @@ from kivy.graphics import BorderImage
 from kivy.clock import Clock
 import inputReader
 import functions
+import time
 
 
 class MyButton(Button):
@@ -31,7 +32,26 @@ class MyButton(Button):
                     display_border = True ) """
                     
         
+class MyLabel(Label):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.text = ''
+        self.target_text = 'Hello, world!'
+        self.index = 0
 
+    def change_text(self, text):
+         self.text = ''
+         self.target_text = text
+         Clock.schedule_interval(self.update_text, 0.05)
+
+
+    def update_text(self, dt):
+        if self.index >= len(self.target_text):
+            Clock.unschedule(self.update_text)
+            self.index = 0
+            return
+        self.text += self.target_text[self.index]
+        self.index += 1
 
 class ConversationWindow(App):
     """ConversationWindow class - the GUI window application"""
@@ -64,7 +84,9 @@ class ConversationWindow(App):
 
         def add_new_text(node):
             """Adds text to the top of the screen"""
-            label_op.text = node.Text
+            label_op.change_text(node.Text) 
+            
+
 
         def quit_conversation(temp):
             ConversationWindow().stop()
@@ -81,18 +103,9 @@ class ConversationWindow(App):
                     nodes, int(instance.ButtonAnswID))
                 #Show button that was pressed
                 reset_buttons()
-                b = MyButton(
-                    text = instance.text,
-                    ButtonAnswID = instance.ButtonAnswID,
-                    bold = True,
-                    #background_color = '#000FFF'
-                )
-                grid_button.add_widget(b)
-                # Delay the addition of new buttons
-                Clock.schedule_once(lambda dt: add_buttons(currentNode), 1)
-
-            Clock.schedule_once(lambda dt: add_new_text(currentNode), 1)
-            Clock.schedule_once(lambda dt: button_loop(), 1)
+                add_buttons(currentNode)
+            add_new_text(currentNode)
+            button_loop()
 
         def button_loop():
             """Continously binds buttons to call next_conversation_node on click"""
@@ -105,7 +118,8 @@ class ConversationWindow(App):
         # The screen consist of a BoxLayout containing one label (the text),
         # and one GridLayout (the buttons)
         widget_root = BoxLayout(orientation="vertical")
-        label_op = Label(size_hint_y=15, font_size=51)
+        label_op = MyLabel(size_hint_y=15, font_size=51)
+
 
         # Initial button setup on startup
         grid_button = GridLayout(cols=1, size_hint_y=20, padding = 10, spacing = 10)
@@ -132,7 +146,7 @@ class ConversationWindow(App):
             button.bind(on_press=next_conversation_node)
 
         # Initial label setup on startup
-        label_op.text = functions.getRandomintroNode(intros).Text
+        add_new_text(functions.getRandomintroNode(intros))
         label_op.bind(height=label_text_size)
 
         # Add the widgets to the BoxLayout
