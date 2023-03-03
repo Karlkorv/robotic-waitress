@@ -7,6 +7,7 @@ from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 from kivy.graphics import BorderImage
 from kivy.clock import Clock
+from kivy.core.text import LabelBase
 import inputReader
 import functions
 import time
@@ -19,8 +20,8 @@ class MyButton(Button):
     def __init__(self, ButtonAnswID, **kwargs):
         super(MyButton, self).__init__(**kwargs)
         self.ButtonAnswID = ButtonAnswID
-        self.background_down
         self.markup = True
+        self.font_name = "Avenir_LT_pro_heavy"
         self.font_size = 40
 
         """  self.canvas.before: BorderImage(
@@ -68,14 +69,18 @@ class ConversationWindow(App):
             counter = 0
             for text in node.AnswText:
                 if counter == 0:
-                    frame = "frame_green.png"
+                    frame = "imgs/frame_green.png"
+                    frame_pushed = "imgs/frame_pushed_green.png"
                 elif counter == 1:
-                    frame = "frame_red.png"
+                    frame = "imgs/frame_red.png"
+                    frame_pushed = "imgs/frame_pushed_red.png"
                 else :
-                    frame = "frame_orange.png"
+                    frame = "imgs/frame_orange.png"
+                    frame_pushed = "imgs/frame_pushed_orange.png"
                 b = MyButton(
                     text = text,
                     background_normal = frame,
+                    background_down = frame_pushed,
                     ButtonAnswID = node.AnswID[counter],
                     bold = True
                 )
@@ -92,6 +97,7 @@ class ConversationWindow(App):
             ConversationWindow().stop()
 
         def next_conversation_node(instance):
+            time.sleep(0.5)
             """Updates the screen when button 'instance' is clicked"""
             if int(instance.ButtonAnswID) == 9999:  # Exit code
                 currentNode = functions.getRandomFarewell(farewells)
@@ -101,7 +107,6 @@ class ConversationWindow(App):
             else:
                 currentNode = functions.get_node(
                     nodes, int(instance.ButtonAnswID))
-                #Show button that was pressed
                 reset_buttons()
                 add_buttons(currentNode)
             add_new_text(currentNode)
@@ -118,7 +123,7 @@ class ConversationWindow(App):
         # The screen consist of a BoxLayout containing one label (the text),
         # and one GridLayout (the buttons)
         widget_root = BoxLayout(orientation="vertical")
-        label_op = MyLabel(size_hint_y=15, font_size=51)
+        label_op = MyLabel(size_hint_y=15, font_size=51, font_name = "Avenir_LT_pro_heavy")
 
 
         # Initial button setup on startup
@@ -127,13 +132,17 @@ class ConversationWindow(App):
         for key in options:
             opt = options.get(key)
             if counter == 0:
-                frame = "frame_green.png"
+                frame = "imgs/frame_green.png"
+                frame_pushed = "imgs/frame_pushed_green.png"
             elif counter == 1:
-                frame = "frame_red.png"
+                frame = "imgs/frame_red.png"
+                frame_pushed = "imgs/frame_pushed_red.png"
             else :
-                frame = "frame_orange.png"
+                frame = "imgs/frame_orange.png"
+                frame_pushed = "imgs/frame_pushed_orange.png"
             b = MyButton(
                 text = opt.Text,
+                background_down = frame_pushed,
                 background_normal = frame,
                 ButtonAnswID=opt.ConvID,
                 pos_hint = {'center_x': 0.5},
@@ -160,6 +169,8 @@ intros = inputReader.readInputIntros('input.txt')
 options = inputReader.readInputOptions('input.txt')
 nodes = inputReader.readInputNodes('input.txt')
 farewells = inputReader.readInputFarewells('input.txt')
+LabelBase.register(name='Avenir_LT_pro_heavy',
+                   fn_regular='fonts/AvenirLTProHeavy.otf')
 
 ConversationWindow().run()
 
