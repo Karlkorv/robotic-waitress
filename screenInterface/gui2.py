@@ -8,6 +8,9 @@ from kivy.uix.textinput import TextInput
 from kivy.graphics import BorderImage
 from kivy.clock import Clock
 from kivy.core.text import LabelBase
+from TTS.api import TTS
+from pygame import mixer
+import os
 import inputReader
 import functions
 import time
@@ -89,8 +92,11 @@ class ConversationWindow(App):
 
         def add_new_text(node):
             """Adds text to the top of the screen"""
-            label_op.change_text(node.Text) 
-            
+            label_op.change_text(node.Text)
+            if int(node.ID) >= 1000:
+                path = "speech/" + str(node.ID) + ".wav"
+                sound = mixer.Sound(path)
+                sound.play()
 
 
         def quit_conversation(temp):
@@ -171,6 +177,19 @@ nodes = inputReader.readInputNodes('input.txt')
 farewells = inputReader.readInputFarewells('input.txt')
 LabelBase.register(name='Avenir_LT_pro_heavy',
                    fn_regular='fonts/AvenirLTProHeavy.otf')
+
+""" model = TTS.list_models()[15] # 15 is overflow model
+tts = TTS(model_name=model, progress_bar=False, gpu=False) """
+
+""" for key in nodes.keys():
+    node = nodes.get(key)
+    path = "speech/" + str(node.ID) + ".wav"
+    tts.tts_to_file(text=node.NoSplitText, file_path=path) """
+
+#tts.tts_to_file(text="This is a test", file_path="speech/test.wav")
+
+
+mixer.init()
 
 ConversationWindow().run()
 
