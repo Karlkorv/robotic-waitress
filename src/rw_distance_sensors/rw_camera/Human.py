@@ -45,8 +45,8 @@ class Human():
             category_name = category.category_name
             probability = round(category.score, 2)
             if (category_name == "person"):
-                return 1
+                return True
         
-        return 0 
+        return False
         
    
