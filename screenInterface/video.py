@@ -22,7 +22,7 @@ class VideoWindow(App):
         global nextAnimation, currAnimation
         if nextAnimation is not None and nextAnimation != currAnimation:
             self.video.source = nextAnimation
-            """             self.video.state = 'stop'
+            """ self.video.state = 'stop'
             self.video.load()
             self.video.state = 'play' """
             currAnimation = nextAnimation
@@ -35,6 +35,7 @@ class VideoWindow(App):
     def to_supr(place):
         global nextAnimation
         nextAnimation = 'animations/suprised.mp4'
+    Clock.schedule_once(to_supr, 3)
 
 
 
