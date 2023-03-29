@@ -5,7 +5,7 @@ from rclpy.node import QoSProfile
 from geometry_msgs.msg import Twist
 from irobot_create_msgs.msg import HazardDetectionVector, HazardDetection
 
-class Roam(node):
+class Roam(Node):
 
     def __init__(self):
         super().__init__('roam')
@@ -13,9 +13,32 @@ class Roam(node):
                                             depth=1)
         self.get_logger().info("Roam node started")
         
+        self.vel_pub = self.create_publisher(Twist, 'cmd_vel', 10)
+        
         self.hazard_sub = self.create_subscription(
             HazardDetectionVector,
             'hazard_detection',
             self.hazard_callback,
             qos_profile=qos_policy
             )
+    
+    def hazard_callback(self, msg):
+        self.get_logger().info("Hazard detected")
+        twist = Twist() 
+        if (len(msg.detections) != 0 and msg.detections[0] == 1):
+            self.get_logger().info(msg.detections[0].frame_id)
+            twist.linear.x = 0.0
+            twist.angular.z = 1.7
+        else:
+            twist.linear.x = 0.1
+            twist.angular.z = 0.0
+        self.vel_pub.publish(twist)
+
+def main():
+    rclpy.init()
+    node = Roam()
+    rclpy.spin(node)
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
