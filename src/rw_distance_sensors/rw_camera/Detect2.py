@@ -41,19 +41,21 @@ def run(model: str, camera_id: int, width: int, height: int, num_threads: int, e
             rgb_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             input_tensor = vision.TensorImage.create_from_array(rgb_image)
             detection_result = detector.detect(input_tensor)
-            getScore(detection_result)
+            foundHuman(detection_result)
             
     
     cap.release()
     cv2.destroyAllWindows()
     
-def getScore(result: processor.DetectionResult) -> None:
+def foundHuman(result: processor.DetectionResult) -> bool:
     for result_current in result.detections:
         category  = result_current.categories[0]
         category_name = category.category_name
         probability = round(category.score, 2)
         if (category_name == "person"):
-            print("I found a person!, I am sure", probability)
+            return 1
+    return 0 
+            
 
 def main():
   parser = argparse.ArgumentParser(
