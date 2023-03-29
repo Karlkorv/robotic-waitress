@@ -1,36 +1,46 @@
+import kivy
 from kivy.app import App
+from kivy.clock import Clock
 from kivy.uix.video import Video
 
-
-""" def on_position_change(instance, value):
-    print('The position in the video is', value)
-
-def on_duration_change(instance, value):
-    print('The duration of the video is', value)
-
-video = Video(source='robot_eye_loop.avi')
-video.bind(
-    position=on_position_change,
-    duration=on_duration_change
-) """
-
+# Global variables
+nextAnimation = None
+currAnimation = 'animations/roaming_eye_loop.mp4'
 
 class VideoWindow(App):
-    def Build(self):
-        video = Video(source = 'test.MOV')
-        video.loaded = True
-        video.allow_stretch = True
-        video.volume = 0
-        video.state = "play"
-        video.options = {'eos':'loop'}
+    def build(self):
+        self.video = Video(source=currAnimation, preview='eye_preview.png')
+        self.video.loaded = True
+        self.video.allow_stretch = True
+        self.video.volume = 0
+        self.video.state = 'play'
+        self.video.options = {'eos': 'loop'}
+        Clock.schedule_interval(self.update_video_source, 0.1)  # Schedule the update function to run every 0.1 seconds
+        return self.video
 
-        return video
+    def update_video_source(self, dt):
+        global nextAnimation, currAnimation
+        if nextAnimation is not None and nextAnimation != currAnimation:
+            self.video.source = nextAnimation
+            """             self.video.state = 'stop'
+            self.video.load()
+            self.video.state = 'play' """
+            currAnimation = nextAnimation
+            nextAnimation = None
+    
+    def to_std(place):
+        global nextAnimation
+        nextAnimation = 'animations/std_conv_loop.mp4'
+
+    def to_supr(place):
+        global nextAnimation
+        nextAnimation = 'animations/suprised.mp4'
 
 
 
 if __name__ == "__main__":
-    eyeVideo = VideoWindow()
-    eyeVideo.run()
+    VideoWindow().run()
+
 
 
 
