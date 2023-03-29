@@ -13,6 +13,44 @@ from pygame import mixer
 import inputReader
 import functions
 import time
+import threading
+from multiprocessing import Process
+
+from kivy.uix.video import Video
+
+# Global variables
+nextAnimation = None
+currAnimation = 'animations/roaming_eye_loop.mp4'
+
+class VideoWindow(App):
+    def build(self):
+        self.video = Video(source=currAnimation, preview='eye_preview.png')
+        self.video.loaded = True
+        self.video.allow_stretch = True
+        self.video.volume = 0
+        self.video.state = 'play'
+        self.video.options = {'eos': 'loop'}
+        Clock.schedule_interval(self.update_video_source, 0.1)  # Schedule the update function to run every 0.1 seconds
+        return self.video
+
+    def update_video_source(self, dt):
+        global nextAnimation, currAnimation
+        if nextAnimation is not None and nextAnimation != currAnimation:
+            self.video.source = nextAnimation
+            """             self.video.state = 'stop'
+            self.video.load()
+            self.video.state = 'play' """
+            currAnimation = nextAnimation
+            nextAnimation = None
+    
+    def to_std(place):
+        global nextAnimation
+        nextAnimation = 'animations/std_conv_loop.mp4'
+
+    def to_supr(place):
+        global nextAnimation
+        nextAnimation = 'animations/suprised.mp4'
+
 
 
 class MyButton(Button):
@@ -66,6 +104,8 @@ class ConversationWindow(App):
             grid_button.clear_widgets()
 
         def add_buttons(node):
+            global nextAnimation
+            nextAnimation = 'animations/surprised.mp4'
             """Adds all buttons from the current node"""
             reset_buttons()
             counter = 0
@@ -190,6 +230,18 @@ tts = TTS(model_name=model, progress_bar=False, gpu=False) """
 
 mixer.init()
 
-ConversationWindow().run()
+def startConv():
+    ConversationWindow().run()
+
+def startVid():
+    VideoWindow().run()
+
+if __name__ == '__main__':
+
+    p1 = Process(target=startConv)
+    p1.start()
+
+    p2 = Process(target=startVid)
+    p2.start()
 
 

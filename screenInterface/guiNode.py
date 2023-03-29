@@ -40,7 +40,6 @@ for key in nodes.keys():
     tts.tts_to_file(text=node.NoSplitText, file_path=path) 
 
 
-
 class MyButton(Button):
     """MyButton class - subclass of Kivy Button, with addition of AnswID,
     representing what node the button leads to"""
@@ -48,6 +47,31 @@ class MyButton(Button):
     def __init__(self, ButtonAnswID, **kwargs):
         super(MyButton, self).__init__(**kwargs)
         self.ButtonAnswID = ButtonAnswID
+        self.markup = True
+        self.font_name = "Avenir_LT_pro_heavy"
+        self.font_size = 40
+                    
+        
+class MyLabel(Label):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.text = ''
+        self.target_text = 'Hello, world!'
+        self.index = 0
+
+    def change_text(self, text):
+         self.text = ''
+         self.target_text = text
+         Clock.schedule_interval(self.update_text, 0.05)
+
+
+    def update_text(self, dt):
+        if self.index >= len(self.target_text):
+            Clock.unschedule(self.update_text)
+            self.index = 0
+            return
+        self.text += self.target_text[self.index]
+        self.index += 1
 
 
 class ConversationWindow(App):
@@ -64,35 +88,50 @@ class ConversationWindow(App):
             reset_buttons()
             counter = 0
             for text in node.AnswText:
+                if counter == 0:
+                    frame = "imgs/frame_green.png"
+                    frame_pushed = "imgs/frame_pushed_green.png"
+                elif counter == 1:
+                    frame = "imgs/frame_red.png"
+                    frame_pushed = "imgs/frame_pushed_red.png"
+                else :
+                    frame = "imgs/frame_orange.png"
+                    frame_pushed = "imgs/frame_pushed_orange.png"
                 b = MyButton(
-                    text=text,
-                    ButtonAnswID=node.AnswID[counter],
-                    size_hint=(0.7, 0.6),
-                    bold=True
+                    text = text,
+                    background_normal = frame,
+                    background_down = frame_pushed,
+                    ButtonAnswID = node.AnswID[counter],
+                    bold = True
                 )
                 grid_button.add_widget(b)
-
                 counter = counter + 1
 
         def add_new_text(node):
             """Adds text to the top of the screen"""
-            label_op.text = node.Text
+            label_op.change_text(node.Text)
+            if int(node.ID) >= 1000:
+                path = "speech/" + str(node.ID) + ".wav"
+                sound = mixer.Sound(path)
+                sound.play()
+
 
         def quit_conversation(temp):
             ConversationWindow().stop()
 
         def next_conversation_node(instance):
+            time.sleep(0.5)
             """Updates the screen when button 'instance' is clicked"""
             if int(instance.ButtonAnswID) == 9999:  # Exit code
                 currentNode = functions.getRandomFarewell(farewells)
                 grid_button.clear_widgets()
-                Clock.schedule_once(quit_conversation, 1)
+                Clock.schedule_once(quit_conversation, 2)
                 # TODO : Restart application as robot walks away
             else:
                 currentNode = functions.get_node(
                     nodes, int(instance.ButtonAnswID))
+                reset_buttons()
                 add_buttons(currentNode)
-
             add_new_text(currentNode)
             button_loop()
 
@@ -107,25 +146,39 @@ class ConversationWindow(App):
         # The screen consist of a BoxLayout containing one label (the text),
         # and one GridLayout (the buttons)
         widget_root = BoxLayout(orientation="vertical")
-        label_op = Label(size_hint_y=15, font_size=51)
+        label_op = MyLabel(size_hint_y=15, font_size=51, font_name = "Avenir_LT_pro_heavy")
+
 
         # Initial button setup on startup
-        grid_button = GridLayout(cols=2, size_hint_y=20)
+        grid_button = GridLayout(cols=1, size_hint_y=20, padding = 10, spacing = 10)
+        counter = 0
         for key in options:
             opt = options.get(key)
+            if counter == 0:
+                frame = "imgs/frame_green.png"
+                frame_pushed = "imgs/frame_pushed_green.png"
+            elif counter == 1:
+                frame = "imgs/frame_red.png"
+                frame_pushed = "imgs/frame_pushed_red.png"
+            else :
+                frame = "imgs/frame_orange.png"
+                frame_pushed = "imgs/frame_pushed_orange.png"
             b = MyButton(
-                text=opt.Text,
+                text = opt.Text,
+                background_down = frame_pushed,
+                background_normal = frame,
                 ButtonAnswID=opt.ConvID,
-                size_hint=(0.7, 0.6),
-                bold=True
+                pos_hint = {'center_x': 0.5},
+                bold = True,
             )
             grid_button.add_widget(b)
+            counter = counter + 1
 
         for button in grid_button.children:
             button.bind(on_press=next_conversation_node)
 
         # Initial label setup on startup
-        label_op.text = functions.getRandomintroNode(intros).Text
+        add_new_text(functions.getRandomintroNode(intros))
         label_op.bind(height=label_text_size)
 
         # Add the widgets to the BoxLayout
@@ -135,14 +188,14 @@ class ConversationWindow(App):
         return widget_root
 
 
-class MyNode(Node):
+
+class guiNode(Node):
 
     def __init__(self):
-        super().__init__("start_conv_subscriber")
-        self.get_logger().info("'start_conv_node' started")
-        self.sub_ = self.create_subscription(
-            String, "/chatter", self.start_callback, 10)
-
+        super().__init__("guiNode")
+        self.get_logger().info("'guiNode' started")
+        self.guiPublisher = self.create_publisher(isConversationEnded, "/TouchscreenFeedback", 10)
+    
     def start_callback(self, msg: String):
         self.get_logger().info(str(msg))
         ConversationWindow().run()
