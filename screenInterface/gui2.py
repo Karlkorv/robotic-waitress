@@ -10,7 +10,6 @@ from kivy.clock import Clock
 from kivy.core.text import LabelBase
 from TTS.api import TTS
 from pygame import mixer
-import os
 import inputReader
 import functions
 import time
