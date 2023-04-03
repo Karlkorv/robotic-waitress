@@ -8,23 +8,28 @@ from kivy.uix.textinput import TextInput
 from kivy.graphics import BorderImage
 from kivy.clock import Clock
 from kivy.core.text import LabelBase
+from kivy.properties import BooleanProperty
 from TTS.api import TTS
 from pygame import mixer
 import inputReader
 import functions
 import time
 import threading
-from multiprocessing import Process
+from multiprocessing import Process, Pipe
 
 from kivy.uix.video import Video
 
 # Global variables
-nextAnimation = None
 currAnimation = 'animations/roaming_eye_loop.mp4'
 
 class VideoWindow(App):
+
+    def __init__(self, pipe):
+        self.pipe = pipe
+        super().__init__()
+
     def build(self):
-        self.video = Video(source=currAnimation, preview='eye_preview.png')
+        self.video = Video(source=currAnimation, preview = 'animations/robot_eye.png')
         self.video.loaded = True
         self.video.allow_stretch = True
         self.video.volume = 0
@@ -34,22 +39,16 @@ class VideoWindow(App):
         return self.video
 
     def update_video_source(self, dt):
-        global nextAnimation, currAnimation
-        if nextAnimation is not None and nextAnimation != currAnimation:
-            self.video.source = nextAnimation
-            """             self.video.state = 'stop'
-            self.video.load()
-            self.video.state = 'play' """
-            currAnimation = nextAnimation
-            nextAnimation = None
-    
-    def to_std(place):
-        global nextAnimation
-        nextAnimation = 'animations/std_conv_loop.mp4'
-
-    def to_supr(place):
-        global nextAnimation
-        nextAnimation = 'animations/suprised.mp4'
+        global currAnimation
+        if self.pipe.poll():
+            nextAnimation = self.pipe.recv()
+            if nextAnimation is not None and nextAnimation != currAnimation:
+                self.video.source = nextAnimation
+                """             self.video.state = 'stop'
+                self.video.load()
+                self.video.state = 'play' """
+                currAnimation = nextAnimation
+                nextAnimation = None
 
 
 
@@ -97,16 +96,22 @@ class MyLabel(Label):
 class ConversationWindow(App):
     """ConversationWindow class - the GUI window application"""
 
+    def __init__(self, pipe, vid_pipe):
+        self.pipe = pipe
+        self.vid_pipe = vid_pipe
+        self.hasStartedUpdate = False
+        self.activeConv = False
+        super().__init__()
+    
     def build(self):
-
+        
         def reset_buttons():
-            """Removes all buttons"""
+
             grid_button.clear_widgets()
 
         def add_buttons(node):
             global nextAnimation
-            nextAnimation = 'animations/surprised.mp4'
-            """Adds all buttons from the current node"""
+            #vid_pipe.send('animations/surprised.mp4')
             reset_buttons()
             counter = 0
             for text in node.AnswText:
@@ -130,7 +135,6 @@ class ConversationWindow(App):
                 counter = counter + 1
 
         def add_new_text(node):
-            """Adds text to the top of the screen"""
             label_op.change_text(node.Text)
             if int(node.ID) >= 1000:
                 path = "speech/" + str(node.ID) + ".wav"
@@ -143,7 +147,6 @@ class ConversationWindow(App):
 
         def next_conversation_node(instance):
             time.sleep(0.5)
-            """Updates the screen when button 'instance' is clicked"""
             if int(instance.ButtonAnswID) == 9999:  # Exit code
                 currentNode = functions.getRandomFarewell(farewells)
                 grid_button.clear_widgets()
@@ -158,56 +161,71 @@ class ConversationWindow(App):
             button_loop()
 
         def button_loop():
-            """Continously binds buttons to call next_conversation_node on click"""
             for button in grid_button.children:
                 button.bind(on_press=next_conversation_node)
 
         def label_text_size(label, new_height):
             label.fontsize = 0.5*label.height
 
-        # The screen consist of a BoxLayout containing one label (the text),
-        # and one GridLayout (the buttons)
-        widget_root = BoxLayout(orientation="vertical")
-        label_op = MyLabel(size_hint_y=15, font_size=51, font_name = "Avenir_LT_pro_heavy")
+        if not self.hasStartedUpdate:
+            Clock.schedule_interval(self.checkPipe, 0.1)  # Schedule the update function to run every 0.1 seconds    
+            self.hasStartedUpdate = True    
+        
+        if self.activeConv:
+            # The screen consist of a BoxLayout containing one label (the text),
+            # and one GridLayout (the buttons)
+            widget_root = BoxLayout(orientation="vertical")
+            label_op = MyLabel(size_hint_y=15, font_size=51, font_name = "Avenir_LT_pro_heavy")
 
+            # Initial button setup on startup
+            grid_button = GridLayout(cols=1, size_hint_y=20, padding = 10, spacing = 10)
+            counter = 0
+            for key in options:
+                opt = options.get(key)
+                if counter == 0:
+                    frame = "imgs/frame_green.png"
+                    frame_pushed = "imgs/frame_pushed_green.png"
+                elif counter == 1:
+                    frame = "imgs/frame_red.png"
+                    frame_pushed = "imgs/frame_pushed_red.png"
+                else :
+                    frame = "imgs/frame_orange.png"
+                    frame_pushed = "imgs/frame_pushed_orange.png"
+                b = MyButton(
+                    text = opt.Text,
+                    background_down = frame_pushed,
+                    background_normal = frame,
+                    ButtonAnswID=opt.ConvID,
+                    pos_hint = {'center_x': 0.5},
+                    bold = True,
+                )
+                grid_button.add_widget(b)
+                counter = counter + 1
 
-        # Initial button setup on startup
-        grid_button = GridLayout(cols=1, size_hint_y=20, padding = 10, spacing = 10)
-        counter = 0
-        for key in options:
-            opt = options.get(key)
-            if counter == 0:
-                frame = "imgs/frame_green.png"
-                frame_pushed = "imgs/frame_pushed_green.png"
-            elif counter == 1:
-                frame = "imgs/frame_red.png"
-                frame_pushed = "imgs/frame_pushed_red.png"
-            else :
-                frame = "imgs/frame_orange.png"
-                frame_pushed = "imgs/frame_pushed_orange.png"
-            b = MyButton(
-                text = opt.Text,
-                background_down = frame_pushed,
-                background_normal = frame,
-                ButtonAnswID=opt.ConvID,
-                pos_hint = {'center_x': 0.5},
-                bold = True,
-            )
-            grid_button.add_widget(b)
-            counter = counter + 1
+            for button in grid_button.children:
+                button.bind(on_press=next_conversation_node)
 
-        for button in grid_button.children:
-            button.bind(on_press=next_conversation_node)
+            # Initial label setup on startup
+            add_new_text(functions.getRandomintroNode(intros))
+            label_op.bind(height=label_text_size)
 
-        # Initial label setup on startup
-        add_new_text(functions.getRandomintroNode(intros))
-        label_op.bind(height=label_text_size)
+    
+            # Add the widgets to the BoxLayout
+            widget_root.add_widget(label_op)
+            widget_root.add_widget(grid_button)
 
-        # Add the widgets to the BoxLayout
-        widget_root.add_widget(label_op)
-        widget_root.add_widget(grid_button)
+            return widget_root
+        
+        else:
+            widget_root = BoxLayout(orientation="vertical")
+            return widget_root
+    
+    def checkPipe(self, dt):
+        if self.pipe.poll():
+            self.activeConv = self.pipe.recv()
+            self.root.clear_widgets()
+            self.root = self.build()
 
-        return widget_root
 
 
 intros = inputReader.readInputIntros('input.txt')
@@ -215,7 +233,8 @@ options = inputReader.readInputOptions('input.txt')
 nodes = inputReader.readInputNodes('input.txt')
 farewells = inputReader.readInputFarewells('input.txt')
 LabelBase.register(name='Avenir_LT_pro_heavy',
-                   fn_regular='fonts/AvenirLTProHeavy.otf')
+                fn_regular='fonts/AvenirLTProHeavy.otf')
+
 
 """ model = TTS.list_models()[15] # 15 is overflow model
 tts = TTS(model_name=model, progress_bar=False, gpu=False) """
@@ -230,18 +249,27 @@ tts = TTS(model_name=model, progress_bar=False, gpu=False) """
 
 mixer.init()
 
-def startConv():
-    ConversationWindow().run()
+def startConv(pipe, vid_pipe):
+    ConversationWindow(pipe, vid_pipe).run()
 
-def startVid():
-    VideoWindow().run()
+def startVid(pipe):
+    VideoWindow(pipe).run()
 
 if __name__ == '__main__':
 
-    p1 = Process(target=startConv)
+    conv_pipe, conv_pipe_child = Pipe()
+    vid_pipe, vid_pipe_child = Pipe()
+
+    p1 = Process(target=startConv, args=(conv_pipe_child, vid_pipe, ))
     p1.start()
 
-    p2 = Process(target=startVid)
-    p2.start()
+
+    """ p2 = Process(target=startVid, args=(vid_pipe_child,))
+    p2.start() """
+
+    time.sleep(5)
+    print("STARTED!")
+    conv_pipe.send(True)
+    #conv_pipe.send("Start")
 
 
