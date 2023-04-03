@@ -4,10 +4,11 @@ from rclpy.node import Node
 from rclpy.node import QoSProfile
 from geometry_msgs.msg import Twist
 from irobot_create_msgs.msg import HazardDetectionVector, HazardDetection
+from rw_interfaces.msg import DetectionsVector, RobotStatus
 
 
 class Roam(Node):
-
+    robotStatus = False
     def __init__(self):
         super().__init__('roam')
         qos_policy = rclpy.qos.QoSProfile(reliability=rclpy.qos.ReliabilityPolicy.BEST_EFFORT,
@@ -17,24 +18,29 @@ class Roam(Node):
         self.vel_pub = self.create_publisher(Twist, 'cmd_vel', 10)
 
         self.hazard_sub = self.create_subscription(
-            HazardDetectionVector,
-            'hazard_detection',
-            self.hazard_callback,
+            DetectionsVector,
+            'obstacle_detection',
+            self.detection_callback,
             qos_profile=qos_policy
         )
+        self.behaviour_sub = self.create_subscription(RobotStatus, 'behaviour', self.behaviour_callback, 10)
+        
+    def behaviour_callback(self, msg):
+        self.get_logger().info(msg)
+        self.robotStatus = msg.roam
 
-    def hazard_callback(self, msg):
+    def detection_callback(self, msg):
         self.get_logger().info("Hazard detected")
         twist = Twist()
-        if (self.isCollisionHazard(msg)):
+        if (self.isCollisionHazard(msg) and self.robotStatus == False):
             self.get_logger().info(msg.detections[0].frame_id)
             self.getHazardAvoidance(msg, twist)
-        else:
+        elif(RobotStatus == False):
             self.noHazardMovement(twist)
         self.vel_pub.publish(twist)
-
+    
     def isCollisionHazard(msg):
-        return len(msg.detections) != 0 and msg.detections[0] == 1
+        return len(msg.HazardDetection.detections) != 0 and msg.HazardDetection.detections[0] == 1
 
     def getHazardAvoidance(msg, twist):
         twist.linear.x = 0.0

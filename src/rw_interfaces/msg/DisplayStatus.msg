@@ -1,0 +1,2 @@
+bool isConversionEnded
+bool hasBeenTouched
