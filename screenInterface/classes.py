@@ -4,12 +4,13 @@ class convNode:
     Defined by it's ID. Stores the text the robot should "say",
     the text each button should read, and to what node each button is linked to"""
 
-    def __init__(self, ID, Text, NoSplitText, AnswText, AnswID):
+    def __init__(self, ID, Text, NoSplitText, AnswText, AnswID, Animation):
         self.ID = ID
         self.Text = Text
         self.NoSplitText = NoSplitText
         self.AnswText = AnswText
         self.AnswID = AnswID
+        self.Animation = "animations/" + Animation + ".mp4"
 
 
 class option:
