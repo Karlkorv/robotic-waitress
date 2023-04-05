@@ -19,7 +19,7 @@ def readInputNodes(filename):
             # Turn AnswerIDs into a list if IDs
             answIDs = currentLine[3].split(", ")
             nodes.update({int(currentLine[0]): classes.convNode(currentLine[0],  split_long_sentence(currentLine[1]), currentLine[1],
-                                                                answText, answIDs)})
+                                                                answText, answIDs, currentLine[4])})
     return nodes
 
 

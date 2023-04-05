@@ -44,7 +44,7 @@ class VideoWindow(App):
             nextAnimation = self.pipe.recv()
             if nextAnimation is not None and nextAnimation != currAnimation:
                 self.video.source = nextAnimation
-                """             self.video.state = 'stop'
+                """ self.video.state = 'stop'
                 self.video.load()
                 self.video.state = 'play' """
                 currAnimation = nextAnimation
@@ -99,20 +99,23 @@ class ConversationWindow(App):
     def __init__(self, pipe, vid_pipe):
         self.pipe = pipe
         self.vid_pipe = vid_pipe
-        self.hasStartedUpdate = False
         self.activeConv = False
         super().__init__()
     
     def build(self):
-        
-        def reset_buttons():
+        Clock.schedule_interval(self.checkPipe, 0.1)  # Schedule the update function to run every 0.1 seconds    
+        widget_root = BoxLayout(orientation="vertical")
+        return widget_root
 
-            grid_button.clear_widgets()
+    # Initial button setup on startup
+    def initialize(self):
+        # The screen consist of a BoxLayout containing one label (the text),
+        # and one GridLayout (the buttons)
+        label_op = MyLabel(size_hint_y=15, font_size=51, font_name = "Avenir_LT_pro_heavy")
+        grid_button = GridLayout(cols=1, size_hint_y=20, padding = 10, spacing = 10)
 
         def add_buttons(node):
-            global nextAnimation
-            #vid_pipe.send('animations/surprised.mp4')
-            reset_buttons()
+            #reset_buttons()
             counter = 0
             for text in node.AnswText:
                 if counter == 0:
@@ -134,16 +137,8 @@ class ConversationWindow(App):
                 grid_button.add_widget(b)
                 counter = counter + 1
 
-        def add_new_text(node):
-            label_op.change_text(node.Text)
-            if int(node.ID) >= 1000:
-                path = "speech/" + str(node.ID) + ".wav"
-                sound = mixer.Sound(path)
-                sound.play()
-
-
-        def quit_conversation(temp):
-            ConversationWindow().stop()
+        def reset_buttons():
+            grid_button.clear_widgets()
 
         def next_conversation_node(instance):
             time.sleep(0.5)
@@ -151,80 +146,80 @@ class ConversationWindow(App):
                 currentNode = functions.getRandomFarewell(farewells)
                 grid_button.clear_widgets()
                 Clock.schedule_once(quit_conversation, 2)
-                # TODO : Restart application as robot walks away
             else:
                 currentNode = functions.get_node(
                     nodes, int(instance.ButtonAnswID))
                 reset_buttons()
                 add_buttons(currentNode)
+                update_animation(currentNode)
             add_new_text(currentNode)
             button_loop()
+
+        def update_animation(node):
+            self.vid_pipe.send(node.Animation)
 
         def button_loop():
             for button in grid_button.children:
                 button.bind(on_press=next_conversation_node)
 
+        def add_new_text(node):
+            label_op.change_text(node.Text)
+            if int(node.ID) >= 1000:
+                path = "speech/" + str(node.ID) + ".wav"
+                sound = mixer.Sound(path)
+                sound.play()
+
         def label_text_size(label, new_height):
             label.fontsize = 0.5*label.height
 
-        if not self.hasStartedUpdate:
-            Clock.schedule_interval(self.checkPipe, 0.1)  # Schedule the update function to run every 0.1 seconds    
-            self.hasStartedUpdate = True    
-        
-        if self.activeConv:
-            # The screen consist of a BoxLayout containing one label (the text),
-            # and one GridLayout (the buttons)
-            widget_root = BoxLayout(orientation="vertical")
-            label_op = MyLabel(size_hint_y=15, font_size=51, font_name = "Avenir_LT_pro_heavy")
+        def quit_conversation(temp):
+            self.vid_pipe.send("animations/roaming_eye_loop.mp4")
+            time.sleep(2)
+            self.activeConv = False
 
-            # Initial button setup on startup
-            grid_button = GridLayout(cols=1, size_hint_y=20, padding = 10, spacing = 10)
-            counter = 0
-            for key in options:
-                opt = options.get(key)
-                if counter == 0:
-                    frame = "imgs/frame_green.png"
-                    frame_pushed = "imgs/frame_pushed_green.png"
-                elif counter == 1:
-                    frame = "imgs/frame_red.png"
-                    frame_pushed = "imgs/frame_pushed_red.png"
-                else :
-                    frame = "imgs/frame_orange.png"
-                    frame_pushed = "imgs/frame_pushed_orange.png"
-                b = MyButton(
-                    text = opt.Text,
-                    background_down = frame_pushed,
-                    background_normal = frame,
-                    ButtonAnswID=opt.ConvID,
-                    pos_hint = {'center_x': 0.5},
-                    bold = True,
-                )
-                grid_button.add_widget(b)
-                counter = counter + 1
+        counter = 0
+        for key in options:
+            opt = options.get(key)
+            if counter == 0:
+                frame = "imgs/frame_green.png"
+                frame_pushed = "imgs/frame_pushed_green.png"
+            elif counter == 1:
+                frame = "imgs/frame_red.png"
+                frame_pushed = "imgs/frame_pushed_red.png"
+            else :
+                frame = "imgs/frame_orange.png"
+                frame_pushed = "imgs/frame_pushed_orange.png"
+            b = MyButton(
+                text = opt.Text,
+                background_down = frame_pushed,
+                background_normal = frame,
+                ButtonAnswID=opt.ConvID,
+                pos_hint = {'center_x': 0.5},
+                bold = True,
+            )
+            
+            grid_button.add_widget(b)
+            counter = counter + 1
 
-            for button in grid_button.children:
-                button.bind(on_press=next_conversation_node)
+        for button in grid_button.children:
+            button.bind(on_press=next_conversation_node)
 
-            # Initial label setup on startup
-            add_new_text(functions.getRandomintroNode(intros))
-            label_op.bind(height=label_text_size)
+        # Initial label setup on startup
+        add_new_text(functions.getRandomintroNode(intros))
+        label_op.bind(height=label_text_size)
 
+                # Add the widgets to the BoxLayout
+        self.root.add_widget(label_op)
+        self.root.add_widget(grid_button)
     
-            # Add the widgets to the BoxLayout
-            widget_root.add_widget(label_op)
-            widget_root.add_widget(grid_button)
-
-            return widget_root
         
-        else:
-            widget_root = BoxLayout(orientation="vertical")
-            return widget_root
-    
     def checkPipe(self, dt):
         if self.pipe.poll():
             self.activeConv = self.pipe.recv()
+            if self.activeConv:
+                self.initialize()
+        if self.activeConv == False:
             self.root.clear_widgets()
-            self.root = self.build()
 
 
 
@@ -264,12 +259,17 @@ if __name__ == '__main__':
     p1.start()
 
 
-    """ p2 = Process(target=startVid, args=(vid_pipe_child,))
-    p2.start() """
+    p2 = Process(target=startVid, args=(vid_pipe_child,))
+    p2.start()
 
     time.sleep(5)
     print("STARTED!")
     conv_pipe.send(True)
+
+    """ time.sleep(10)
+    print("STARTED! AGAIN!")
+    conv_pipe.send(True) """
+
     #conv_pipe.send("Start")
 
 

@@ -18,23 +18,23 @@ farewell - 3 - In a while, Crocodile
 
 %%%%%%% Conversation %%%%%%%
 
-1001 - How are you? - Good, Bad, None of your business - 1002, 1003, 1004
+1001 - How are you? - Good, Bad, None of your business - 1002, 1003, 1004 - std
 
-1002 - Thats good! - Bye!, Cya, I'm leaving - 9999, 9999, 9999
+1002 - Thats good! - Bye!, Cya, I'm leaving - 9999, 9999, 9999 - std
 
-1003 - How sad! - Bye! , Cya, I'm leaving - 9999, 9999, 9999
+1003 - How sad! - Bye! , Cya, I'm leaving - 9999, 9999, 9999 - std
 
-1004 - Well, okay then! I don't understand why you have to use that tone with me, but you do you. - Bye! , Cya, I'm leaving - 9999, 9999, 9999
+1004 - Well, okay then! I don't understand why you have to use that tone with me, but you do you. - Bye! , Cya, I'm leaving - 9999, 9999, 9999 - suprised
 
 
 %%%%%%% Toilet %%%%%%%
 
-2001 - The toilet is either to the lxeft or to the right. Or maybe its behind you! If not, try infront of you. - Alright - 9999
+2001 - The toilet is either to the lxeft or to the right. Or maybe its behind you! If not, try infront of you. - Alright - 9999 - std
 
 
 %%%%%%% Go Away %%%%%%%
 
-3001 - Wow, are you a robotist? Rude. - Im so sorry! - 9999
+3001 - Wow, are you a robotist? Rude. - Im so sorry! - 9999 - suprised
 
 
 
