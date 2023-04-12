@@ -65,7 +65,7 @@ class Sonar_Publisher(Node):
                 break
         
         # det behövs ngn kontroll så att det måste vara en L, en C och en R
-        self.get_logger().info('[left "%f", center: "%f", right: "%f"]' % sonarvalue[0], sonarvalue[1], sonarvalue[2])
+        self.get_logger().info('[left "%f", center: "%f", right: "%f"]' % sonarvalue.distances[0], sonarvalue.distances[1], sonarvalue.distances[2])
         self.publisher_.publish(sonarvalue) # publicera datan från sonar till topic 'Sonar value' 
 
 
