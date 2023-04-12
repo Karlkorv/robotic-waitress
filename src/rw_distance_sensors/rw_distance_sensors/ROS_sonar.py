@@ -32,7 +32,19 @@ class Sonar_Publisher(Node):
         sonarvalue = Ultrasonic()
         while(True):
             result = sonar.getDistance()
-            match result[0]:
+            if result[0] == 'L' and not collectL:
+                sonarvalue[0] = float(result[1:])
+                collectL = True
+            elif result[1] == 'C' and not collectC:
+                sonarvalue[1] = float(result[1:])
+                collectC = True
+            elif result[2] == 'R' and not collectR:
+                sonarvalue[2] = float(result[1:])
+                collectR = True
+            else:
+                continue
+
+            """ match result[0]:
                 case 'L':
                     if not collectL:
                         sonarvalue[0] = float(result[1:])
@@ -46,8 +58,8 @@ class Sonar_Publisher(Node):
                         sonarvalue[2] = float(result[1:])
                         collectR = True
                 case _: 
-                    continue
-            if(collectL & collectC & collectR):
+                    continue """
+            if(collectL and collectC and collectR):
                 break
         
         # det behövs ngn kontroll så att det måste vara en L, en C och en R
