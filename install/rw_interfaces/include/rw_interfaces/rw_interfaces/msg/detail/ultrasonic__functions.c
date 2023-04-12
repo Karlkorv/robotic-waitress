@@ -21,7 +21,7 @@ rw_interfaces__msg__Ultrasonic__init(rw_interfaces__msg__Ultrasonic * msg)
   if (!msg) {
     return false;
   }
-  // distance
+  // distances
   // header
   if (!std_msgs__msg__Header__init(&msg->header)) {
     rw_interfaces__msg__Ultrasonic__fini(msg);
@@ -36,7 +36,7 @@ rw_interfaces__msg__Ultrasonic__fini(rw_interfaces__msg__Ultrasonic * msg)
   if (!msg) {
     return;
   }
-  // distance
+  // distances
   // header
   std_msgs__msg__Header__fini(&msg->header);
 }
@@ -47,9 +47,11 @@ rw_interfaces__msg__Ultrasonic__are_equal(const rw_interfaces__msg__Ultrasonic *
   if (!lhs || !rhs) {
     return false;
   }
-  // distance
-  if (lhs->distance != rhs->distance) {
-    return false;
+  // distances
+  for (size_t i = 0; i < 3; ++i) {
+    if (lhs->distances[i] != rhs->distances[i]) {
+      return false;
+    }
   }
   // header
   if (!std_msgs__msg__Header__are_equal(
@@ -68,8 +70,10 @@ rw_interfaces__msg__Ultrasonic__copy(
   if (!input || !output) {
     return false;
   }
-  // distance
-  output->distance = input->distance;
+  // distances
+  for (size_t i = 0; i < 3; ++i) {
+    output->distances[i] = input->distances[i];
+  }
   // header
   if (!std_msgs__msg__Header__copy(
       &(input->header), &(output->header)))

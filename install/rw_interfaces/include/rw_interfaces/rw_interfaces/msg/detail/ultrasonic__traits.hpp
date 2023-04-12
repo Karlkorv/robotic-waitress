@@ -29,10 +29,21 @@ inline void to_flow_style_yaml(
   std::ostream & out)
 {
   out << "{";
-  // member: distance
+  // member: distances
   {
-    out << "distance: ";
-    rosidl_generator_traits::value_to_yaml(msg.distance, out);
+    if (msg.distances.size() == 0) {
+      out << "distances: []";
+    } else {
+      out << "distances: [";
+      size_t pending_items = msg.distances.size();
+      for (auto item : msg.distances) {
+        rosidl_generator_traits::value_to_yaml(item, out);
+        if (--pending_items > 0) {
+          out << ", ";
+        }
+      }
+      out << "]";
+    }
     out << ", ";
   }
 
@@ -48,14 +59,24 @@ inline void to_block_style_yaml(
   const Ultrasonic & msg,
   std::ostream & out, size_t indentation = 0)
 {
-  // member: distance
+  // member: distances
   {
     if (indentation > 0) {
       out << std::string(indentation, ' ');
     }
-    out << "distance: ";
-    rosidl_generator_traits::value_to_yaml(msg.distance, out);
-    out << "\n";
+    if (msg.distances.size() == 0) {
+      out << "distances: []\n";
+    } else {
+      out << "distances:\n";
+      for (auto item : msg.distances) {
+        if (indentation > 0) {
+          out << std::string(indentation, ' ');
+        }
+        out << "- ";
+        rosidl_generator_traits::value_to_yaml(item, out);
+        out << "\n";
+      }
+    }
   }
 
   // member: header

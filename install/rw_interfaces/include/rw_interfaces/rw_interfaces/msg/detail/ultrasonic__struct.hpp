@@ -43,33 +43,34 @@ struct Ultrasonic_
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
-      this->distance = 0.0f;
+      std::fill<typename std::array<float, 3>::iterator, float>(this->distances.begin(), this->distances.end(), 0.0f);
     }
   }
 
   explicit Ultrasonic_(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
-  : header(_alloc, _init)
+  : distances(_alloc),
+    header(_alloc, _init)
   {
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
-      this->distance = 0.0f;
+      std::fill<typename std::array<float, 3>::iterator, float>(this->distances.begin(), this->distances.end(), 0.0f);
     }
   }
 
   // field types and members
-  using _distance_type =
-    float;
-  _distance_type distance;
+  using _distances_type =
+    std::array<float, 3>;
+  _distances_type distances;
   using _header_type =
     std_msgs::msg::Header_<ContainerAllocator>;
   _header_type header;
 
   // setters for named parameter idiom
-  Type & set__distance(
-    const float & _arg)
+  Type & set__distances(
+    const std::array<float, 3> & _arg)
   {
-    this->distance = _arg;
+    this->distances = _arg;
     return *this;
   }
   Type & set__header(
@@ -121,7 +122,7 @@ struct Ultrasonic_
   // comparison operators
   bool operator==(const Ultrasonic_ & other) const
   {
-    if (this->distance != other.distance) {
+    if (this->distances != other.distances) {
       return false;
     }
     if (this->header != other.header) {

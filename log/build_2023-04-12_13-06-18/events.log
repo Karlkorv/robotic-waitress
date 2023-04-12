@@ -1,0 +1,930 @@
+[0.000000] (-) TimerEvent: {}
+[0.004233] (rw_interfaces) JobQueued: {'identifier': 'rw_interfaces', 'dependencies': OrderedDict()}
+[0.005114] (rw_distance_sensors) JobQueued: {'identifier': 'rw_distance_sensors', 'dependencies': OrderedDict([('rw_interfaces', '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces')])}
+[0.005825] (rw_interfaces) JobStarted: {'identifier': 'rw_interfaces'}
+[0.056356] (rw_interfaces) JobProgress: {'identifier': 'rw_interfaces', 'progress': 'cmake'}
+[0.096129] (-) TimerEvent: {}
+[0.099159] (rw_interfaces) JobProgress: {'identifier': 'rw_interfaces', 'progress': 'build'}
+[0.107819] (rw_interfaces) Command: {'cmd': ['/usr/bin/cmake', '--build', '/mnt/c/ROS2/robotic-waitress/build/rw_interfaces', '--', '-j4', '-l4'], 'cwd': '/mnt/c/ROS2/robotic-waitress/build/rw_interfaces', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'adder'), ('SSH_AGENT_PID', '5290'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('WT_PROFILE_ID', '{61c54bbd-c2c6-5271-96e7-009a87ff44bf}'), ('MOTD_SHOWN', 'update-motd'), ('HOME', '/home/adder'), ('OLDPWD', '/mnt/c/ROS2'), ('ROS_PYTHON_VERSION', '3'), ('WSL_DISTRO_NAME', 'Ubuntu-22.04'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'adder'), ('NAME', 'LAPTOP-LLJ89EON'), ('WSL_INTEROP', '/run/WSL/8_interop'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Python38/Scripts/:/mnt/c/Python38/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Java/jdk-16.0.2/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/MATLAB/R2022a/bin:/mnt/c/Program Files/Go/bin:/mnt/c/Program Files/PuTTY/:/mnt/c/ghcup/bin/:/mnt/c/Users/adder/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Python 3.11:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/ProgramData/chocolatey/lib/tinyxml2/lib:/mnt/c/ProgramData/chocolatey/lib/log4cxx/lib:/mnt/c/OpenSSL-Win64/bin:/mnt/c/opencv/x64/vc16/bin:/mnt/c/Program Files/CMake/bin:/mnt/c/ProgramData/chocolatey/lib/cunit/lib:/mnt/c/ProgramData/chocolatey/lib/bullet/lib:/mnt/c/Users/adder/AppData/Local/Programs/Python/Python311/:/mnt/c/Users/adder/AppData/Local/Programs/Python/Python311/Scripts/:/mnt/c/Users/adder/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/adder/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/adder/go/bin:/mnt/c/msys64/usr/bin:/mnt/c/Program Files/swipl/bin:/mnt/c/Program Files/Graphviz/bin:/snap/bin'), ('WT_SESSION', 'c3b714e1-5f4a-4bc9-bdeb-488948ec4ac6'), ('LANG', 'en_US.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/tmp/ssh-XXXXXXo9DUNz/agent.5289'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/mnt/c/ROS2/robotic-waitress/build/rw_interfaces'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('HOSTTYPE', 'x86_64'), ('WSLENV', 'WT_SESSION::WT_PROFILE_ID'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.196299] (-) TimerEvent: {}
+[0.297218] (-) TimerEvent: {}
+[0.398350] (-) TimerEvent: {}
+[0.499500] (-) TimerEvent: {}
+[0.563301] (rw_interfaces) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.3 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.599690] (-) TimerEvent: {}
+[0.700673] (-) TimerEvent: {}
+[0.801877] (-) TimerEvent: {}
+[0.900465] (rw_interfaces) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[0.902413] (-) TimerEvent: {}
+[0.930350] (rw_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.937141] (rw_interfaces) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.4 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[1.002610] (-) TimerEvent: {}
+[1.103935] (-) TimerEvent: {}
+[1.205035] (-) TimerEvent: {}
+[1.305938] (-) TimerEvent: {}
+[1.330681] (rw_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.371805] (rw_interfaces) StdoutLine: {'line': b'-- Found std_msgs: 4.2.3 (/opt/ros/humble/share/std_msgs/cmake)\n'}
+[1.406113] (-) TimerEvent: {}
+[1.467526] (rw_interfaces) StdoutLine: {'line': b'-- Found irobot_create_msgs: 2.1.0 (/opt/ros/humble/share/irobot_create_msgs/cmake)\n'}
+[1.506290] (-) TimerEvent: {}
+[1.607127] (-) TimerEvent: {}
+[1.708149] (-) TimerEvent: {}
+[1.809190] (-) TimerEvent: {}
+[1.910303] (-) TimerEvent: {}
+[2.011688] (-) TimerEvent: {}
+[2.112706] (-) TimerEvent: {}
+[2.213762] (-) TimerEvent: {}
+[2.314764] (-) TimerEvent: {}
+[2.416154] (-) TimerEvent: {}
+[2.517758] (-) TimerEvent: {}
+[2.618970] (-) TimerEvent: {}
+[2.720107] (-) TimerEvent: {}
+[2.821716] (-) TimerEvent: {}
+[2.923202] (-) TimerEvent: {}
+[3.024802] (-) TimerEvent: {}
+[3.125923] (-) TimerEvent: {}
+[3.227179] (-) TimerEvent: {}
+[3.328370] (-) TimerEvent: {}
+[3.429600] (-) TimerEvent: {}
+[3.530649] (-) TimerEvent: {}
+[3.631719] (-) TimerEvent: {}
+[3.732804] (-) TimerEvent: {}
+[3.833954] (-) TimerEvent: {}
+[3.934979] (-) TimerEvent: {}
+[3.978927] (rw_interfaces) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)\n'}
+[4.035177] (-) TimerEvent: {}
+[4.136133] (-) TimerEvent: {}
+[4.237495] (-) TimerEvent: {}
+[4.338563] (-) TimerEvent: {}
+[4.439768] (-) TimerEvent: {}
+[4.540822] (-) TimerEvent: {}
+[4.641906] (-) TimerEvent: {}
+[4.743077] (-) TimerEvent: {}
+[4.844616] (-) TimerEvent: {}
+[4.945649] (-) TimerEvent: {}
+[5.046739] (-) TimerEvent: {}
+[5.147595] (-) TimerEvent: {}
+[5.249118] (-) TimerEvent: {}
+[5.350351] (-) TimerEvent: {}
+[5.451585] (-) TimerEvent: {}
+[5.552669] (-) TimerEvent: {}
+[5.653712] (-) TimerEvent: {}
+[5.754950] (-) TimerEvent: {}
+[5.855954] (-) TimerEvent: {}
+[5.957474] (-) TimerEvent: {}
+[6.058439] (-) TimerEvent: {}
+[6.159468] (-) TimerEvent: {}
+[6.260602] (-) TimerEvent: {}
+[6.361543] (-) TimerEvent: {}
+[6.463131] (-) TimerEvent: {}
+[6.564489] (-) TimerEvent: {}
+[6.665934] (-) TimerEvent: {}
+[6.767083] (-) TimerEvent: {}
+[6.868944] (-) TimerEvent: {}
+[6.970449] (-) TimerEvent: {}
+[7.071702] (-) TimerEvent: {}
+[7.172820] (-) TimerEvent: {}
+[7.231038] (rw_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[7.272982] (-) TimerEvent: {}
+[7.373892] (-) TimerEvent: {}
+[7.475117] (-) TimerEvent: {}
+[7.576224] (-) TimerEvent: {}
+[7.677536] (-) TimerEvent: {}
+[7.778891] (-) TimerEvent: {}
+[7.879925] (-) TimerEvent: {}
+[7.981373] (-) TimerEvent: {}
+[8.082743] (-) TimerEvent: {}
+[8.184681] (-) TimerEvent: {}
+[8.285666] (-) TimerEvent: {}
+[8.386627] (-) TimerEvent: {}
+[8.488236] (-) TimerEvent: {}
+[8.589482] (-) TimerEvent: {}
+[8.691382] (-) TimerEvent: {}
+[8.792596] (-) TimerEvent: {}
+[8.893830] (-) TimerEvent: {}
+[8.995347] (-) TimerEvent: {}
+[9.096669] (-) TimerEvent: {}
+[9.197683] (-) TimerEvent: {}
+[9.298748] (-) TimerEvent: {}
+[9.399892] (-) TimerEvent: {}
+[9.500806] (-) TimerEvent: {}
+[9.602269] (-) TimerEvent: {}
+[9.703558] (-) TimerEvent: {}
+[9.804580] (-) TimerEvent: {}
+[9.905616] (-) TimerEvent: {}
+[10.007082] (-) TimerEvent: {}
+[10.108284] (-) TimerEvent: {}
+[10.209483] (-) TimerEvent: {}
+[10.310618] (-) TimerEvent: {}
+[10.411549] (-) TimerEvent: {}
+[10.512583] (-) TimerEvent: {}
+[10.613597] (-) TimerEvent: {}
+[10.714942] (-) TimerEvent: {}
+[10.815931] (-) TimerEvent: {}
+[10.916953] (-) TimerEvent: {}
+[11.018252] (-) TimerEvent: {}
+[11.120201] (-) TimerEvent: {}
+[11.221556] (-) TimerEvent: {}
+[11.322963] (-) TimerEvent: {}
+[11.423979] (-) TimerEvent: {}
+[11.507316] (rw_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[11.524131] (-) TimerEvent: {}
+[11.539075] (rw_interfaces) StdoutLine: {'line': b'-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)\n'}
+[11.564951] (rw_interfaces) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[11.566291] (rw_interfaces) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10\n'}
+[11.567514] (rw_interfaces) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so\n'}
+[11.624289] (-) TimerEvent: {}
+[11.725135] (-) TimerEvent: {}
+[11.826740] (-) TimerEvent: {}
+[11.927983] (-) TimerEvent: {}
+[12.029173] (-) TimerEvent: {}
+[12.130538] (-) TimerEvent: {}
+[12.231693] (-) TimerEvent: {}
+[12.332643] (-) TimerEvent: {}
+[12.433897] (-) TimerEvent: {}
+[12.534992] (-) TimerEvent: {}
+[12.636338] (-) TimerEvent: {}
+[12.737325] (-) TimerEvent: {}
+[12.758115] (rw_interfaces) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.5 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[12.837542] (-) TimerEvent: {}
+[12.939228] (-) TimerEvent: {}
+[13.040301] (-) TimerEvent: {}
+[13.141455] (-) TimerEvent: {}
+[13.242815] (-) TimerEvent: {}
+[13.343878] (-) TimerEvent: {}
+[13.445126] (-) TimerEvent: {}
+[13.546187] (-) TimerEvent: {}
+[13.647365] (-) TimerEvent: {}
+[13.697290] (rw_interfaces) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[13.747621] (-) TimerEvent: {}
+[13.849112] (-) TimerEvent: {}
+[13.950298] (-) TimerEvent: {}
+[14.049643] (rw_interfaces) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[14.051447] (-) TimerEvent: {}
+[14.152397] (-) TimerEvent: {}
+[14.253771] (-) TimerEvent: {}
+[14.354814] (-) TimerEvent: {}
+[14.363970] (rw_interfaces) StdoutLine: {'line': b'-- Configuring done\n'}
+[14.454987] (-) TimerEvent: {}
+[14.556056] (-) TimerEvent: {}
+[14.656896] (-) TimerEvent: {}
+[14.758003] (-) TimerEvent: {}
+[14.859227] (-) TimerEvent: {}
+[14.960296] (-) TimerEvent: {}
+[15.061498] (-) TimerEvent: {}
+[15.162941] (-) TimerEvent: {}
+[15.264356] (-) TimerEvent: {}
+[15.365402] (-) TimerEvent: {}
+[15.466700] (-) TimerEvent: {}
+[15.570494] (-) TimerEvent: {}
+[15.675225] (-) TimerEvent: {}
+[15.776750] (-) TimerEvent: {}
+[15.877748] (-) TimerEvent: {}
+[15.978796] (-) TimerEvent: {}
+[16.080030] (-) TimerEvent: {}
+[16.181074] (-) TimerEvent: {}
+[16.282192] (-) TimerEvent: {}
+[16.383451] (-) TimerEvent: {}
+[16.484539] (-) TimerEvent: {}
+[16.585638] (-) TimerEvent: {}
+[16.686780] (-) TimerEvent: {}
+[16.787845] (-) TimerEvent: {}
+[16.889332] (-) TimerEvent: {}
+[16.991515] (-) TimerEvent: {}
+[17.093139] (-) TimerEvent: {}
+[17.195330] (-) TimerEvent: {}
+[17.296429] (-) TimerEvent: {}
+[17.397442] (-) TimerEvent: {}
+[17.498938] (-) TimerEvent: {}
+[17.600237] (-) TimerEvent: {}
+[17.701455] (-) TimerEvent: {}
+[17.846115] (-) TimerEvent: {}
+[17.947536] (-) TimerEvent: {}
+[18.048485] (-) TimerEvent: {}
+[18.149619] (-) TimerEvent: {}
+[18.250793] (-) TimerEvent: {}
+[18.352244] (-) TimerEvent: {}
+[18.453531] (-) TimerEvent: {}
+[18.554956] (-) TimerEvent: {}
+[18.584443] (rw_interfaces) StdoutLine: {'line': b'-- Generating done\n'}
+[18.655192] (-) TimerEvent: {}
+[18.756398] (-) TimerEvent: {}
+[18.857709] (-) TimerEvent: {}
+[18.959170] (-) TimerEvent: {}
+[19.060529] (-) TimerEvent: {}
+[19.161898] (-) TimerEvent: {}
+[19.212692] (rw_interfaces) StdoutLine: {'line': b'-- Build files have been written to: /mnt/c/ROS2/robotic-waitress/build/rw_interfaces\n'}
+[19.262138] (-) TimerEvent: {}
+[19.363256] (-) TimerEvent: {}
+[19.440917] (rw_interfaces) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[19.463892] (-) TimerEvent: {}
+[19.567084] (-) TimerEvent: {}
+[19.668716] (-) TimerEvent: {}
+[19.691553] (rw_interfaces) StdoutLine: {'line': b'[  5%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[19.768951] (-) TimerEvent: {}
+[19.870676] (-) TimerEvent: {}
+[19.972460] (-) TimerEvent: {}
+[20.073434] (-) TimerEvent: {}
+[20.174999] (-) TimerEvent: {}
+[20.276553] (-) TimerEvent: {}
+[20.377818] (-) TimerEvent: {}
+[20.479246] (-) TimerEvent: {}
+[20.581135] (-) TimerEvent: {}
+[20.697765] (-) TimerEvent: {}
+[20.808600] (-) TimerEvent: {}
+[20.909724] (-) TimerEvent: {}
+[21.010816] (-) TimerEvent: {}
+[21.113760] (-) TimerEvent: {}
+[21.237010] (-) TimerEvent: {}
+[21.345424] (-) TimerEvent: {}
+[21.458798] (-) TimerEvent: {}
+[21.563005] (-) TimerEvent: {}
+[21.697885] (-) TimerEvent: {}
+[21.799367] (-) TimerEvent: {}
+[21.858382] (rw_interfaces) StdoutLine: {'line': b'[  5%] Built target ament_cmake_python_copy_rw_interfaces\n'}
+[21.899600] (-) TimerEvent: {}
+[21.956127] (rw_interfaces) StdoutLine: {'line': b'[  5%] Built target rw_interfaces__cpp\n'}
+[21.964982] (rw_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target rw_interfaces__rosidl_generator_c\x1b[0m\n'}
+[22.000764] (-) TimerEvent: {}
+[22.105134] (-) TimerEvent: {}
+[22.123540] (rw_interfaces) StdoutLine: {'line': b'[  7%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[22.137119] (rw_interfaces) StdoutLine: {'line': b'[ 10%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[22.205378] (-) TimerEvent: {}
+[22.313904] (-) TimerEvent: {}
+[22.415277] (-) TimerEvent: {}
+[22.428804] (rw_interfaces) StdoutLine: {'line': b'[ 12%] \x1b[32mBuilding C object CMakeFiles/rw_interfaces__rosidl_generator_c.dir/rosidl_generator_c/rw_interfaces/msg/detail/ultrasonic__functions.c.o\x1b[0m\n'}
+[22.515535] (-) TimerEvent: {}
+[22.616616] (-) TimerEvent: {}
+[22.718235] (-) TimerEvent: {}
+[22.819541] (-) TimerEvent: {}
+[22.920633] (-) TimerEvent: {}
+[22.964460] (rw_interfaces) StdoutLine: {'line': b'running egg_info\n'}
+[23.020854] (-) TimerEvent: {}
+[23.024375] (rw_interfaces) StdoutLine: {'line': b'writing rw_interfaces.egg-info/PKG-INFO\n'}
+[23.113464] (rw_interfaces) StdoutLine: {'line': b'writing dependency_links to rw_interfaces.egg-info/dependency_links.txt\n'}
+[23.132592] (-) TimerEvent: {}
+[23.191570] (rw_interfaces) StdoutLine: {'line': b'writing top-level names to rw_interfaces.egg-info/top_level.txt\n'}
+[23.233425] (-) TimerEvent: {}
+[23.316611] (rw_interfaces) StdoutLine: {'line': b"reading manifest file 'rw_interfaces.egg-info/SOURCES.txt'\n"}
+[23.334080] (-) TimerEvent: {}
+[23.434877] (rw_interfaces) StdoutLine: {'line': b"writing manifest file 'rw_interfaces.egg-info/SOURCES.txt'\n"}
+[23.450733] (-) TimerEvent: {}
+[23.553581] (-) TimerEvent: {}
+[23.630261] (rw_interfaces) StdoutLine: {'line': b'[ 12%] Built target ament_cmake_python_build_rw_interfaces_egg\n'}
+[23.653756] (-) TimerEvent: {}
+[23.726576] (rw_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target rw_interfaces__rosidl_typesupport_cpp\x1b[0m\n'}
+[23.754029] (-) TimerEvent: {}
+[23.837867] (rw_interfaces) StdoutLine: {'line': b'[ 15%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[23.854254] (-) TimerEvent: {}
+[23.931739] (rw_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target rw_interfaces__rosidl_typesupport_fastrtps_cpp\x1b[0m\n'}
+[23.939000] (rw_interfaces) StdoutLine: {'line': b'[ 17%] \x1b[32mBuilding C object CMakeFiles/rw_interfaces__rosidl_generator_c.dir/rosidl_generator_c/rw_interfaces/msg/detail/detections_vector__functions.c.o\x1b[0m\n'}
+[23.955195] (-) TimerEvent: {}
+[24.062411] (-) TimerEvent: {}
+[24.165008] (-) TimerEvent: {}
+[24.266851] (-) TimerEvent: {}
+[24.368387] (-) TimerEvent: {}
+[24.470451] (-) TimerEvent: {}
+[24.572327] (-) TimerEvent: {}
+[24.656138] (rw_interfaces) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding CXX object CMakeFiles/rw_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/rw_interfaces/msg/ultrasonic__type_support.cpp.o\x1b[0m\n'}
+[24.672553] (-) TimerEvent: {}
+[24.774170] (-) TimerEvent: {}
+[24.834175] (rw_interfaces) StdoutLine: {'line': b'[ 23%] \x1b[32m\x1b[1mLinking C shared library librw_interfaces__rosidl_generator_c.so\x1b[0m\n'}
+[24.874433] (-) TimerEvent: {}
+[24.976541] (-) TimerEvent: {}
+[24.979829] (rw_interfaces) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/rw_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/rw_interfaces/msg/detail/dds_fastrtps/ultrasonic__type_support.cpp.o\x1b[0m\n'}
+[25.077536] (-) TimerEvent: {}
+[25.181836] (-) TimerEvent: {}
+[25.284084] (-) TimerEvent: {}
+[25.352932] (rw_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target rw_interfaces__rosidl_typesupport_introspection_cpp\x1b[0m\n'}
+[25.384328] (-) TimerEvent: {}
+[25.485655] (-) TimerEvent: {}
+[25.588685] (-) TimerEvent: {}
+[25.690401] (-) TimerEvent: {}
+[25.791919] (-) TimerEvent: {}
+[25.793455] (rw_interfaces) StdoutLine: {'line': b'[ 25%] Built target rw_interfaces__rosidl_generator_c\n'}
+[25.892231] (-) TimerEvent: {}
+[25.949586] (rw_interfaces) StdoutLine: {'line': b'[ 28%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[25.992617] (-) TimerEvent: {}
+[26.096224] (-) TimerEvent: {}
+[26.198252] (-) TimerEvent: {}
+[26.208323] (rw_interfaces) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding CXX object CMakeFiles/rw_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/rw_interfaces/msg/detail/ultrasonic__type_support.cpp.o\x1b[0m\n'}
+[26.298415] (-) TimerEvent: {}
+[26.399679] (-) TimerEvent: {}
+[26.501216] (-) TimerEvent: {}
+[26.603206] (-) TimerEvent: {}
+[26.705041] (-) TimerEvent: {}
+[26.806132] (-) TimerEvent: {}
+[26.909405] (-) TimerEvent: {}
+[27.012348] (-) TimerEvent: {}
+[27.118107] (-) TimerEvent: {}
+[27.219663] (-) TimerEvent: {}
+[27.236427] (rw_interfaces) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/rw_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/rw_interfaces/msg/detections_vector__type_support.cpp.o\x1b[0m\n'}
+[27.319915] (-) TimerEvent: {}
+[27.421638] (-) TimerEvent: {}
+[27.492408] (rw_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target rw_interfaces__rosidl_typesupport_fastrtps_c\x1b[0m\n'}
+[27.521846] (-) TimerEvent: {}
+[27.623438] (-) TimerEvent: {}
+[27.724522] (-) TimerEvent: {}
+[27.825713] (-) TimerEvent: {}
+[27.929091] (-) TimerEvent: {}
+[28.031995] (-) TimerEvent: {}
+[28.133350] (-) TimerEvent: {}
+[28.234545] (-) TimerEvent: {}
+[28.253363] (rw_interfaces) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding CXX object CMakeFiles/rw_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/rw_interfaces/msg/detail/ultrasonic__type_support_c.cpp.o\x1b[0m\n'}
+[28.335718] (-) TimerEvent: {}
+[28.438830] (-) TimerEvent: {}
+[28.554258] (-) TimerEvent: {}
+[28.668402] (-) TimerEvent: {}
+[28.774045] (-) TimerEvent: {}
+[28.876337] (-) TimerEvent: {}
+[28.978402] (-) TimerEvent: {}
+[29.013082] (rw_interfaces) StdoutLine: {'line': b'[ 38%] \x1b[32m\x1b[1mLinking CXX shared library librw_interfaces__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[29.078662] (-) TimerEvent: {}
+[29.105414] (rw_interfaces) StdoutLine: {'line': b'[ 41%] \x1b[32mBuilding CXX object CMakeFiles/rw_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/rw_interfaces/msg/detail/dds_fastrtps/detections_vector__type_support.cpp.o\x1b[0m\n'}
+[29.163070] (rw_interfaces) StdoutLine: {'line': b'[ 43%] \x1b[32mBuilding CXX object CMakeFiles/rw_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/rw_interfaces/msg/detail/detections_vector__type_support.cpp.o\x1b[0m\n'}
+[29.179202] (-) TimerEvent: {}
+[29.280734] (-) TimerEvent: {}
+[29.384428] (-) TimerEvent: {}
+[29.486187] (-) TimerEvent: {}
+[29.587468] (-) TimerEvent: {}
+[29.697337] (-) TimerEvent: {}
+[29.800444] (-) TimerEvent: {}
+[29.902637] (-) TimerEvent: {}
+[30.005635] (-) TimerEvent: {}
+[30.110294] (-) TimerEvent: {}
+[30.215007] (-) TimerEvent: {}
+[30.235569] (rw_interfaces) StdoutLine: {'line': b'[ 43%] Built target rw_interfaces__rosidl_typesupport_cpp\n'}
+[30.315701] (-) TimerEvent: {}
+[30.416734] (-) TimerEvent: {}
+[30.479066] (rw_interfaces) StdoutLine: {'line': b'[ 46%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[30.527769] (-) TimerEvent: {}
+[30.629508] (-) TimerEvent: {}
+[30.730846] (-) TimerEvent: {}
+[30.832409] (-) TimerEvent: {}
+[30.933689] (-) TimerEvent: {}
+[31.034945] (-) TimerEvent: {}
+[31.136282] (-) TimerEvent: {}
+[31.237496] (-) TimerEvent: {}
+[31.338781] (-) TimerEvent: {}
+[31.439929] (-) TimerEvent: {}
+[31.544556] (-) TimerEvent: {}
+[31.647776] (-) TimerEvent: {}
+[31.749364] (-) TimerEvent: {}
+[31.837894] (rw_interfaces) StdoutLine: {'line': b'[ 48%] \x1b[32mBuilding CXX object CMakeFiles/rw_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/rw_interfaces/msg/detail/detections_vector__type_support_c.cpp.o\x1b[0m\n'}
+[31.849666] (-) TimerEvent: {}
+[31.923771] (rw_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target rw_interfaces__rosidl_typesupport_introspection_c\x1b[0m\n'}
+[31.949852] (-) TimerEvent: {}
+[32.051350] (-) TimerEvent: {}
+[32.153648] (-) TimerEvent: {}
+[32.258467] (-) TimerEvent: {}
+[32.360107] (-) TimerEvent: {}
+[32.373266] (rw_interfaces) StdoutLine: {'line': b'[ 51%] \x1b[32mBuilding C object CMakeFiles/rw_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/rw_interfaces/msg/detail/ultrasonic__type_support.c.o\x1b[0m\n'}
+[32.460360] (-) TimerEvent: {}
+[32.562049] (-) TimerEvent: {}
+[32.664053] (-) TimerEvent: {}
+[32.726053] (rw_interfaces) StdoutLine: {'line': b'[ 53%] \x1b[32m\x1b[1mLinking CXX shared library librw_interfaces__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[32.764301] (-) TimerEvent: {}
+[32.866367] (-) TimerEvent: {}
+[32.969025] (-) TimerEvent: {}
+[33.070284] (-) TimerEvent: {}
+[33.171603] (-) TimerEvent: {}
+[33.199863] (rw_interfaces) StdoutLine: {'line': b'[ 56%] \x1b[32mBuilding C object CMakeFiles/rw_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/rw_interfaces/msg/detail/detections_vector__type_support.c.o\x1b[0m\n'}
+[33.271788] (-) TimerEvent: {}
+[33.375286] (-) TimerEvent: {}
+[33.477218] (-) TimerEvent: {}
+[33.580462] (-) TimerEvent: {}
+[33.685323] (-) TimerEvent: {}
+[33.787188] (-) TimerEvent: {}
+[33.836101] (rw_interfaces) StdoutLine: {'line': b'[ 58%] \x1b[32m\x1b[1mLinking CXX shared library librw_interfaces__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[33.887612] (-) TimerEvent: {}
+[33.889510] (rw_interfaces) StdoutLine: {'line': b'[ 58%] Built target rw_interfaces__rosidl_typesupport_fastrtps_cpp\n'}
+[33.987876] (-) TimerEvent: {}
+[34.017057] (rw_interfaces) StdoutLine: {'line': b'[ 61%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[34.088433] (-) TimerEvent: {}
+[34.189807] (-) TimerEvent: {}
+[34.265159] (rw_interfaces) StdoutLine: {'line': b'[ 64%] \x1b[32m\x1b[1mLinking C shared library librw_interfaces__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[34.289340] (rw_interfaces) StdoutLine: {'line': b'[ 66%] \x1b[32m\x1b[1mLinking CXX shared library librw_interfaces__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[34.294059] (-) TimerEvent: {}
+[34.396219] (-) TimerEvent: {}
+[34.497849] (-) TimerEvent: {}
+[34.599247] (-) TimerEvent: {}
+[34.700753] (-) TimerEvent: {}
+[34.802106] (-) TimerEvent: {}
+[34.903984] (-) TimerEvent: {}
+[34.979407] (rw_interfaces) StdoutLine: {'line': b'[ 66%] Built target rw_interfaces__rosidl_typesupport_introspection_c\n'}
+[34.984657] (rw_interfaces) StdoutLine: {'line': b'[ 66%] Built target rw_interfaces__rosidl_typesupport_introspection_cpp\n'}
+[35.004198] (-) TimerEvent: {}
+[35.105129] (-) TimerEvent: {}
+[35.112633] (rw_interfaces) StdoutLine: {'line': b'[ 66%] Built target rw_interfaces__rosidl_typesupport_fastrtps_c\n'}
+[35.205369] (-) TimerEvent: {}
+[35.290911] (rw_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target rw_interfaces__rosidl_typesupport_c\x1b[0m\n'}
+[35.305570] (-) TimerEvent: {}
+[35.406533] (-) TimerEvent: {}
+[35.463007] (rw_interfaces) StdoutLine: {'line': b'[ 69%] \x1b[32mBuilding CXX object CMakeFiles/rw_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/rw_interfaces/msg/ultrasonic__type_support.cpp.o\x1b[0m\n'}
+[35.480748] (rw_interfaces) StdoutLine: {'line': b'[ 71%] \x1b[32mBuilding CXX object CMakeFiles/rw_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/rw_interfaces/msg/detections_vector__type_support.cpp.o\x1b[0m\n'}
+[35.506759] (-) TimerEvent: {}
+[35.608233] (-) TimerEvent: {}
+[35.709925] (-) TimerEvent: {}
+[35.731443] (rw_interfaces) StdoutLine: {'line': b'[ 74%] \x1b[32m\x1b[1mLinking CXX shared library librw_interfaces__rosidl_typesupport_c.so\x1b[0m\n'}
+[35.810226] (-) TimerEvent: {}
+[35.911335] (-) TimerEvent: {}
+[36.012358] (-) TimerEvent: {}
+[36.086329] (rw_interfaces) StdoutLine: {'line': b'[ 74%] Built target rw_interfaces__rosidl_typesupport_c\n'}
+[36.112480] (-) TimerEvent: {}
+[36.163814] (rw_interfaces) StdoutLine: {'line': b'[ 74%] Built target rw_interfaces\n'}
+[36.212679] (-) TimerEvent: {}
+[36.304364] (rw_interfaces) StdoutLine: {'line': b'[ 76%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[36.312968] (-) TimerEvent: {}
+[36.413850] (-) TimerEvent: {}
+[36.514701] (-) TimerEvent: {}
+[36.615648] (-) TimerEvent: {}
+[36.717040] (-) TimerEvent: {}
+[36.817962] (-) TimerEvent: {}
+[36.918860] (-) TimerEvent: {}
+[37.019985] (-) TimerEvent: {}
+[37.044495] (rw_interfaces) StdoutLine: {'line': b'[ 76%] Built target rw_interfaces__py\n'}
+[37.120197] (-) TimerEvent: {}
+[37.138175] (rw_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target rw_interfaces__rosidl_generator_py\x1b[0m\n'}
+[37.220393] (-) TimerEvent: {}
+[37.321450] (-) TimerEvent: {}
+[37.422378] (-) TimerEvent: {}
+[37.487938] (rw_interfaces) StdoutLine: {'line': b'[ 79%] \x1b[32mBuilding C object CMakeFiles/rw_interfaces__rosidl_generator_py.dir/rosidl_generator_py/rw_interfaces/msg/_ultrasonic_s.c.o\x1b[0m\n'}
+[37.509434] (rw_interfaces) StdoutLine: {'line': b'[ 82%] \x1b[32mBuilding C object CMakeFiles/rw_interfaces__rosidl_generator_py.dir/rosidl_generator_py/rw_interfaces/msg/_detections_vector_s.c.o\x1b[0m\n'}
+[37.522643] (-) TimerEvent: {}
+[37.624149] (-) TimerEvent: {}
+[37.725240] (-) TimerEvent: {}
+[37.826373] (-) TimerEvent: {}
+[37.927398] (-) TimerEvent: {}
+[38.028602] (-) TimerEvent: {}
+[38.129595] (-) TimerEvent: {}
+[38.230825] (-) TimerEvent: {}
+[38.240791] (rw_interfaces) StdoutLine: {'line': b'[ 84%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/rw_interfaces/librw_interfaces__rosidl_generator_py.so\x1b[0m\n'}
+[38.330964] (-) TimerEvent: {}
+[38.431901] (-) TimerEvent: {}
+[38.532992] (-) TimerEvent: {}
+[38.634218] (-) TimerEvent: {}
+[38.718710] (rw_interfaces) StdoutLine: {'line': b'[ 84%] Built target rw_interfaces__rosidl_generator_py\n'}
+[38.734462] (-) TimerEvent: {}
+[38.817168] (rw_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target rw_interfaces__rosidl_typesupport_c__pyext\x1b[0m\n'}
+[38.822621] (rw_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target rw_interfaces__rosidl_typesupport_fastrtps_c__pyext\x1b[0m\n'}
+[38.830863] (rw_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target rw_interfaces__rosidl_typesupport_introspection_c__pyext\x1b[0m\n'}
+[38.835562] (-) TimerEvent: {}
+[38.937367] (-) TimerEvent: {}
+[39.039732] (-) TimerEvent: {}
+[39.142513] (-) TimerEvent: {}
+[39.244214] (-) TimerEvent: {}
+[39.346535] (-) TimerEvent: {}
+[39.421341] (rw_interfaces) StdoutLine: {'line': b'[ 89%] \x1b[32mBuilding C object CMakeFiles/rw_interfaces__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/rw_interfaces/_rw_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[39.425982] (rw_interfaces) StdoutLine: {'line': b'[ 89%] \x1b[32mBuilding C object CMakeFiles/rw_interfaces__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/rw_interfaces/_rw_interfaces_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[39.447420] (-) TimerEvent: {}
+[39.493798] (rw_interfaces) StdoutLine: {'line': b'[ 92%] \x1b[32mBuilding C object CMakeFiles/rw_interfaces__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/rw_interfaces/_rw_interfaces_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[39.547357] (-) TimerEvent: {}
+[39.648916] (-) TimerEvent: {}
+[39.750077] (-) TimerEvent: {}
+[39.851530] (-) TimerEvent: {}
+[39.953136] (-) TimerEvent: {}
+[40.054568] (-) TimerEvent: {}
+[40.155534] (-) TimerEvent: {}
+[40.256855] (-) TimerEvent: {}
+[40.358235] (-) TimerEvent: {}
+[40.461220] (-) TimerEvent: {}
+[40.470641] (rw_interfaces) StdoutLine: {'line': b'[ 94%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/rw_interfaces/rw_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[40.515261] (rw_interfaces) StdoutLine: {'line': b'[ 97%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/rw_interfaces/rw_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[40.562440] (-) TimerEvent: {}
+[40.664227] (-) TimerEvent: {}
+[40.672634] (rw_interfaces) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/rw_interfaces/rw_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[40.764774] (-) TimerEvent: {}
+[40.867002] (-) TimerEvent: {}
+[40.968810] (-) TimerEvent: {}
+[41.070103] (-) TimerEvent: {}
+[41.147482] (rw_interfaces) StdoutLine: {'line': b'[100%] Built target rw_interfaces__rosidl_typesupport_c__pyext\n'}
+[41.170330] (-) TimerEvent: {}
+[41.251629] (rw_interfaces) StdoutLine: {'line': b'[100%] Built target rw_interfaces__rosidl_typesupport_fastrtps_c__pyext\n'}
+[41.270572] (-) TimerEvent: {}
+[41.371519] (-) TimerEvent: {}
+[41.395401] (rw_interfaces) StdoutLine: {'line': b'[100%] Built target rw_interfaces__rosidl_typesupport_introspection_c__pyext\n'}
+[41.471768] (-) TimerEvent: {}
+[41.573232] (-) TimerEvent: {}
+[41.635950] (rw_interfaces) CommandEnded: {'returncode': 0}
+[41.673356] (-) TimerEvent: {}
+[41.774356] (-) TimerEvent: {}
+[41.826254] (rw_interfaces) JobProgress: {'identifier': 'rw_interfaces', 'progress': 'install'}
+[41.841301] (rw_interfaces) Command: {'cmd': ['/usr/bin/cmake', '--install', '/mnt/c/ROS2/robotic-waitress/build/rw_interfaces'], 'cwd': '/mnt/c/ROS2/robotic-waitress/build/rw_interfaces', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'adder'), ('SSH_AGENT_PID', '5290'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('WT_PROFILE_ID', '{61c54bbd-c2c6-5271-96e7-009a87ff44bf}'), ('MOTD_SHOWN', 'update-motd'), ('HOME', '/home/adder'), ('OLDPWD', '/mnt/c/ROS2'), ('ROS_PYTHON_VERSION', '3'), ('WSL_DISTRO_NAME', 'Ubuntu-22.04'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'adder'), ('NAME', 'LAPTOP-LLJ89EON'), ('WSL_INTEROP', '/run/WSL/8_interop'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Python38/Scripts/:/mnt/c/Python38/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Java/jdk-16.0.2/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/MATLAB/R2022a/bin:/mnt/c/Program Files/Go/bin:/mnt/c/Program Files/PuTTY/:/mnt/c/ghcup/bin/:/mnt/c/Users/adder/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Python 3.11:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/ProgramData/chocolatey/lib/tinyxml2/lib:/mnt/c/ProgramData/chocolatey/lib/log4cxx/lib:/mnt/c/OpenSSL-Win64/bin:/mnt/c/opencv/x64/vc16/bin:/mnt/c/Program Files/CMake/bin:/mnt/c/ProgramData/chocolatey/lib/cunit/lib:/mnt/c/ProgramData/chocolatey/lib/bullet/lib:/mnt/c/Users/adder/AppData/Local/Programs/Python/Python311/:/mnt/c/Users/adder/AppData/Local/Programs/Python/Python311/Scripts/:/mnt/c/Users/adder/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/adder/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/adder/go/bin:/mnt/c/msys64/usr/bin:/mnt/c/Program Files/swipl/bin:/mnt/c/Program Files/Graphviz/bin:/snap/bin'), ('WT_SESSION', 'c3b714e1-5f4a-4bc9-bdeb-488948ec4ac6'), ('LANG', 'en_US.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/tmp/ssh-XXXXXXo9DUNz/agent.5289'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/mnt/c/ROS2/robotic-waitress/build/rw_interfaces'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('HOSTTYPE', 'x86_64'), ('WSLENV', 'WT_SESSION::WT_PROFILE_ID'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[41.861795] (rw_interfaces) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[41.874550] (-) TimerEvent: {}
+[41.905121] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/ament_index/resource_index/rosidl_interfaces/rw_interfaces\n'}
+[41.929430] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces\n'}
+[41.955970] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg\n'}
+[41.974765] (-) TimerEvent: {}
+[41.994487] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail\n'}
+[42.051041] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/detections_vector__functions.c\n'}
+[42.074967] (-) TimerEvent: {}
+[42.175964] (-) TimerEvent: {}
+[42.203079] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/detections_vector__functions.h\n'}
+[42.276205] (-) TimerEvent: {}
+[42.356755] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/detections_vector__struct.h\n'}
+[42.376415] (-) TimerEvent: {}
+[42.477460] (-) TimerEvent: {}
+[42.507556] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/detections_vector__type_support.h\n'}
+[42.577722] (-) TimerEvent: {}
+[42.661686] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/ultrasonic__functions.c\n'}
+[42.677932] (-) TimerEvent: {}
+[42.779073] (-) TimerEvent: {}
+[42.812740] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/ultrasonic__functions.h\n'}
+[42.879256] (-) TimerEvent: {}
+[42.968344] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/ultrasonic__struct.h\n'}
+[42.979469] (-) TimerEvent: {}
+[43.080424] (-) TimerEvent: {}
+[43.117790] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/ultrasonic__type_support.h\n'}
+[43.180631] (-) TimerEvent: {}
+[43.268908] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detections_vector.h\n'}
+[43.280850] (-) TimerEvent: {}
+[43.381918] (-) TimerEvent: {}
+[43.404773] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/rosidl_generator_c__visibility_control.h\n'}
+[43.444126] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/ultrasonic.h\n'}
+[43.482207] (-) TimerEvent: {}
+[43.566057] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/environment/library_path.sh\n'}
+[43.582461] (-) TimerEvent: {}
+[43.602472] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/environment/library_path.dsv\n'}
+[43.682696] (-) TimerEvent: {}
+[43.751795] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib/librw_interfaces__rosidl_generator_c.so\n'}
+[43.782974] (-) TimerEvent: {}
+[43.883821] (-) TimerEvent: {}
+[43.887400] (rw_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib/librw_interfaces__rosidl_generator_c.so" to ""\n'}
+[43.904946] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces\n'}
+[43.939951] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg\n'}
+[43.980309] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail\n'}
+[43.984005] (-) TimerEvent: {}
+[44.034100] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/detections_vector__rosidl_typesupport_fastrtps_c.h\n'}
+[44.084204] (-) TimerEvent: {}
+[44.180698] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/ultrasonic__rosidl_typesupport_fastrtps_c.h\n'}
+[44.184420] (-) TimerEvent: {}
+[44.285417] (-) TimerEvent: {}
+[44.326438] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[44.385582] (-) TimerEvent: {}
+[44.405325] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib/librw_interfaces__rosidl_typesupport_fastrtps_c.so\n'}
+[44.485810] (-) TimerEvent: {}
+[44.552236] (rw_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib/librw_interfaces__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[44.569137] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces\n'}
+[44.586049] (-) TimerEvent: {}
+[44.604359] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg\n'}
+[44.647288] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail\n'}
+[44.686277] (-) TimerEvent: {}
+[44.721042] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/detections_vector__rosidl_typesupport_introspection_c.h\n'}
+[44.786463] (-) TimerEvent: {}
+[44.887701] (-) TimerEvent: {}
+[44.899460] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/detections_vector__type_support.c\n'}
+[44.987943] (-) TimerEvent: {}
+[45.054042] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/ultrasonic__rosidl_typesupport_introspection_c.h\n'}
+[45.088105] (-) TimerEvent: {}
+[45.189102] (-) TimerEvent: {}
+[45.206414] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/ultrasonic__type_support.c\n'}
+[45.289354] (-) TimerEvent: {}
+[45.346694] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[45.389577] (-) TimerEvent: {}
+[45.413558] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib/librw_interfaces__rosidl_typesupport_introspection_c.so\n'}
+[45.489844] (-) TimerEvent: {}
+[45.551381] (rw_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib/librw_interfaces__rosidl_typesupport_introspection_c.so" to ""\n'}
+[45.590006] (-) TimerEvent: {}
+[45.612638] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib/librw_interfaces__rosidl_typesupport_c.so\n'}
+[45.690285] (-) TimerEvent: {}
+[45.747787] (rw_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib/librw_interfaces__rosidl_typesupport_c.so" to ""\n'}
+[45.770383] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces\n'}
+[45.790573] (-) TimerEvent: {}
+[45.812755] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg\n'}
+[45.868444] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail\n'}
+[45.890794] (-) TimerEvent: {}
+[45.934440] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/detections_vector__builder.hpp\n'}
+[45.991019] (-) TimerEvent: {}
+[46.081079] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/detections_vector__struct.hpp\n'}
+[46.091214] (-) TimerEvent: {}
+[46.192224] (-) TimerEvent: {}
+[46.201641] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/detections_vector__traits.hpp\n'}
+[46.292414] (-) TimerEvent: {}
+[46.324503] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/ultrasonic__builder.hpp\n'}
+[46.392679] (-) TimerEvent: {}
+[46.488389] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/ultrasonic__struct.hpp\n'}
+[46.492959] (-) TimerEvent: {}
+[46.593933] (-) TimerEvent: {}
+[46.636955] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/ultrasonic__traits.hpp\n'}
+[46.694229] (-) TimerEvent: {}
+[46.780639] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detections_vector.hpp\n'}
+[46.794437] (-) TimerEvent: {}
+[46.895356] (-) TimerEvent: {}
+[46.917029] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/ultrasonic.hpp\n'}
+[46.995604] (-) TimerEvent: {}
+[47.049060] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces\n'}
+[47.095845] (-) TimerEvent: {}
+[47.108320] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg\n'}
+[47.178649] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail\n'}
+[47.196063] (-) TimerEvent: {}
+[47.258685] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/dds_fastrtps\n'}
+[47.296350] (-) TimerEvent: {}
+[47.365990] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/detections_vector__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[47.396554] (-) TimerEvent: {}
+[47.497677] (-) TimerEvent: {}
+[47.574230] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/ultrasonic__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[47.597907] (-) TimerEvent: {}
+[47.699787] (-) TimerEvent: {}
+[47.800961] (-) TimerEvent: {}
+[47.812775] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[47.892736] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib/librw_interfaces__rosidl_typesupport_fastrtps_cpp.so\n'}
+[47.901155] (-) TimerEvent: {}
+[47.998460] (rw_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib/librw_interfaces__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[48.001304] (-) TimerEvent: {}
+[48.016174] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces\n'}
+[48.055754] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg\n'}
+[48.098765] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail\n'}
+[48.101425] (-) TimerEvent: {}
+[48.156663] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/detections_vector__rosidl_typesupport_introspection_cpp.hpp\n'}
+[48.201726] (-) TimerEvent: {}
+[48.302807] (-) TimerEvent: {}
+[48.303818] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/detections_vector__type_support.cpp\n'}
+[48.403038] (-) TimerEvent: {}
+[48.460914] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/ultrasonic__rosidl_typesupport_introspection_cpp.hpp\n'}
+[48.503212] (-) TimerEvent: {}
+[48.604370] (-) TimerEvent: {}
+[48.612585] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/include/rw_interfaces/rw_interfaces/msg/detail/ultrasonic__type_support.cpp\n'}
+[48.704639] (-) TimerEvent: {}
+[48.805813] (-) TimerEvent: {}
+[48.808269] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib/librw_interfaces__rosidl_typesupport_introspection_cpp.so\n'}
+[48.905997] (-) TimerEvent: {}
+[48.939981] (rw_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib/librw_interfaces__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[49.000464] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib/librw_interfaces__rosidl_typesupport_cpp.so\n'}
+[49.006267] (-) TimerEvent: {}
+[49.107340] (-) TimerEvent: {}
+[49.131989] (rw_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib/librw_interfaces__rosidl_typesupport_cpp.so" to ""\n'}
+[49.165760] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/environment/pythonpath.sh\n'}
+[49.199176] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/environment/pythonpath.dsv\n'}
+[49.207550] (-) TimerEvent: {}
+[49.306807] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces-0.0.0-py3.10.egg-info\n'}
+[49.308709] (-) TimerEvent: {}
+[49.360607] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces-0.0.0-py3.10.egg-info/dependency_links.txt\n'}
+[49.409004] (-) TimerEvent: {}
+[49.486912] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces-0.0.0-py3.10.egg-info/PKG-INFO\n'}
+[49.509229] (-) TimerEvent: {}
+[49.610300] (-) TimerEvent: {}
+[49.628787] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces-0.0.0-py3.10.egg-info/SOURCES.txt\n'}
+[49.710527] (-) TimerEvent: {}
+[49.741114] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces-0.0.0-py3.10.egg-info/top_level.txt\n'}
+[49.810828] (-) TimerEvent: {}
+[49.843093] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces\n'}
+[49.891205] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/librw_interfaces__rosidl_generator_py.so\n'}
+[49.911075] (-) TimerEvent: {}
+[50.012294] (-) TimerEvent: {}
+[50.026122] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/msg\n'}
+[50.082144] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/msg/_detections_vector.py\n'}
+[50.112528] (-) TimerEvent: {}
+[50.213993] (-) TimerEvent: {}
+[50.234163] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/msg/_detections_vector_s.c\n'}
+[50.314328] (-) TimerEvent: {}
+[50.387295] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/msg/_ultrasonic.py\n'}
+[50.414722] (-) TimerEvent: {}
+[50.515996] (-) TimerEvent: {}
+[50.545145] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/msg/_ultrasonic_s.c\n'}
+[50.616339] (-) TimerEvent: {}
+[50.707345] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/msg/__init__.py\n'}
+[50.716589] (-) TimerEvent: {}
+[50.818469] (-) TimerEvent: {}
+[50.858577] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/rw_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[50.918783] (-) TimerEvent: {}
+[50.999386] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/rw_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[51.019065] (-) TimerEvent: {}
+[51.120362] (-) TimerEvent: {}
+[51.137787] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/rw_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[51.220653] (-) TimerEvent: {}
+[51.277663] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/_rw_interfaces_s.ep.rosidl_typesupport_c.c\n'}
+[51.320921] (-) TimerEvent: {}
+[51.422312] (-) TimerEvent: {}
+[51.424684] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/_rw_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[51.522594] (-) TimerEvent: {}
+[51.567248] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/_rw_interfaces_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[51.622778] (-) TimerEvent: {}
+[51.706290] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/__init__.py\n'}
+[51.723134] (-) TimerEvent: {}
+[51.824050] (-) TimerEvent: {}
+[51.925040] (-) TimerEvent: {}
+[52.026312] (-) TimerEvent: {}
+[52.127800] (-) TimerEvent: {}
+[52.228983] (-) TimerEvent: {}
+[52.330222] (-) TimerEvent: {}
+[52.431830] (-) TimerEvent: {}
+[52.493632] (rw_interfaces) StdoutLine: {'line': b"Listing '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces'...\n"}
+[52.495333] (rw_interfaces) StdoutLine: {'line': b"Compiling '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/__init__.py'...\n"}
+[52.496982] (rw_interfaces) StdoutLine: {'line': b"Listing '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/msg'...\n"}
+[52.498467] (rw_interfaces) StdoutLine: {'line': b"Compiling '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/msg/__init__.py'...\n"}
+[52.499834] (rw_interfaces) StdoutLine: {'line': b"Compiling '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/msg/_detections_vector.py'...\n"}
+[52.501531] (rw_interfaces) StdoutLine: {'line': b"Compiling '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/msg/_ultrasonic.py'...\n"}
+[52.531951] (-) TimerEvent: {}
+[52.593129] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/rw_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[52.632146] (-) TimerEvent: {}
+[52.733041] (-) TimerEvent: {}
+[52.768046] (rw_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/rw_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""\n'}
+[52.833323] (-) TimerEvent: {}
+[52.857855] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/rw_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[52.933632] (-) TimerEvent: {}
+[53.034732] (-) TimerEvent: {}
+[53.062959] (rw_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/rw_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""\n'}
+[53.134894] (-) TimerEvent: {}
+[53.156187] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/rw_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[53.235133] (-) TimerEvent: {}
+[53.336069] (-) TimerEvent: {}
+[53.356601] (rw_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages/rw_interfaces/rw_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""\n'}
+[53.416609] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib/librw_interfaces__rosidl_generator_py.so\n'}
+[53.436395] (-) TimerEvent: {}
+[53.526148] (rw_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib/librw_interfaces__rosidl_generator_py.so" to ""\n'}
+[53.536600] (-) TimerEvent: {}
+[53.556965] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/msg/Ultrasonic.idl\n'}
+[53.636811] (-) TimerEvent: {}
+[53.660646] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/msg/DetectionsVector.idl\n'}
+[53.695496] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/msg/Ultrasonic.msg\n'}
+[53.737046] (-) TimerEvent: {}
+[53.799079] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/msg/DetectionsVector.msg\n'}
+[53.837276] (-) TimerEvent: {}
+[53.844267] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/ament_index/resource_index/package_run_dependencies/rw_interfaces\n'}
+[53.888333] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/ament_index/resource_index/parent_prefix_path/rw_interfaces\n'}
+[53.909438] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/environment/ament_prefix_path.sh\n'}
+[53.935059] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/environment/ament_prefix_path.dsv\n'}
+[53.937401] (-) TimerEvent: {}
+[54.018023] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/environment/path.sh\n'}
+[54.037645] (-) TimerEvent: {}
+[54.043810] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/environment/path.dsv\n'}
+[54.129162] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/local_setup.bash\n'}
+[54.137855] (-) TimerEvent: {}
+[54.155484] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/local_setup.sh\n'}
+[54.181109] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/local_setup.zsh\n'}
+[54.204752] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/local_setup.dsv\n'}
+[54.238116] (-) TimerEvent: {}
+[54.281992] (rw_interfaces) StdoutLine: {'line': b'-- Installing: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/package.dsv\n'}
+[54.338304] (-) TimerEvent: {}
+[54.372589] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/ament_index/resource_index/packages/rw_interfaces\n'}
+[54.438555] (-) TimerEvent: {}
+[54.440208] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/export_rw_interfaces__rosidl_generator_cExport.cmake\n'}
+[54.479634] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/export_rw_interfaces__rosidl_generator_cExport-noconfig.cmake\n'}
+[54.538774] (-) TimerEvent: {}
+[54.543194] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/export_rw_interfaces__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[54.576841] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/export_rw_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[54.639019] (-) TimerEvent: {}
+[54.644674] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/rw_interfaces__rosidl_typesupport_introspection_cExport.cmake\n'}
+[54.684292] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/rw_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[54.739279] (-) TimerEvent: {}
+[54.749000] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/rw_interfaces__rosidl_typesupport_cExport.cmake\n'}
+[54.787390] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/rw_interfaces__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[54.839556] (-) TimerEvent: {}
+[54.849324] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/export_rw_interfaces__rosidl_generator_cppExport.cmake\n'}
+[54.914575] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/export_rw_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[54.939797] (-) TimerEvent: {}
+[54.951691] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/export_rw_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[55.014581] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/rw_interfaces__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[55.040078] (-) TimerEvent: {}
+[55.050059] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/rw_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[55.115145] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/rw_interfaces__rosidl_typesupport_cppExport.cmake\n'}
+[55.140342] (-) TimerEvent: {}
+[55.151364] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/rw_interfaces__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[55.217387] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/export_rw_interfaces__rosidl_generator_pyExport.cmake\n'}
+[55.240535] (-) TimerEvent: {}
+[55.256378] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/export_rw_interfaces__rosidl_generator_pyExport-noconfig.cmake\n'}
+[55.283833] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/rosidl_cmake-extras.cmake\n'}
+[55.310433] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[55.335709] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[55.340800] (-) TimerEvent: {}
+[55.362384] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[55.392671] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[55.425489] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[55.441014] (-) TimerEvent: {}
+[55.457990] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[55.495650] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/rw_interfacesConfig.cmake\n'}
+[55.523302] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/cmake/rw_interfacesConfig-version.cmake\n'}
+[55.541202] (-) TimerEvent: {}
+[55.557987] (rw_interfaces) StdoutLine: {'line': b'-- Up-to-date: /mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/package.xml\n'}
+[55.586622] (rw_interfaces) CommandEnded: {'returncode': 0}
+[55.641410] (-) TimerEvent: {}
+[55.742437] (-) TimerEvent: {}
+[55.843660] (-) TimerEvent: {}
+[55.944564] (-) TimerEvent: {}
+[56.045470] (-) TimerEvent: {}
+[56.146660] (-) TimerEvent: {}
+[56.247715] (-) TimerEvent: {}
+[56.348843] (-) TimerEvent: {}
+[56.449772] (-) TimerEvent: {}
+[56.550792] (-) TimerEvent: {}
+[56.652033] (-) TimerEvent: {}
+[56.753424] (-) TimerEvent: {}
+[56.854434] (-) TimerEvent: {}
+[56.955809] (-) TimerEvent: {}
+[57.057054] (-) TimerEvent: {}
+[57.158184] (-) TimerEvent: {}
+[57.259275] (-) TimerEvent: {}
+[57.275257] (rw_interfaces) JobEnded: {'identifier': 'rw_interfaces', 'rc': 0}
+[57.309243] (rw_distance_sensors) JobStarted: {'identifier': 'rw_distance_sensors'}
+[57.359573] (-) TimerEvent: {}
+[57.460683] (-) TimerEvent: {}
+[57.561685] (-) TimerEvent: {}
+[57.662696] (-) TimerEvent: {}
+[57.763768] (-) TimerEvent: {}
+[57.864594] (-) TimerEvent: {}
+[57.965539] (-) TimerEvent: {}
+[58.066427] (-) TimerEvent: {}
+[58.167654] (-) TimerEvent: {}
+[58.268565] (-) TimerEvent: {}
+[58.369429] (-) TimerEvent: {}
+[58.470239] (-) TimerEvent: {}
+[58.571100] (-) TimerEvent: {}
+[58.672179] (-) TimerEvent: {}
+[58.773202] (-) TimerEvent: {}
+[58.874169] (-) TimerEvent: {}
+[58.975058] (-) TimerEvent: {}
+[59.076104] (-) TimerEvent: {}
+[59.177385] (-) TimerEvent: {}
+[59.278604] (-) TimerEvent: {}
+[59.379775] (-) TimerEvent: {}
+[59.481037] (-) TimerEvent: {}
+[59.582343] (-) TimerEvent: {}
+[59.683355] (-) TimerEvent: {}
+[59.784317] (-) TimerEvent: {}
+[59.885330] (-) TimerEvent: {}
+[59.986543] (-) TimerEvent: {}
+[60.087517] (-) TimerEvent: {}
+[60.188579] (-) TimerEvent: {}
+[60.289719] (-) TimerEvent: {}
+[60.390784] (-) TimerEvent: {}
+[60.491700] (-) TimerEvent: {}
+[60.592655] (-) TimerEvent: {}
+[60.693592] (-) TimerEvent: {}
+[60.794637] (-) TimerEvent: {}
+[60.895529] (-) TimerEvent: {}
+[60.996364] (-) TimerEvent: {}
+[61.097388] (-) TimerEvent: {}
+[61.198543] (-) TimerEvent: {}
+[61.250424] (rw_distance_sensors) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/rw_distance_sensors', 'build', '--build-base', '/mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/build', 'install', '--record', '/mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/install.log', '--single-version-externally-managed'], 'cwd': '/mnt/c/ROS2/robotic-waitress/src/rw_distance_sensors', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'adder', 'SSH_AGENT_PID': '5290', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'WT_PROFILE_ID': '{61c54bbd-c2c6-5271-96e7-009a87ff44bf}', 'MOTD_SHOWN': 'update-motd', 'HOME': '/home/adder', 'OLDPWD': '/mnt/c/ROS2', 'ROS_PYTHON_VERSION': '3', 'WSL_DISTRO_NAME': 'Ubuntu-22.04', 'ROS_DISTRO': 'humble', 'LOGNAME': 'adder', 'NAME': 'LAPTOP-LLJ89EON', 'WSL_INTEROP': '/run/WSL/8_interop', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Python38/Scripts/:/mnt/c/Python38/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Java/jdk-16.0.2/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/MATLAB/R2022a/bin:/mnt/c/Program Files/Go/bin:/mnt/c/Program Files/PuTTY/:/mnt/c/ghcup/bin/:/mnt/c/Users/adder/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Python 3.11:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/ProgramData/chocolatey/lib/tinyxml2/lib:/mnt/c/ProgramData/chocolatey/lib/log4cxx/lib:/mnt/c/OpenSSL-Win64/bin:/mnt/c/opencv/x64/vc16/bin:/mnt/c/Program Files/CMake/bin:/mnt/c/ProgramData/chocolatey/lib/cunit/lib:/mnt/c/ProgramData/chocolatey/lib/bullet/lib:/mnt/c/Users/adder/AppData/Local/Programs/Python/Python311/:/mnt/c/Users/adder/AppData/Local/Programs/Python/Python311/Scripts/:/mnt/c/Users/adder/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/adder/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/adder/go/bin:/mnt/c/msys64/usr/bin:/mnt/c/Program Files/swipl/bin:/mnt/c/Program Files/Graphviz/bin:/snap/bin', 'WT_SESSION': 'c3b714e1-5f4a-4bc9-bdeb-488948ec4ac6', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'SSH_AUTH_SOCK': '/tmp/ssh-XXXXXXo9DUNz/agent.5289', 'AMENT_PREFIX_PATH': '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces:/opt/ros/humble', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'PWD': '/mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/prefix_override:/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/python3.10/site-packages:/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1', 'HOSTTYPE': 'x86_64', 'WSLENV': 'WT_SESSION::WT_PROFILE_ID', 'CMAKE_PREFIX_PATH': '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces'}, 'shell': False}
+[61.298773] (-) TimerEvent: {}
+[61.399690] (-) TimerEvent: {}
+[61.500636] (-) TimerEvent: {}
+[61.601547] (-) TimerEvent: {}
+[61.702456] (-) TimerEvent: {}
+[61.803457] (-) TimerEvent: {}
+[61.904362] (-) TimerEvent: {}
+[62.005273] (-) TimerEvent: {}
+[62.106311] (-) TimerEvent: {}
+[62.207299] (-) TimerEvent: {}
+[62.308519] (-) TimerEvent: {}
+[62.409411] (-) TimerEvent: {}
+[62.510559] (-) TimerEvent: {}
+[62.611599] (-) TimerEvent: {}
+[62.712577] (-) TimerEvent: {}
+[62.813670] (-) TimerEvent: {}
+[62.914840] (-) TimerEvent: {}
+[62.999859] (rw_distance_sensors) StdoutLine: {'line': b'running egg_info\n'}
+[63.010863] (rw_distance_sensors) StdoutLine: {'line': b'writing ../../build/rw_distance_sensors/rw_distance_sensors.egg-info/PKG-INFO\n'}
+[63.038046] (-) TimerEvent: {}
+[63.052089] (rw_distance_sensors) StdoutLine: {'line': b'writing dependency_links to ../../build/rw_distance_sensors/rw_distance_sensors.egg-info/dependency_links.txt\n'}
+[63.061249] (rw_distance_sensors) StdoutLine: {'line': b'writing entry points to ../../build/rw_distance_sensors/rw_distance_sensors.egg-info/entry_points.txt\n'}
+[63.070121] (rw_distance_sensors) StdoutLine: {'line': b'writing requirements to ../../build/rw_distance_sensors/rw_distance_sensors.egg-info/requires.txt\n'}
+[63.077184] (rw_distance_sensors) StdoutLine: {'line': b'writing top-level names to ../../build/rw_distance_sensors/rw_distance_sensors.egg-info/top_level.txt\n'}
+[63.131880] (rw_distance_sensors) StdoutLine: {'line': b"reading manifest file '../../build/rw_distance_sensors/rw_distance_sensors.egg-info/SOURCES.txt'\n"}
+[63.138266] (-) TimerEvent: {}
+[63.230644] (rw_distance_sensors) StdoutLine: {'line': b"writing manifest file '../../build/rw_distance_sensors/rw_distance_sensors.egg-info/SOURCES.txt'\n"}
+[63.236803] (rw_distance_sensors) StdoutLine: {'line': b'running build\n'}
+[63.238846] (-) TimerEvent: {}
+[63.239499] (rw_distance_sensors) StdoutLine: {'line': b'running build_py\n'}
+[63.265537] (rw_distance_sensors) StdoutLine: {'line': b'copying rw_distance_sensors/ROS_sonar.py -> /mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/build/lib/rw_distance_sensors\n'}
+[63.329046] (rw_distance_sensors) StdoutLine: {'line': b'copying rw_distance_sensors/Sonar.py -> /mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/build/lib/rw_distance_sensors\n'}
+[63.339129] (-) TimerEvent: {}
+[63.392194] (rw_distance_sensors) StdoutLine: {'line': b'running install\n'}
+[63.393797] (rw_distance_sensors) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[63.395437] (rw_distance_sensors) StderrLine: {'line': b'  warnings.warn(\n'}
+[63.397226] (rw_distance_sensors) StdoutLine: {'line': b'running install_lib\n'}
+[63.439389] (-) TimerEvent: {}
+[63.463079] (rw_distance_sensors) StdoutLine: {'line': b'copying /mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/build/lib/rw_distance_sensors/ROS_sonar.py -> /mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/python3.10/site-packages/rw_distance_sensors\n'}
+[63.537714] (rw_distance_sensors) StdoutLine: {'line': b'copying /mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/build/lib/rw_distance_sensors/Sonar.py -> /mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/python3.10/site-packages/rw_distance_sensors\n'}
+[63.539796] (-) TimerEvent: {}
+[63.641096] (-) TimerEvent: {}
+[63.652079] (rw_distance_sensors) StdoutLine: {'line': b'byte-compiling /mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/python3.10/site-packages/rw_distance_sensors/ROS_sonar.py to ROS_sonar.cpython-310.pyc\n'}
+[63.741373] (-) TimerEvent: {}
+[63.742638] (rw_distance_sensors) StdoutLine: {'line': b'byte-compiling /mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/python3.10/site-packages/rw_distance_sensors/Sonar.py to Sonar.cpython-310.pyc\n'}
+[63.772820] (rw_distance_sensors) StderrLine: {'line': b"Sorry: IndentationError: expected an indented block after 'case' statement on line 20 (Sonar.py, line 21)\n"}
+[63.797949] (rw_distance_sensors) StdoutLine: {'line': b'running install_data\n'}
+[63.841691] (-) TimerEvent: {}
+[63.847099] (rw_distance_sensors) StdoutLine: {'line': b'running install_egg_info\n'}
+[63.870933] (rw_distance_sensors) StdoutLine: {'line': b"removing '/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/python3.10/site-packages/rw_distance_sensors-0.0.0-py3.10.egg-info' (and everything under it)\n"}
+[63.941939] (-) TimerEvent: {}
+[63.969956] (rw_distance_sensors) StdoutLine: {'line': b'Copying ../../build/rw_distance_sensors/rw_distance_sensors.egg-info to /mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/python3.10/site-packages/rw_distance_sensors-0.0.0-py3.10.egg-info\n'}
+[64.042095] (-) TimerEvent: {}
+[64.142842] (-) TimerEvent: {}
+[64.243852] (-) TimerEvent: {}
+[64.344946] (-) TimerEvent: {}
+[64.446280] (-) TimerEvent: {}
+[64.547586] (-) TimerEvent: {}
+[64.595537] (rw_distance_sensors) StdoutLine: {'line': b'running install_scripts\n'}
+[64.647844] (-) TimerEvent: {}
+[64.749178] (-) TimerEvent: {}
+[64.765099] (rw_distance_sensors) StdoutLine: {'line': b'Installing sonar script to /mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/rw_distance_sensors\n'}
+[64.790957] (rw_distance_sensors) StdoutLine: {'line': b"writing list of installed files to '/mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/install.log'\n"}
+[64.839382] (rw_distance_sensors) CommandEnded: {'returncode': 0}
+[64.849478] (-) TimerEvent: {}
+[64.950605] (-) TimerEvent: {}
+[65.051571] (-) TimerEvent: {}
+[65.152470] (-) TimerEvent: {}
+[65.253578] (-) TimerEvent: {}
+[65.263901] (rw_distance_sensors) JobEnded: {'identifier': 'rw_distance_sensors', 'rc': 0}
+[65.289091] (-) EventReactorShutdown: {}

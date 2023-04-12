@@ -24,7 +24,7 @@ extern "C"
 /// Struct defined in msg/Ultrasonic in the package rw_interfaces.
 typedef struct rw_interfaces__msg__Ultrasonic
 {
-  float distance;
+  float distances[3];
   std_msgs__msg__Header header;
 } rw_interfaces__msg__Ultrasonic;
 

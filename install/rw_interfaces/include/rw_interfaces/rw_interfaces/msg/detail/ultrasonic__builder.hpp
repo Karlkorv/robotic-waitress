@@ -37,15 +37,15 @@ private:
   ::rw_interfaces::msg::Ultrasonic msg_;
 };
 
-class Init_Ultrasonic_distance
+class Init_Ultrasonic_distances
 {
 public:
-  Init_Ultrasonic_distance()
+  Init_Ultrasonic_distances()
   : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
   {}
-  Init_Ultrasonic_header distance(::rw_interfaces::msg::Ultrasonic::_distance_type arg)
+  Init_Ultrasonic_header distances(::rw_interfaces::msg::Ultrasonic::_distances_type arg)
   {
-    msg_.distance = std::move(arg);
+    msg_.distances = std::move(arg);
     return Init_Ultrasonic_header(msg_);
   }
 
@@ -64,7 +64,7 @@ template<>
 inline
 auto build<::rw_interfaces::msg::Ultrasonic>()
 {
-  return rw_interfaces::msg::builder::Init_Ultrasonic_distance();
+  return rw_interfaces::msg::builder::Init_Ultrasonic_distances();
 }
 
 }  // namespace rw_interfaces

@@ -5,6 +5,7 @@
   <version>0.0.0</version>
   <description>TODO: Package description</description>
   <maintainer email="gustavakerstrom@gmail.com">Gustav Åkerström</maintainer>
+  <maintainer email="wilhelmson.aya@gmail.com">Aya Wilhelmson</maintainer>
   <license>TODO: License declaration</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

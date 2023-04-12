@@ -6,8 +6,9 @@
 
 module rw_interfaces {
   module msg {
+    typedef float float__3[3];
     struct Ultrasonic {
-      float distance;
+      float__3 distances;
 
       std_msgs::msg::Header header;
     };
