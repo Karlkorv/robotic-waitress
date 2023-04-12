@@ -9,6 +9,7 @@ class Sonar():
 
 
     def getDistance(self):
+        value = None
         line = self.ser.readline()
         if line:
             string = line.decode()
