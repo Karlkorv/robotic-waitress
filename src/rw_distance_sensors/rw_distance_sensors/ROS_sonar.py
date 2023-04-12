@@ -61,6 +61,7 @@ class Sonar_Publisher(Node):
                 case _: 
                     continue """
             if(collectL and collectC and collectR):
+                sonar.closePort()
                 break
         
         # det behövs ngn kontroll så att det måste vara en L, en C och en R

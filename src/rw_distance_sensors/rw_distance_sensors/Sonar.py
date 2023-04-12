@@ -13,5 +13,7 @@ class Sonar():
         if line:
             string = line.decode()
             value = string.strip()
-        self.ser.close()
         return value
+
+    def closePort(self):
+        self.ser.close()
