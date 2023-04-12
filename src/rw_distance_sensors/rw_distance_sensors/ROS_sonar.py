@@ -12,6 +12,7 @@ from rw_interfaces.msg import Ultrasonic
 from rclpy.node import Node
 
 
+
 class Sonar_Publisher(Node):
     def __init__(self):
         super().__init__('Sonar_Publisher')
@@ -24,10 +25,33 @@ class Sonar_Publisher(Node):
 
     def timer_callback(self):
         # lägg in data från sonar
+        collectL = False
+        collectC = False
+        collectR = False
         sonar = Sonar('/dev/ttyACM0', 9600)
         sonarvalue = Ultrasonic()
-        sonarvalue.distance = sonar.getDistance()
-        self.get_logger().info('Sonar value: "%f"' % sonarvalue.distance)
+        while(True):
+            result = sonar.getDistance()
+            match result[0]:
+                case 'L':
+                    if not collectL:
+                        sonarvalue[0] = float(result[1:])
+                        collectL = True
+                case 'C':
+                    if not collectC:
+                        sonarvalue[1] = float(result[1:])
+                        collectC = True
+                case 'R':
+                    if not collectR:
+                        sonarvalue[2] = float(result[1:])
+                        collectR = True
+                case _: 
+                    continue
+            if(collectL & collectC & collectR):
+                break
+        
+        # det behövs ngn kontroll så att det måste vara en L, en C och en R
+        self.get_logger().info('[left "%f", center: "%f", right: "%f"]' % sonarvalue[0], sonarvalue[1], sonarvalue[2])
         self.publisher_.publish(sonarvalue) # publicera datan från sonar till topic 'Sonar value' 
 
 

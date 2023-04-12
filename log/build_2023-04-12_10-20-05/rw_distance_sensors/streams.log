@@ -1,0 +1,39 @@
+[5.380s] Invoking command in '/mnt/c/ROS2/robotic-waitress/src/rw_distance_sensors': AMENT_PREFIX_PATH=/mnt/c/ROS2/robotic-waitress/install/rw_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/mnt/c/ROS2/robotic-waitress/install/rw_interfaces LD_LIBRARY_PATH=/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/prefix_override:/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/python3.10/site-packages:/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/rw_distance_sensors build --build-base /mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/build install --record /mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/install.log --single-version-externally-managed
+[6.680s] running egg_info
+[6.686s] creating ../../build/rw_distance_sensors/rw_distance_sensors.egg-info
+[6.691s] writing ../../build/rw_distance_sensors/rw_distance_sensors.egg-info/PKG-INFO
+[6.787s] writing dependency_links to ../../build/rw_distance_sensors/rw_distance_sensors.egg-info/dependency_links.txt
+[6.804s] writing entry points to ../../build/rw_distance_sensors/rw_distance_sensors.egg-info/entry_points.txt
+[6.818s] writing requirements to ../../build/rw_distance_sensors/rw_distance_sensors.egg-info/requires.txt
+[6.826s] writing top-level names to ../../build/rw_distance_sensors/rw_distance_sensors.egg-info/top_level.txt
+[6.839s] writing manifest file '../../build/rw_distance_sensors/rw_distance_sensors.egg-info/SOURCES.txt'
+[6.882s] reading manifest file '../../build/rw_distance_sensors/rw_distance_sensors.egg-info/SOURCES.txt'
+[6.962s] writing manifest file '../../build/rw_distance_sensors/rw_distance_sensors.egg-info/SOURCES.txt'
+[6.968s] running build
+[6.970s] running build_py
+[6.979s] creating /mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/build
+[6.982s] creating /mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/build/lib
+[6.989s] creating /mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/build/lib/rw_distance_sensors
+[7.003s] copying rw_distance_sensors/ROS_sonar.py -> /mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/build/lib/rw_distance_sensors
+[7.035s] copying rw_distance_sensors/Sonar.py -> /mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/build/lib/rw_distance_sensors
+[7.066s] copying rw_distance_sensors/__init__.py -> /mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/build/lib/rw_distance_sensors
+[7.084s] running install
+[7.086s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[7.087s]   warnings.warn(
+[7.089s] running install_lib
+[7.117s] creating /mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/python3.10/site-packages/rw_distance_sensors
+[7.141s] copying /mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/build/lib/rw_distance_sensors/ROS_sonar.py -> /mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/python3.10/site-packages/rw_distance_sensors
+[7.191s] copying /mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/build/lib/rw_distance_sensors/Sonar.py -> /mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/python3.10/site-packages/rw_distance_sensors
+[7.243s] copying /mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/build/lib/rw_distance_sensors/__init__.py -> /mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/python3.10/site-packages/rw_distance_sensors
+[7.299s] byte-compiling /mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/python3.10/site-packages/rw_distance_sensors/ROS_sonar.py to ROS_sonar.cpython-310.pyc
+[7.361s] byte-compiling /mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/python3.10/site-packages/rw_distance_sensors/Sonar.py to Sonar.cpython-310.pyc
+[7.418s] byte-compiling /mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/python3.10/site-packages/rw_distance_sensors/__init__.py to __init__.cpython-310.pyc
+[7.464s] running install_data
+[7.487s] copying resource/rw_distance_sensors -> /mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/share/ament_index/resource_index/packages
+[7.528s] copying package.xml -> /mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/share/rw_distance_sensors
+[7.552s] running install_egg_info
+[7.578s] Copying ../../build/rw_distance_sensors/rw_distance_sensors.egg-info to /mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/python3.10/site-packages/rw_distance_sensors-0.0.0-py3.10.egg-info
+[8.169s] running install_scripts
+[8.317s] Installing sonar script to /mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/rw_distance_sensors
+[8.335s] writing list of installed files to '/mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/install.log'
+[8.435s] Invoked command in '/mnt/c/ROS2/robotic-waitress/src/rw_distance_sensors' returned '0': AMENT_PREFIX_PATH=/mnt/c/ROS2/robotic-waitress/install/rw_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/mnt/c/ROS2/robotic-waitress/install/rw_interfaces LD_LIBRARY_PATH=/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/prefix_override:/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/python3.10/site-packages:/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/rw_distance_sensors build --build-base /mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/build install --record /mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/install.log --single-version-externally-managed

@@ -1,0 +1,202 @@
+[0.925s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.926s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=4, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f66258b9900>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f66260acb20>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f66260acb20>>)
+[1.013s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[1.014s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[1.014s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[1.014s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[1.015s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[1.015s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[1.016s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/mnt/c/ROS2/robotic-waitress'
+[1.018s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[1.019s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[1.020s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[1.021s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[1.021s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[1.022s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[1.023s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[1.023s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[1.023s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[1.046s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[1.046s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[1.047s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[1.048s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[1.048s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[1.053s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[1.054s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[1.056s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[1.060s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[1.061s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[1.064s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[1.070s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[1.070s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[1.071s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[1.076s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[1.076s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[1.078s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[1.081s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[1.081s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[1.083s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[1.083s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[1.085s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[1.085s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[1.090s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[1.091s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[1.092s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[1.093s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[1.094s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[1.102s] Level 1:colcon.colcon_core.package_identification:_identify(src/rw_distance_sensors) by extensions ['ignore', 'ignore_ament_install']
+[1.103s] Level 1:colcon.colcon_core.package_identification:_identify(src/rw_distance_sensors) by extension 'ignore'
+[1.105s] Level 1:colcon.colcon_core.package_identification:_identify(src/rw_distance_sensors) by extension 'ignore_ament_install'
+[1.109s] Level 1:colcon.colcon_core.package_identification:_identify(src/rw_distance_sensors) by extensions ['colcon_pkg']
+[1.109s] Level 1:colcon.colcon_core.package_identification:_identify(src/rw_distance_sensors) by extension 'colcon_pkg'
+[1.112s] Level 1:colcon.colcon_core.package_identification:_identify(src/rw_distance_sensors) by extensions ['colcon_meta']
+[1.112s] Level 1:colcon.colcon_core.package_identification:_identify(src/rw_distance_sensors) by extension 'colcon_meta'
+[1.115s] Level 1:colcon.colcon_core.package_identification:_identify(src/rw_distance_sensors) by extensions ['ros']
+[1.116s] Level 1:colcon.colcon_core.package_identification:_identify(src/rw_distance_sensors) by extension 'ros'
+[1.146s] DEBUG:colcon.colcon_core.package_identification:Package 'src/rw_distance_sensors' with type 'ros.ament_python' and name 'rw_distance_sensors'
+[1.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/rw_interfaces) by extensions ['ignore', 'ignore_ament_install']
+[1.154s] Level 1:colcon.colcon_core.package_identification:_identify(src/rw_interfaces) by extension 'ignore'
+[1.156s] Level 1:colcon.colcon_core.package_identification:_identify(src/rw_interfaces) by extension 'ignore_ament_install'
+[1.161s] Level 1:colcon.colcon_core.package_identification:_identify(src/rw_interfaces) by extensions ['colcon_pkg']
+[1.162s] Level 1:colcon.colcon_core.package_identification:_identify(src/rw_interfaces) by extension 'colcon_pkg'
+[1.164s] Level 1:colcon.colcon_core.package_identification:_identify(src/rw_interfaces) by extensions ['colcon_meta']
+[1.165s] Level 1:colcon.colcon_core.package_identification:_identify(src/rw_interfaces) by extension 'colcon_meta'
+[1.168s] Level 1:colcon.colcon_core.package_identification:_identify(src/rw_interfaces) by extensions ['ros']
+[1.168s] Level 1:colcon.colcon_core.package_identification:_identify(src/rw_interfaces) by extension 'ros'
+[1.190s] DEBUG:colcon.colcon_core.package_identification:Package 'src/rw_interfaces' with type 'ros.ament_cmake' and name 'rw_interfaces'
+[1.191s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[1.191s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[1.192s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[1.192s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[1.192s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[1.266s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[1.266s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[1.274s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 182 installed packages in /opt/ros/humble
+[1.277s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[1.410s] Level 5:colcon.colcon_core.verb:set package 'rw_interfaces' build argument 'cmake_args' from command line to 'None'
+[1.411s] Level 5:colcon.colcon_core.verb:set package 'rw_interfaces' build argument 'cmake_target' from command line to 'None'
+[1.412s] Level 5:colcon.colcon_core.verb:set package 'rw_interfaces' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.412s] Level 5:colcon.colcon_core.verb:set package 'rw_interfaces' build argument 'cmake_clean_cache' from command line to 'False'
+[1.413s] Level 5:colcon.colcon_core.verb:set package 'rw_interfaces' build argument 'cmake_clean_first' from command line to 'False'
+[1.413s] Level 5:colcon.colcon_core.verb:set package 'rw_interfaces' build argument 'cmake_force_configure' from command line to 'False'
+[1.413s] Level 5:colcon.colcon_core.verb:set package 'rw_interfaces' build argument 'ament_cmake_args' from command line to 'None'
+[1.414s] Level 5:colcon.colcon_core.verb:set package 'rw_interfaces' build argument 'catkin_cmake_args' from command line to 'None'
+[1.414s] Level 5:colcon.colcon_core.verb:set package 'rw_interfaces' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.415s] DEBUG:colcon.colcon_core.verb:Building package 'rw_interfaces' with the following arguments: {'ament_cmake_args': None, 'build_base': '/mnt/c/ROS2/robotic-waitress/build/rw_interfaces', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces', 'merge_install': False, 'path': '/mnt/c/ROS2/robotic-waitress/src/rw_interfaces', 'symlink_install': False, 'test_result_base': None}
+[1.416s] Level 5:colcon.colcon_core.verb:set package 'rw_distance_sensors' build argument 'cmake_args' from command line to 'None'
+[1.417s] Level 5:colcon.colcon_core.verb:set package 'rw_distance_sensors' build argument 'cmake_target' from command line to 'None'
+[1.417s] Level 5:colcon.colcon_core.verb:set package 'rw_distance_sensors' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.417s] Level 5:colcon.colcon_core.verb:set package 'rw_distance_sensors' build argument 'cmake_clean_cache' from command line to 'False'
+[1.418s] Level 5:colcon.colcon_core.verb:set package 'rw_distance_sensors' build argument 'cmake_clean_first' from command line to 'False'
+[1.418s] Level 5:colcon.colcon_core.verb:set package 'rw_distance_sensors' build argument 'cmake_force_configure' from command line to 'False'
+[1.418s] Level 5:colcon.colcon_core.verb:set package 'rw_distance_sensors' build argument 'ament_cmake_args' from command line to 'None'
+[1.419s] Level 5:colcon.colcon_core.verb:set package 'rw_distance_sensors' build argument 'catkin_cmake_args' from command line to 'None'
+[1.419s] Level 5:colcon.colcon_core.verb:set package 'rw_distance_sensors' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.419s] DEBUG:colcon.colcon_core.verb:Building package 'rw_distance_sensors' with the following arguments: {'ament_cmake_args': None, 'build_base': '/mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors', 'merge_install': False, 'path': '/mnt/c/ROS2/robotic-waitress/src/rw_distance_sensors', 'symlink_install': False, 'test_result_base': None}
+[1.420s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[1.425s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[1.427s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/mnt/c/ROS2/robotic-waitress/src/rw_interfaces' with build type 'ament_cmake'
+[1.427s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/mnt/c/ROS2/robotic-waitress/src/rw_interfaces'
+[1.440s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[1.441s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.441s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.533s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/mnt/c/ROS2/robotic-waitress/build/rw_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /mnt/c/ROS2/robotic-waitress/src/rw_interfaces -DCMAKE_INSTALL_PREFIX=/mnt/c/ROS2/robotic-waitress/install/rw_interfaces
+[28.135s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/mnt/c/ROS2/robotic-waitress/build/rw_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /mnt/c/ROS2/robotic-waitress/src/rw_interfaces -DCMAKE_INSTALL_PREFIX=/mnt/c/ROS2/robotic-waitress/install/rw_interfaces
+[28.158s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/mnt/c/ROS2/robotic-waitress/build/rw_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /mnt/c/ROS2/robotic-waitress/build/rw_interfaces -- -j4 -l4
+[44.609s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/mnt/c/ROS2/robotic-waitress/build/rw_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /mnt/c/ROS2/robotic-waitress/build/rw_interfaces -- -j4 -l4
+[44.796s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/mnt/c/ROS2/robotic-waitress/build/rw_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /mnt/c/ROS2/robotic-waitress/build/rw_interfaces
+[66.510s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(rw_interfaces)
+[66.524s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/mnt/c/ROS2/robotic-waitress/build/rw_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /mnt/c/ROS2/robotic-waitress/build/rw_interfaces
+[66.553s] Level 1:colcon.colcon_core.environment:checking '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces' for CMake module files
+[67.360s] Level 1:colcon.colcon_core.environment:checking '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces' for CMake config files
+[67.998s] Level 1:colcon.colcon_core.shell:create_environment_hook('rw_interfaces', 'cmake_prefix_path')
+[68.003s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/hook/cmake_prefix_path.ps1'
+[68.031s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/hook/cmake_prefix_path.dsv'
+[68.056s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/hook/cmake_prefix_path.sh'
+[68.092s] Level 1:colcon.colcon_core.environment:checking '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib'
+[68.100s] Level 1:colcon.colcon_core.shell:create_environment_hook('rw_interfaces', 'ld_library_path_lib')
+[68.102s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/hook/ld_library_path_lib.ps1'
+[68.123s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/hook/ld_library_path_lib.dsv'
+[68.145s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/hook/ld_library_path_lib.sh'
+[68.165s] Level 1:colcon.colcon_core.environment:checking '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/bin'
+[68.167s] Level 1:colcon.colcon_core.environment:checking '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib/pkgconfig/rw_interfaces.pc'
+[68.172s] Level 1:colcon.colcon_core.environment:checking '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib/python3.10/site-packages'
+[68.175s] Level 1:colcon.colcon_core.environment:checking '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/bin'
+[68.178s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/package.ps1'
+[68.196s] INFO:colcon.colcon_core.shell:Creating package descriptor '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/package.dsv'
+[68.215s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/package.sh'
+[68.235s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/package.bash'
+[68.255s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/package.zsh'
+[68.275s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/colcon-core/packages/rw_interfaces)
+[68.435s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(rw_interfaces)
+[68.438s] Level 1:colcon.colcon_core.environment:checking '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces' for CMake module files
+[68.748s] Level 1:colcon.colcon_core.environment:checking '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces' for CMake config files
+[68.995s] Level 1:colcon.colcon_core.shell:create_environment_hook('rw_interfaces', 'cmake_prefix_path')
+[68.997s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/hook/cmake_prefix_path.ps1'
+[69.017s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/hook/cmake_prefix_path.dsv'
+[69.037s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/hook/cmake_prefix_path.sh'
+[69.059s] Level 1:colcon.colcon_core.environment:checking '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib'
+[69.064s] Level 1:colcon.colcon_core.shell:create_environment_hook('rw_interfaces', 'ld_library_path_lib')
+[69.066s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/hook/ld_library_path_lib.ps1'
+[69.082s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/hook/ld_library_path_lib.dsv'
+[69.099s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/hook/ld_library_path_lib.sh'
+[69.115s] Level 1:colcon.colcon_core.environment:checking '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/bin'
+[69.117s] Level 1:colcon.colcon_core.environment:checking '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib/pkgconfig/rw_interfaces.pc'
+[69.120s] Level 1:colcon.colcon_core.environment:checking '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib/python3.10/site-packages'
+[69.122s] Level 1:colcon.colcon_core.environment:checking '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/bin'
+[69.125s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/package.ps1'
+[69.139s] INFO:colcon.colcon_core.shell:Creating package descriptor '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/package.dsv'
+[69.154s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/package.sh'
+[69.170s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/package.bash'
+[69.186s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/rw_interfaces/package.zsh'
+[69.199s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/share/colcon-core/packages/rw_interfaces)
+[69.213s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/mnt/c/ROS2/robotic-waitress/src/rw_distance_sensors' with build type 'ament_python'
+[69.214s] Level 1:colcon.colcon_core.shell:create_environment_hook('rw_distance_sensors', 'ament_prefix_path')
+[69.217s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/share/rw_distance_sensors/hook/ament_prefix_path.ps1'
+[69.294s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/share/rw_distance_sensors/hook/ament_prefix_path.dsv'
+[69.315s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/share/rw_distance_sensors/hook/ament_prefix_path.sh'
+[69.335s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[69.336s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[70.708s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/mnt/c/ROS2/robotic-waitress/src/rw_distance_sensors'
+[70.712s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[70.713s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[74.666s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/mnt/c/ROS2/robotic-waitress/src/rw_distance_sensors': AMENT_PREFIX_PATH=/mnt/c/ROS2/robotic-waitress/install/rw_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/mnt/c/ROS2/robotic-waitress/install/rw_interfaces LD_LIBRARY_PATH=/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/prefix_override:/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/python3.10/site-packages:/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/rw_distance_sensors build --build-base /mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/build install --record /mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/install.log --single-version-externally-managed
+[77.718s] Level 1:colcon.colcon_core.environment:checking '/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors' for CMake module files
+[77.720s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/mnt/c/ROS2/robotic-waitress/src/rw_distance_sensors' returned '0': AMENT_PREFIX_PATH=/mnt/c/ROS2/robotic-waitress/install/rw_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/mnt/c/ROS2/robotic-waitress/install/rw_interfaces LD_LIBRARY_PATH=/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/prefix_override:/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/python3.10/site-packages:/mnt/c/ROS2/robotic-waitress/install/rw_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/rw_distance_sensors build --build-base /mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/build install --record /mnt/c/ROS2/robotic-waitress/build/rw_distance_sensors/install.log --single-version-externally-managed
+[77.798s] Level 1:colcon.colcon_core.environment:checking '/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors' for CMake config files
+[77.932s] Level 1:colcon.colcon_core.environment:checking '/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib'
+[77.939s] Level 1:colcon.colcon_core.environment:checking '/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/bin'
+[77.941s] Level 1:colcon.colcon_core.environment:checking '/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/pkgconfig/rw_distance_sensors.pc'
+[77.944s] Level 1:colcon.colcon_core.environment:checking '/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/lib/python3.10/site-packages'
+[77.947s] Level 1:colcon.colcon_core.shell:create_environment_hook('rw_distance_sensors', 'pythonpath')
+[77.949s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/share/rw_distance_sensors/hook/pythonpath.ps1'
+[77.970s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/share/rw_distance_sensors/hook/pythonpath.dsv'
+[77.993s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/share/rw_distance_sensors/hook/pythonpath.sh'
+[78.016s] Level 1:colcon.colcon_core.environment:checking '/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/bin'
+[78.018s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(rw_distance_sensors)
+[78.021s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/share/rw_distance_sensors/package.ps1'
+[78.038s] INFO:colcon.colcon_core.shell:Creating package descriptor '/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/share/rw_distance_sensors/package.dsv'
+[78.058s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/share/rw_distance_sensors/package.sh'
+[78.076s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/share/rw_distance_sensors/package.bash'
+[78.149s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/share/rw_distance_sensors/package.zsh'
+[78.188s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/mnt/c/ROS2/robotic-waitress/install/rw_distance_sensors/share/colcon-core/packages/rw_distance_sensors)
+[78.221s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[78.225s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[78.228s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[78.231s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[78.371s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.notify_send': Could not find 'notify-send'
+[78.372s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[78.372s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[78.373s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[78.373s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.NotSupported: Unable to autolaunch a dbus-daemon without a $DISPLAY for X11
+[78.374s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[78.377s] INFO:colcon.colcon_core.shell:Creating prefix script '/mnt/c/ROS2/robotic-waitress/install/local_setup.ps1'
+[78.386s] INFO:colcon.colcon_core.shell:Creating prefix util module '/mnt/c/ROS2/robotic-waitress/install/_local_setup_util_ps1.py'
+[78.398s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/mnt/c/ROS2/robotic-waitress/install/setup.ps1'
+[78.410s] INFO:colcon.colcon_core.shell:Creating prefix script '/mnt/c/ROS2/robotic-waitress/install/local_setup.sh'
+[78.420s] INFO:colcon.colcon_core.shell:Creating prefix util module '/mnt/c/ROS2/robotic-waitress/install/_local_setup_util_sh.py'
+[78.431s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/mnt/c/ROS2/robotic-waitress/install/setup.sh'
+[78.442s] INFO:colcon.colcon_core.shell:Creating prefix script '/mnt/c/ROS2/robotic-waitress/install/local_setup.bash'
+[78.452s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/mnt/c/ROS2/robotic-waitress/install/setup.bash'
+[78.461s] INFO:colcon.colcon_core.shell:Creating prefix script '/mnt/c/ROS2/robotic-waitress/install/local_setup.zsh'
+[78.471s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/mnt/c/ROS2/robotic-waitress/install/setup.zsh'

@@ -37,22 +37,67 @@ void rw_interfaces__msg__Ultrasonic__rosidl_typesupport_introspection_c__Ultraso
   rw_interfaces__msg__Ultrasonic__fini(message_memory);
 }
 
+size_t rw_interfaces__msg__Ultrasonic__rosidl_typesupport_introspection_c__size_function__Ultrasonic__distances(
+  const void * untyped_member)
+{
+  (void)untyped_member;
+  return 3;
+}
+
+const void * rw_interfaces__msg__Ultrasonic__rosidl_typesupport_introspection_c__get_const_function__Ultrasonic__distances(
+  const void * untyped_member, size_t index)
+{
+  const float * member =
+    (const float *)(untyped_member);
+  return &member[index];
+}
+
+void * rw_interfaces__msg__Ultrasonic__rosidl_typesupport_introspection_c__get_function__Ultrasonic__distances(
+  void * untyped_member, size_t index)
+{
+  float * member =
+    (float *)(untyped_member);
+  return &member[index];
+}
+
+void rw_interfaces__msg__Ultrasonic__rosidl_typesupport_introspection_c__fetch_function__Ultrasonic__distances(
+  const void * untyped_member, size_t index, void * untyped_value)
+{
+  const float * item =
+    ((const float *)
+    rw_interfaces__msg__Ultrasonic__rosidl_typesupport_introspection_c__get_const_function__Ultrasonic__distances(untyped_member, index));
+  float * value =
+    (float *)(untyped_value);
+  *value = *item;
+}
+
+void rw_interfaces__msg__Ultrasonic__rosidl_typesupport_introspection_c__assign_function__Ultrasonic__distances(
+  void * untyped_member, size_t index, const void * untyped_value)
+{
+  float * item =
+    ((float *)
+    rw_interfaces__msg__Ultrasonic__rosidl_typesupport_introspection_c__get_function__Ultrasonic__distances(untyped_member, index));
+  const float * value =
+    (const float *)(untyped_value);
+  *item = *value;
+}
+
 static rosidl_typesupport_introspection_c__MessageMember rw_interfaces__msg__Ultrasonic__rosidl_typesupport_introspection_c__Ultrasonic_message_member_array[2] = {
   {
-    "distance",  // name
+    "distances",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
+    true,  // is array
+    3,  // array size
     false,  // is upper bound
-    offsetof(rw_interfaces__msg__Ultrasonic, distance),  // bytes offset in struct
+    offsetof(rw_interfaces__msg__Ultrasonic, distances),  // bytes offset in struct
     NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL,  // fetch(index, &value) function pointer
-    NULL,  // assign(index, value) function pointer
+    rw_interfaces__msg__Ultrasonic__rosidl_typesupport_introspection_c__size_function__Ultrasonic__distances,  // size() function pointer
+    rw_interfaces__msg__Ultrasonic__rosidl_typesupport_introspection_c__get_const_function__Ultrasonic__distances,  // get_const(index) function pointer
+    rw_interfaces__msg__Ultrasonic__rosidl_typesupport_introspection_c__get_function__Ultrasonic__distances,  // get(index) function pointer
+    rw_interfaces__msg__Ultrasonic__rosidl_typesupport_introspection_c__fetch_function__Ultrasonic__distances,  // fetch(index, &value) function pointer
+    rw_interfaces__msg__Ultrasonic__rosidl_typesupport_introspection_c__assign_function__Ultrasonic__distances,  // assign(index, value) function pointer
     NULL  // resize(index) function pointer
   },
   {

@@ -1,5 +1,4 @@
 import serial
-
 class Sonar():
     
     def __init__(self, portname, baudrate):
@@ -15,4 +14,4 @@ class Sonar():
             string = line.decode()
             value = string.strip()
         self.ser.close()
-        return float(value)
+        return value

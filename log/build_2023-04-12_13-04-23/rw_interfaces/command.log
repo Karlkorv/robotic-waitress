@@ -1,0 +1,2 @@
+Invoking command in '/mnt/c/ROS2/robotic-waitress/build/rw_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /mnt/c/ROS2/robotic-waitress/build/rw_interfaces -- -j4 -l4
+Invoked command in '/mnt/c/ROS2/robotic-waitress/build/rw_interfaces' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /mnt/c/ROS2/robotic-waitress/build/rw_interfaces -- -j4 -l4
