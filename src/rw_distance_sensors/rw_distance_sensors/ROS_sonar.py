@@ -25,45 +25,10 @@ class Sonar_Publisher(Node):
 
     def timer_callback(self):
         # lägg in data från sonar
-        collectL = False
-        collectC = False
-        collectR = False
         sonar = Sonar('/dev/ttyACM0', 9600)
         sonarvalue = Ultrasonic()
-        while(True):
-            result = sonar.getDistance()
-            if result is not None:
-                if result[0] == 'L' and not collectL:
-                    sonarvalue.distances[0] = float(result[1:])
-                    collectL = True
-                elif result[0] == 'C' and not collectC:
-                    sonarvalue.distances[1] = float(result[1:])
-                    collectC = True
-                elif result[0] == 'R' and not collectR:
-                    sonarvalue.distances[2] = float(result[1:])
-                    collectR = True
-                else:
-                    continue
-
-            """ match result[0]:
-                case 'L':
-                    if not collectL:
-                        sonarvalue[0] = float(result[1:])
-                        collectL = True
-                case 'C':
-                    if not collectC:
-                        sonarvalue[1] = float(result[1:])
-                        collectC = True
-                case 'R':
-                    if not collectR:
-                        sonarvalue[2] = float(result[1:])
-                        collectR = True
-                case _: 
-                    continue """
-            if(collectL and collectC and collectR):
-                sonar.closePort()
-                break
-        
+        result = sonar.getDistance()
+        sonarvalue.distances = float(result.split(","))
         # det behövs ngn kontroll så att det måste vara en L, en C och en R
         self.get_logger().info("[left '%f', center: '%f', right: '%f']" % (sonarvalue.distances[0], sonarvalue.distances[1], sonarvalue.distances[2]))
         self.publisher_.publish(sonarvalue) # publicera datan från sonar till topic 'Sonar value' 
