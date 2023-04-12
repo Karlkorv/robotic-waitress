@@ -28,8 +28,10 @@ class Sonar_Publisher(Node):
         sonar = Sonar('/dev/ttyACM0', 9600)
         sonarvalue = Ultrasonic()
         result = sonar.getDistance()
-        sonarvalue.distances = float(result.split(","))
-        # det behövs ngn kontroll så att det måste vara en L, en C och en R
+        for index, val in result.split(","):
+            sonarvalue.distances[index] = float(val)
+            
+        sonar.closePort()
         self.get_logger().info("[left '%f', center: '%f', right: '%f']" % (sonarvalue.distances[0], sonarvalue.distances[1], sonarvalue.distances[2]))
         self.publisher_.publish(sonarvalue) # publicera datan från sonar till topic 'Sonar value' 
 
