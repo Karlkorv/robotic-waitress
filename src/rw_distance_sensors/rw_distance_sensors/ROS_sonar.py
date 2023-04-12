@@ -33,13 +33,13 @@ class Sonar_Publisher(Node):
         while(True):
             result = sonar.getDistance()
             if result[0] == 'L' and not collectL:
-                sonarvalue[0] = float(result[1:])
+                sonarvalue.distances[0] = float(result[1:])
                 collectL = True
             elif result[1] == 'C' and not collectC:
-                sonarvalue[1] = float(result[1:])
+                sonarvalue.distances[1] = float(result[1:])
                 collectC = True
             elif result[2] == 'R' and not collectR:
-                sonarvalue[2] = float(result[1:])
+                sonarvalue.distances[2] = float(result[1:])
                 collectR = True
             else:
                 continue
