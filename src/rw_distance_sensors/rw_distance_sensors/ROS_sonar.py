@@ -32,17 +32,18 @@ class Sonar_Publisher(Node):
         sonarvalue = Ultrasonic()
         while(True):
             result = sonar.getDistance()
-            if result[0] == 'L' and not collectL:
-                sonarvalue.distances[0] = float(result[1:])
-                collectL = True
-            elif result[1] == 'C' and not collectC:
-                sonarvalue.distances[1] = float(result[1:])
-                collectC = True
-            elif result[2] == 'R' and not collectR:
-                sonarvalue.distances[2] = float(result[1:])
-                collectR = True
-            else:
-                continue
+            if result is not None:
+                if result[0] == 'L' and not collectL:
+                    sonarvalue.distances[0] = float(result[1:])
+                    collectL = True
+                elif result[1] == 'C' and not collectC:
+                    sonarvalue.distances[1] = float(result[1:])
+                    collectC = True
+                elif result[2] == 'R' and not collectR:
+                    sonarvalue.distances[2] = float(result[1:])
+                    collectR = True
+                else:
+                    continue
 
             """ match result[0]:
                 case 'L':
