@@ -28,7 +28,7 @@ class Sonar_Publisher(Node):
         sonar = Sonar('/dev/ttyACM0', 9600)
         sonarvalue = Ultrasonic()
         result = sonar.getDistance()
-        for index, val in result.split(","):
+        for index, val in enumerate(result.split(",")):
             sonarvalue.distances[index] = float(val)
             
         sonar.closePort()
