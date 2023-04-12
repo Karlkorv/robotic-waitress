@@ -1,15 +1,20 @@
 import rclpy
 import rclpy.qos
+from rclpy.action import ActionClient
 from geometry_msgs.msg import Twist
 from irobot_create_msgs.msg import HazardDetection, HazardDetectionVector
+from irobot_create_msgs.action import RotateAngle
 from rclpy.node import Node, QoSProfile
 from sensor_msgs.msg import Imu
+import time
 
 from rw_interfaces.msg import DetectionsVector, RobotStatus, Ultrasonic
 
 
 class Roam(Node):
-    robotStatus = False  # True = Roam, False = Avoid
+    HAZARD_TIME_INTERVAL = 1
+    lastHazardTime = time.time()
+    roamMode = False  # True = Roam, False = Avoid
     orientation = 0.0
     hazard_orientation = 0.0
     def __init__(self):
@@ -20,20 +25,21 @@ class Roam(Node):
 
         self.vel_pub = self.create_publisher(Twist, 'cmd_vel', 10)
 
-        # self.hazard_sub = self.create_subscription(
-        #     HazardDetectionVector,
-        #     'hazard_detection',
-        #     self.detection_callback,
-        #     qos_profile=qos_policy
-        # )
+        self.hazard_sub = self.create_subscription(
+            HazardDetectionVector,
+            'hazard_detection',
+            self.detection_callback,
+            qos_profile=qos_policy
+        )
         self.sonar_sub = self.create_subscription(
             Ultrasonic,
             'sonar_value',
             self.sonar_callback,
             qos_profile=qos_policy
         )
-        self.imu_sub = self.create_subscription(Imu, 'imu', self.imu_callback, qos_policy)
         self.behaviour_sub = self.create_subscription(RobotStatus, 'behaviour', self.behaviour_callback, qos_policy)
+
+        self._action_client = ActionClient(self, RotateAngle, 'rotate_angle')
 
     def imu_callback(self, msg):
         #self.get_logger().info("imu %f" % msg.orientation.z)
@@ -42,10 +48,10 @@ class Roam(Node):
         
     def behaviour_callback(self, msg):
         self.get_logger().info("behaviour")
-        self.robotStatus = msg.roam
+        self.roamMode = msg.roam
 
     def sonar_callback(self,msg):
-        if not self.robotStatus:
+        if not self.roamMode:
             return
         twist = Twist()
         if self.hazard_orientation+0.5 < self.orientation:
@@ -63,16 +69,22 @@ class Roam(Node):
 
 
     def detection_callback(self, msg):
-        if not self.robotStatus:
+        if not self.roamMode:
             return
-        self.get_logger().info("Hazard detected")
         twist = Twist()
-        if (self.isCollisionHazard(msg)):
-            self.getHazardAvoidance(msg, twist)
+        if (self.isCollisionHazard(msg) and self.cooldownIsDone()):
+            self.get_logger().info("Hazard detected")
+            self.rotate(3.14)
         elif(RobotStatus == False):
             self.noHazardMovement(twist)
         self.vel_pub.publish(twist)
     
+    def cooldownIsDone(self):
+        if time.time() - self.lastHazardTime > self.HAZARD_TIME_INTERVAL:
+            self.lastHazardTime = time.time()
+            return True
+        return False
+
     def isCollisionHazard(self, msg):
         return len(msg.detections) != 0
 
@@ -83,6 +95,32 @@ class Roam(Node):
     def noHazardMovement(self, twist):
         twist.linear.x = 0.1
         twist.angular.z = 0.0
+        
+    def rotate(self, radians):
+        self._action_client._is_ready 
+        goal_msg = RotateAngle.Goal()
+        goal_msg.angle = radians
+
+        self._action_client.wait_for_server()
+
+        self._send_goal_future = self._action_client.send_goal_async(goal_msg)
+
+        self._send_goal_future.add_done_callback(self.goal_response_callback)
+
+    def goal_response_callback(self, future):
+        goal_handle = future.result()
+        if not goal_handle.accepted:
+            self.get_logger().info('Goal rejected :(')
+            return
+
+        self.get_logger().info('Goal accepted :)')
+
+        self._get_result_future = goal_handle.get_result_async()
+        self._get_result_future.add_done_callback(self.get_result_callback)
+
+    def get_result_callback(self, future):
+        result = future.result().result
+        self.get_logger().info('Rotation complete' + str(result))
 
 
 def main():
