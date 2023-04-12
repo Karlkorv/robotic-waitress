@@ -17,6 +17,8 @@ find_package(irobot_create_msgs REQUIRED)
 set(msg_files
     "msg/Ultrasonic.msg"
     "msg/DetectionsVector.msg"
+    "msg/RobotStatus.msg"
+    "msg/DisplayStatus.msg"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
