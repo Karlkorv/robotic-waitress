@@ -6,39 +6,50 @@ from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
-from kivy.uix.image import Image
 from kivy.uix.button import Button
-from kivy.uix.textinput import TextInput
 from kivy.graphics import BorderImage
 from kivy.clock import Clock
 from kivy.core.text import LabelBase
+from kivy.properties import BooleanProperty
+from kivy.uix.video import Video
 from TTS.api import TTS
 from pygame import mixer
-
-
+import time
+from multiprocessing import Process, Pipe
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
 import sys
 sys.path.append('/home/ubuntu/ros2_ws/src/stevan_screen/stevan_screen/')
 
-intros = inputReader.readInputIntros(
-    '/home/ubuntu/ros2_ws/src/stevan_screen/stevan_screen/input.txt')
-options = inputReader.readInputOptions(
-    '/home/ubuntu/ros2_ws/src/stevan_screen/stevan_screen/input.txt')
-nodes = inputReader.readInputNodes(
-    '/home/ubuntu/ros2_ws/src/stevan_screen/stevan_screen/input.txt')
-farewells = inputReader.readInputFarewells(
-    '/home/ubuntu/ros2_ws/src/stevan_screen/stevan_screen/input.txt')
 
-model = TTS.list_models()[15] # 15 is overflow model
-tts = TTS(model_name=model, progress_bar=False, gpu=False) 
+class VideoWindow(App):
 
-for key in nodes.keys():
-    node = nodes.get(key)
-    path = "speech/" + str(node.ID) + ".wav"
-    tts.tts_to_file(text=node.NoSplitText, file_path=path) 
+    def __init__(self, pipe):
+        self.pipe = pipe
+        super().__init__()
 
+    def build(self):
+        self.video = Video(source=currAnimation, preview = 'animations/robot_eye.png')
+        self.video.loaded = True
+        self.video.allow_stretch = True
+        self.video.volume = 0
+        self.video.state = 'play'
+        self.video.options = {'eos': 'loop'}
+        Clock.schedule_interval(self.update_video_source, 0.1)  # Schedule the update function to run every 0.1 seconds
+        return self.video
+
+    def update_video_source(self, dt):
+        global currAnimation
+        if self.pipe.poll():
+            nextAnimation = self.pipe.recv()
+            if nextAnimation is not None and nextAnimation != currAnimation:
+                self.video.source = nextAnimation
+                """ self.video.state = 'stop'
+                self.video.load()
+                self.video.state = 'play' """
+                currAnimation = nextAnimation
+                nextAnimation = None
 
 class MyButton(Button):
     """MyButton class - subclass of Kivy Button, with addition of AnswID,
@@ -50,8 +61,15 @@ class MyButton(Button):
         self.markup = True
         self.font_name = "Avenir_LT_pro_heavy"
         self.font_size = 40
+
+        """  self.canvas.before: BorderImage(
+                    size=(self.width, self.height),
+                    pos=(self.x, self.y),
+                    border=(16, 8, 16, 8),
+                    source='button.png',
+                    auto_scale = 'both',
+                    display_border = True ) """
                     
-        
 class MyLabel(Label):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -73,19 +91,29 @@ class MyLabel(Label):
         self.text += self.target_text[self.index]
         self.index += 1
 
-
 class ConversationWindow(App):
     """ConversationWindow class - the GUI window application"""
 
+    def __init__(self, pipe, vid_pipe):
+        self.pipe = pipe
+        self.vid_pipe = vid_pipe
+        self.activeConv = False
+        super().__init__()
+    
     def build(self):
+        Clock.schedule_interval(self.checkPipe, 0.1)  # Schedule the update function to run every 0.1 seconds    
+        widget_root = BoxLayout(orientation="vertical")
+        return widget_root
 
-        def reset_buttons():
-            """Removes all buttons"""
-            grid_button.clear_widgets()
+    # Initial button setup on startup
+    def initialize(self):
+        # The screen consist of a BoxLayout containing one label (the text),
+        # and one GridLayout (the buttons)
+        label_op = MyLabel(size_hint_y=15, font_size=51, font_name = "Avenir_LT_pro_heavy")
+        grid_button = GridLayout(cols=1, size_hint_y=20, padding = 10, spacing = 10)
 
         def add_buttons(node):
-            """Adds all buttons from the current node"""
-            reset_buttons()
+            #reset_buttons()
             counter = 0
             for text in node.AnswText:
                 if counter == 0:
@@ -107,50 +135,47 @@ class ConversationWindow(App):
                 grid_button.add_widget(b)
                 counter = counter + 1
 
+        def reset_buttons():
+            grid_button.clear_widgets()
+
+        def next_conversation_node(instance):
+            time.sleep(0.5)
+            if int(instance.ButtonAnswID) == 9999:  # Exit code
+                currentNode = functions.getRandomFarewell(farewells)
+                grid_button.clear_widgets()
+                Clock.schedule_once(quit_conversation, 2)
+            else:
+                currentNode = functions.get_node(
+                    nodes, int(instance.ButtonAnswID))
+                reset_buttons()
+                add_buttons(currentNode)
+                update_animation(currentNode)
+            add_new_text(currentNode)
+            button_loop()
+
+        def update_animation(node):
+            self.vid_pipe.send(node.Animation)
+
+        def button_loop():
+            for button in grid_button.children:
+                button.bind(on_press=next_conversation_node)
+
         def add_new_text(node):
-            """Adds text to the top of the screen"""
             label_op.change_text(node.Text)
             if int(node.ID) >= 1000:
                 path = "speech/" + str(node.ID) + ".wav"
                 sound = mixer.Sound(path)
                 sound.play()
 
-
-        def quit_conversation(temp):
-            ConversationWindow().stop()
-
-        def next_conversation_node(instance):
-            time.sleep(0.5)
-            """Updates the screen when button 'instance' is clicked"""
-            if int(instance.ButtonAnswID) == 9999:  # Exit code
-                currentNode = functions.getRandomFarewell(farewells)
-                grid_button.clear_widgets()
-                Clock.schedule_once(quit_conversation, 2)
-                # TODO : Restart application as robot walks away
-            else:
-                currentNode = functions.get_node(
-                    nodes, int(instance.ButtonAnswID))
-                reset_buttons()
-                add_buttons(currentNode)
-            add_new_text(currentNode)
-            button_loop()
-
-        def button_loop():
-            """Continously binds buttons to call next_conversation_node on click"""
-            for button in grid_button.children:
-                button.bind(on_press=next_conversation_node)
-
         def label_text_size(label, new_height):
             label.fontsize = 0.5*label.height
 
-        # The screen consist of a BoxLayout containing one label (the text),
-        # and one GridLayout (the buttons)
-        widget_root = BoxLayout(orientation="vertical")
-        label_op = MyLabel(size_hint_y=15, font_size=51, font_name = "Avenir_LT_pro_heavy")
+        def quit_conversation(temp):
+            self.vid_pipe.send("animations/roaming_eye_loop.mp4")
+            self.pipe.send(True)
+            time.sleep(2)
+            self.activeConv = False
 
-
-        # Initial button setup on startup
-        grid_button = GridLayout(cols=1, size_hint_y=20, padding = 10, spacing = 10)
         counter = 0
         for key in options:
             opt = options.get(key)
@@ -171,6 +196,7 @@ class ConversationWindow(App):
                 pos_hint = {'center_x': 0.5},
                 bold = True,
             )
+            
             grid_button.add_widget(b)
             counter = counter + 1
 
@@ -181,29 +207,81 @@ class ConversationWindow(App):
         add_new_text(functions.getRandomintroNode(intros))
         label_op.bind(height=label_text_size)
 
-        # Add the widgets to the BoxLayout
-        widget_root.add_widget(label_op)
-        widget_root.add_widget(grid_button)
-
-        return widget_root
-
+                # Add the widgets to the BoxLayout
+        self.root.add_widget(label_op)
+        self.root.add_widget(grid_button)
+    
+        
+    def checkPipe(self, dt):
+        if self.pipe.poll():
+            self.activeConv = self.pipe.recv()
+            if self.activeConv:
+                self.initialize()
+        if self.activeConv == False:
+            self.root.clear_widgets()
 
 
 class guiNode(Node):
+
+    @staticmethod
+    def startConv(pipe, vid_pipe):
+        ConversationWindow(pipe, vid_pipe).run()
+
+    @staticmethod
+    def startVid(pipe):
+        VideoWindow(pipe).run()
 
     def __init__(self):
         super().__init__("guiNode")
         self.get_logger().info("'guiNode' started")
         self.guiPublisher = self.create_publisher(isConversationEnded, "/TouchscreenFeedback", 10)
+        self.guiSubscriber = self.create_subscription(
+            robotStatus, "/behaviour_mode", self.start_callback, 10)
+        
+        conv_pipe, conv_pipe_child = Pipe()
+        vid_pipe, vid_pipe_child = Pipe()
+        p1 = Process(target=guiNode.startConv, args=(conv_pipe_child, vid_pipe, ))
+        p1.start()
+        p2 = Process(target=guiNode.startVid, args=(vid_pipe_child,))
+        p2.start()
+
+        Clock.schedule_interval(self.checkPipe, 0.1)  # Schedule the update function to run every 0.1 seconds    
     
-    def start_callback(self, msg: String):
-        self.get_logger().info(str(msg))
-        ConversationWindow().run()
-
-
+    def start_callback(self, msg: robotStatus):
+       # TODO: Translate Pseudo
+       """ if robotStatus == conversation:
+           conv_pipe.send(True) """
+    
+    def checkPipe(self, dt):
+        if self.conv_pipe.poll():
+            convEnded = self.pipe.recv()
+            if convEnded:
+                #TODO: Create isConversationEnded msg
+                self.guiPublisher.publish(msg)
+    
 def main(args=None):
+    # Global variables
+    currAnimation = 'animations/roaming_eye_loop.mp4'
+    intros = inputReader.readInputIntros('input.txt')
+    options = inputReader.readInputOptions('input.txt')
+    nodes = inputReader.readInputNodes('input.txt')
+    farewells = inputReader.readInputFarewells('input.txt')
+    LabelBase.register(name='Avenir_LT_pro_heavy',
+                    fn_regular='fonts/AvenirLTProHeavy.otf')
+
+
+    model = TTS.list_models()[15] # 15 is overflow model
+    tts = TTS(model_name=model, progress_bar=False, gpu=False)
+
+    for key in nodes.keys():
+        node = nodes.get(key)
+        path = "speech/" + str(node.ID) + ".wav"
+        tts.tts_to_file(text=node.NoSplitText, file_path=path)
+
+
+    mixer.init()
     rclpy.init(args=args)
-    node = MyNode()
+    node = guiNode()
     rclpy.spin(node)
     rclpy.shutdown()
 
