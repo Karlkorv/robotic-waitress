@@ -2,25 +2,19 @@ from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
-from kivy.uix.image import Image
 from kivy.uix.button import Button
-from kivy.uix.textinput import TextInput
 from kivy.graphics import BorderImage
 from kivy.clock import Clock
 from kivy.core.text import LabelBase
 from kivy.properties import BooleanProperty
+from kivy.uix.video import Video
 from TTS.api import TTS
 from pygame import mixer
 import inputReader
 import functions
 import time
-import threading
 from multiprocessing import Process, Pipe
 
-from kivy.uix.video import Video
-
-# Global variables
-currAnimation = 'animations/roaming_eye_loop.mp4'
 
 class VideoWindow(App):
 
@@ -222,7 +216,8 @@ class ConversationWindow(App):
             self.root.clear_widgets()
 
 
-
+# Global variables
+currAnimation = 'animations/roaming_eye_loop.mp4'
 intros = inputReader.readInputIntros('input.txt')
 options = inputReader.readInputOptions('input.txt')
 nodes = inputReader.readInputNodes('input.txt')
