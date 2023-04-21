@@ -51,14 +51,10 @@ class Roam(Node):
 
         self.timer = self.create_timer(0.1, self.timer_callback)
 
-        self._action_client = ActionClient(self, RotateAngle, 'rotate_angle')
-
-    def odom_callback(self, odom_msg):
-        # orientation_q = odom_msg.pose.pose.orientation
-        # orientation_list = [orientation_q.x, orientation_q.y, orientation_q.z, orientation_q.w]
+    def odom_callback(self, odom_msg: Odometry) -> None:
         self.yaw = get_angle_from_pose(odom_msg.pose.pose)
 
-    def timer_callback(self):
+    def timer_callback(self) -> None:
         if not self.roamMode:
             return 
         #self.get_logger().info("roam")
@@ -67,18 +63,18 @@ class Roam(Node):
             self.hazardAvoidance()
         #self.noHazardMovement()     
         
-    def behaviour_callback(self, msg):
+    def behaviour_callback(self, msg: RobotStatus) -> None:
         self.get_logger().info("behaviour")
         self.roamMode = msg.roam
 
-    def sonar_callback(self,msg):
+    def sonar_callback(self,msg: Ultrasonic) -> None:
         if not self.roamMode:
             return
         if msg and self.cooldownIsDone(): # TODO om alla avstånd i sonar arrayen är mindre än ett visst avstånd
             self.get_logger().info("Sonar hazard detected")
             self.hazard = True
 
-    def detection_callback(self, msg):
+    def detection_callback(self, msg: HazardDetectionVector) -> None:
         if not self.roamMode:
             return
         if (self.isCollisionHazard(msg) and self.cooldownIsDone()):
@@ -86,21 +82,21 @@ class Roam(Node):
             self.hazard = True
             
 
-    def isCollisionHazard(self, msg):
+    def isCollisionHazard(self, msg: HazardDetectionVector) -> bool:
         return len(msg.detections) != 0
 
-    def hazardAvoidance(self):
+    def hazardAvoidance(self) -> None:
         temp = 90
         self.rotate(temp)
         self.get_logger().info("hazard avoidance done")
-    def noHazardMovement(self):
+    def noHazardMovement(self) -> None:
         self.get_logger().info("no hazard")
         twist = Twist()
         twist.linear.x = 0.1
         twist.angular.z = 0.0
         self.vel_pub.publish(twist)
 
-    def rotate(self, degrees):
+    def rotate(self, degrees: float) -> None:
         radians = math.radians(degrees)
         kp = 0.5
         twist = Twist()
@@ -120,36 +116,12 @@ class Roam(Node):
             self.hazard = False
             self.get_logger().info("Rotation complete")
 
-
-    def goal_response_callback(self, future):
-        goal_handle = future.result()
-        if not goal_handle.accepted:
-            self.get_logger().info('Goal rejected :(')
-            return
-
-        self.get_logger().info('Goal accepted :)')
-
-        self._get_result_future = goal_handle.get_result_async()
-        self._get_result_future.add_done_callback(self.get_result_callback)
-
-    def get_result_callback(self, future):
-        result = future.result().result
-        self.get_logger().info('Rotation complete' + str(result))
-
-
-
     def cooldownIsDone(self):
         if time.time() - self.lastHazardTime > self.HAZARD_TIME_INTERVAL:
             self.lastHazardTime = time.time()
             return True
         #self.get_logger().info(str(time.time() - self.lastHazardTime))
         return False
-    
-def diff(a: float, b:float) -> float:
-    if a > b:
-        return a-b
-    else:
-        return b-a
 
 def euler_from_quaternion(quaternion):
     """
