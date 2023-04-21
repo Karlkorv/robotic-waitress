@@ -5,8 +5,11 @@ from geometry_msgs.msg import Twist
 from irobot_create_msgs.msg import HazardDetection, HazardDetectionVector
 from irobot_create_msgs.action import RotateAngle
 from rclpy.node import Node, QoSProfile
-from sensor_msgs.msg import Imu
+from nav_msgs.msg import Odometry
 import time
+import transforms3d as t3d
+import math
+import numpy as np
 
 from rw_interfaces.msg import DetectionsVector, RobotStatus, Ultrasonic
 
@@ -14,9 +17,14 @@ from rw_interfaces.msg import DetectionsVector, RobotStatus, Ultrasonic
 class Roam(Node):
     HAZARD_TIME_INTERVAL = 1
     lastHazardTime = time.time()
-    roamMode = False  # True = Roam, False = Avoid
+    roamMode = False 
+    hazard = False
     orientation = 0.0
     hazard_orientation = 0.0
+    qz= 0.0
+    yaw = 0.0
+    first_rot_call = True
+    target = -1
     def __init__(self):
         super().__init__('roam')
         qos_policy = rclpy.qos.QoSProfile(reliability=rclpy.qos.ReliabilityPolicy.BEST_EFFORT,
@@ -39,12 +47,25 @@ class Roam(Node):
         )
         self.behaviour_sub = self.create_subscription(RobotStatus, 'behaviour', self.behaviour_callback, qos_policy)
 
+        self.odom_sub = self.create_subscription(Odometry, 'odom', self.odom_callback, qos_policy)
+
+        self.timer = self.create_timer(0.1, self.timer_callback)
+
         self._action_client = ActionClient(self, RotateAngle, 'rotate_angle')
 
-    def imu_callback(self, msg):
-        #self.get_logger().info("imu %f" % msg.orientation.z)
-        self.orientation = msg.orientation.z
+    def odom_callback(self, odom_msg):
+        # orientation_q = odom_msg.pose.pose.orientation
+        # orientation_list = [orientation_q.x, orientation_q.y, orientation_q.z, orientation_q.w]
+        self.yaw = get_angle_from_pose(odom_msg.pose.pose)
 
+    def timer_callback(self):
+        if not self.roamMode:
+            return 
+        #self.get_logger().info("roam")
+        if self.hazard:
+            self.get_logger().info("hazard")
+            self.hazardAvoidance()
+        #self.noHazardMovement()     
         
     def behaviour_callback(self, msg):
         self.get_logger().info("behaviour")
@@ -53,59 +74,52 @@ class Roam(Node):
     def sonar_callback(self,msg):
         if not self.roamMode:
             return
-        twist = Twist()
-        if self.hazard_orientation+0.5 < self.orientation:
-            twist.linear.x = 0.0
-            twist.angular.z = 1.0
-            self.vel_pub.publish(twist)
-            return
-        if msg.distance < 40:
-            self.hazard_orientation = self.orientation
-        else:
-            twist.linear.x = 0.1
-            twist.angular.z = 0.0
-        self.get_logger().info("%f" % self.orientation)
-        self.vel_pub.publish(twist)
-
+        if msg and self.cooldownIsDone(): # TODO om alla avstånd i sonar arrayen är mindre än ett visst avstånd
+            self.get_logger().info("Sonar hazard detected")
+            self.hazard = True
 
     def detection_callback(self, msg):
         if not self.roamMode:
             return
-        twist = Twist()
         if (self.isCollisionHazard(msg) and self.cooldownIsDone()):
-            self.get_logger().info("Hazard detected")
-            self.rotate(3.14)
-        elif(RobotStatus == False):
-            self.noHazardMovement(twist)
-        self.vel_pub.publish(twist)
-    
-    def cooldownIsDone(self):
-        if time.time() - self.lastHazardTime > self.HAZARD_TIME_INTERVAL:
-            self.lastHazardTime = time.time()
-            return True
-        return False
+            self.get_logger().info("Collision hazard detected")
+            self.hazard = True
+            
 
     def isCollisionHazard(self, msg):
         return len(msg.detections) != 0
 
-    def getHazardAvoidance(self, msg, twist):
-        twist.linear.x = 0.0
-        twist.angular.z = 1.7
-
-    def noHazardMovement(self, twist):
+    def hazardAvoidance(self):
+        temp = 90
+        self.rotate(temp)
+        self.get_logger().info("hazard avoidance done")
+    def noHazardMovement(self):
+        self.get_logger().info("no hazard")
+        twist = Twist()
         twist.linear.x = 0.1
         twist.angular.z = 0.0
-        
-    def rotate(self, radians):
-        self._action_client._is_ready 
-        goal_msg = RotateAngle.Goal()
-        goal_msg.angle = radians
+        self.vel_pub.publish(twist)
 
-        self._action_client.wait_for_server()
+    def rotate(self, degrees):
+        radians = math.radians(degrees)
+        kp = 0.5
+        twist = Twist()
+        twist.linear.x = 0.0
+        if self.first_rot_call:
+            self.target = self.yaw + radians
+            if self.target > math.pi:
+                self.target = self.target -  2*math.pi
+            if self.target < -math.pi:
+                self.target = self.target + 2*math.pi
+            self.first_rot_call = False
+        twist.angular.z = kp * (self.target - self.yaw)
+        self.vel_pub.publish(twist)
+        self.get_logger().info("target:" + str(self.target) + " yaw:" + str(self.yaw) + " diff:" + str(abs(self.target - self.yaw)))
+        if abs(self.target - self.yaw) < 0.02:
+            self.first_rot_call = True
+            self.hazard = False
+            self.get_logger().info("Rotation complete")
 
-        self._send_goal_future = self._action_client.send_goal_async(goal_msg)
-
-        self._send_goal_future.add_done_callback(self.goal_response_callback)
 
     def goal_response_callback(self, future):
         goal_handle = future.result()
@@ -123,6 +137,51 @@ class Roam(Node):
         self.get_logger().info('Rotation complete' + str(result))
 
 
+
+    def cooldownIsDone(self):
+        if time.time() - self.lastHazardTime > self.HAZARD_TIME_INTERVAL:
+            self.lastHazardTime = time.time()
+            return True
+        #self.get_logger().info(str(time.time() - self.lastHazardTime))
+        return False
+    
+def diff(a: float, b:float) -> float:
+    if a > b:
+        return a-b
+    else:
+        return b-a
+
+def euler_from_quaternion(quaternion):
+    """
+    Converts quaternion (w in last place) to euler roll, pitch, yaw
+    quaternion = [x, y, z, w]
+    Bellow should be replaced when porting for ROS 2 Python tf_conversions is done.
+    """
+    x = quaternion[0]
+    y = quaternion[1]
+    z = quaternion[2]
+    w = quaternion[3]
+
+    sinr_cosp = 2 * (w * x + y * z)
+    cosr_cosp = 1 - 2 * (x * x + y * y)
+    roll = np.arctan2(sinr_cosp, cosr_cosp)
+
+    sinp = 2 * (w * y - z * x)
+    pitch = np.arcsin(sinp)
+
+    siny_cosp = 2 * (w * z + x * y)
+    cosy_cosp = 1 - 2 * (y * y + z * z)
+    yaw = np.arctan2(siny_cosp, cosy_cosp)
+
+    return roll, pitch, yaw
+
+def get_angle_from_pose(pose):
+    orient_list = [pose.orientation.x,pose.orientation.y,pose.orientation.z,pose.orientation.w]
+    (roll,pitch,yaw) = euler_from_quaternion(orient_list)
+
+    return yaw
+
+
 def main():
     rclpy.init()
     node = Roam()
@@ -132,3 +191,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# Helper methods
