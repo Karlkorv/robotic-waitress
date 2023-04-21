@@ -5,6 +5,7 @@ import functions
 intros = inputReader.readInputIntros('input.txt')
 options = inputReader.readInputOptions('input.txt')
 nodes = inputReader.readInputNodes('input.txt')
+convStarts = inputReader.readInputConvStarts('input.txt')
 
 
 # printInput()
