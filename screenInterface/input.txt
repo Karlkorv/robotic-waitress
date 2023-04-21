@@ -5,7 +5,7 @@ option - 3 - Go Away - 3001
 
 %%%%%%% Intro messages %%%%%%%
 
-intro - 1 - Hey, I'm S.T.E.V.A.N, Service Tech Event Assistant Negotiator??
+intro - 1 - Hey, I'm S.T.E.V.A.N| Service Tech Event Assistant Negotiator??
 intro - 2 - This party sucks!
 intro - 3 - Hey you, can I bum a ciggarette?
 intro - 4 - WAzzzzzuuUUUp
@@ -16,25 +16,46 @@ farewell - 1 - Bye Bye Now
 farewell - 2 - See ya later, Alligator
 farewell - 3 - In a while, Crocodile
 
+%%%%%%% Conversation Starts %%%%%%%
+convsersation start - How are you? - Good| Bad| None of your business - 1001| 1002| 1003 - std
+
+convsersation start - How are you today my dear? - I'm good| So-so| Not so good - 1004| 1005| 1006 - std
+
 %%%%%%% Conversation %%%%%%%
 
-1001 - How are you? - Good, Bad, None of your business - 1002, 1003, 1004 - std
+1001 - Thats good! - Bye!| Cya| I'm leaving - 9999| 9999| 9999 - std
 
-1002 - Thats good! - Bye!, Cya, I'm leaving - 9999, 9999, 9999 - std
+1002 - How sad! - Bye! | Cya| I'm leaving - 9999| 9999| 9999 - std
 
-1003 - How sad! - Bye! , Cya, I'm leaving - 9999, 9999, 9999 - std
+1003 - Well, okay then! I don't understand why you have to use that tone with me, but you do you. - Bye!| Cya| I'm leaving - 9999| 9999| 9999 - suprised
 
-1004 - Well, okay then! I don't understand why you have to use that tone with me, but you do you. - Bye! , Cya, I'm leaving - 9999, 9999, 9999 - suprised
+%%%%%%%%%%
+
+1004 - Good to hear! Myself, I’m down on 11.43 % battery. Could you point me to the charging station? - Yes, I'd be happy to!| I'm sorry, I don't know where it is| Of course not, you creep!- 9999| 9999| 9999 - std
+
+1005 - So-so is better than bad! Myself, I’m down on 11.43 % battery. Could you point me to the charging station? - Yes, I'd be happy to!| I'm sorry, I don't know where it is| Of course not, you creep!- 9999| 9999| 9999 - std
+
+1006 - How sad! Myself, I’m down on 11.43 % battery. Could you point me to the charging station? - Yes, I'd be happy to!| I'm sorry, I don't know where it is| Of course not, you creep!- 1007| 9999| 9999 - std
+
+1007 - Thanks! Well I'm off! - Bye!| Cya| I'm leaving - 9999| 9999| 9999 - std
+
+1008 - Okay then, I'll find it myself! - Bye!| Cya| I'm leaving - 9999| 9999| 9999 - std
+
+1009 - You're the creep, flirting with a robot! Hmpf! - I'm sorry!| No u| Who's flirting with whom is not the issue here - 9999| 9999| 9999 - suprised
+
+%%%%%%%%%%
+
+
 
 
 %%%%%%% Toilet %%%%%%%
 
-2001 - The toilet is either to the lxeft or to the right. Or maybe its behind you! If not, try infront of you. - Alright - 9999 - std
+2001 - The toilet is either to the lxeft or to the right. Or maybe its behind you! If not| try infront of you. - Alright - 9999 - std
 
 
 %%%%%%% Go Away %%%%%%%
 
-3001 - Wow, are you a robotist? Rude. - Im so sorry! - 9999 - suprised
+3001 - Wow| are you a robotist? Rude. - Im so sorry! - 9999 - suprised
 
 
 

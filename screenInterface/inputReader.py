@@ -15,13 +15,32 @@ def readInputNodes(filename):
         currentLine = (line.strip()).split(" - ")
         if len(currentLine) > 1 and (currentLine[0][0]).isnumeric():
             # Turn Answers into a list of answers
-            answText = currentLine[2].split(", ")
+            answText = currentLine[2].split("| ")
             # Turn AnswerIDs into a list if IDs
-            answIDs = currentLine[3].split(", ")
+            answIDs = currentLine[3].split("| ")
             nodes.update({int(currentLine[0]): classes.convNode(currentLine[0],  split_long_sentence(currentLine[1]), currentLine[1],
                                                                 answText, answIDs, currentLine[4])})
     return nodes
 
+def readInputConvStarts(filename):
+    """
+    Creates a dictionary of all the conversation nodes in the input file.
+    The Key is the node's ID, the Value is a convNode object: {ID:convNode}
+    """
+    file = open(filename, 'r')
+    read = file.readlines()
+    convStarts = {}
+
+    for line in read:
+        currentLine = (line.strip()).split(" - ")
+        if len(currentLine) > 1 and (currentLine[0][0]).isnumeric():
+            # Turn Answers into a list of answers
+            answText = currentLine[2].split("| ")
+            # Turn AnswerIDs into a list if IDs
+            answIDs = currentLine[3].split("| ")
+            convStarts.update({int(currentLine[0]): classes.convStarts(currentLine[0],  split_long_sentence(currentLine[1]), currentLine[1],
+                                                                answText, answIDs, currentLine[4])})
+    return convStarts
 
 def readInputOptions(filename):
     """
@@ -73,6 +92,7 @@ def readInputFarewells(filename):
             farewells.update({int(currentLine[1]): classes.farewell(
                 currentLine[1],  split_long_sentence(currentLine[2]))})
     return farewells
+
 
 
 def split_long_sentence(sentence):
