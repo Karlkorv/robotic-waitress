@@ -27,13 +27,16 @@ class Sonar_Publisher(Node):
         # lägg in data från sonar
         sonar = Sonar('/dev/ttyACM0', 9600)
         sonarvalue = Ultrasonic()
-        result = sonar.getDistance()
-        if result != None:
+        # result
+        sonarDistances = sonar.getDistance()
+        print(sonarDistances)
+        
+        """ if result != None:
             for index, val in enumerate(result.split(",")):
                 sonar.distances[index] = val   
-        sonar.closePort()
-        self.get_logger().info("[left: '%f', center: '%f', right: '%f']" % (sonarvalue.distances[0], sonarvalue.distances[1], sonarvalue.distances[2]))
-        self.publisher_.publish(sonarvalue) # publicera datan från sonar till topic 'Sonar value' 
+        sonar.closePort() """
+        """ self.get_logger().info("[left: '%f', center: '%f', right: '%f']" % (sonarvalue.distances[0], sonarvalue.distances[1], sonarvalue.distances[2]))
+        self.publisher_.publish(sonarvalue) # publicera datan från sonar till topic 'Sonar value'  """
 
 
 def main(args=None):
