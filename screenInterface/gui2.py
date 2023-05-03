@@ -140,6 +140,11 @@ class ConversationWindow(App):
                 currentNode = functions.getRandomFarewell(farewells)
                 grid_button.clear_widgets()
                 Clock.schedule_once(quit_conversation, 2)
+            elif int(instance.ButtonAnswID) == 8888: # New conversation code
+                currentNode = functions.getRandomConvStart(starts)
+                reset_buttons()
+                add_buttons(currentNode)
+                update_animation(currentNode)
             else:
                 currentNode = functions.get_node(
                     nodes, int(instance.ButtonAnswID))
@@ -158,10 +163,10 @@ class ConversationWindow(App):
 
         def add_new_text(node):
             label_op.change_text(node.Text)
-            if int(node.ID) >= 1000:
-                path = "speech/" + str(node.ID) + ".wav"
-                sound = mixer.Sound(path)
-                sound.play()
+            #if int(node.ID) >= 1000:
+            #    path = "speech/" + str(node.ID) + ".wav"
+            #    sound = mixer.Sound(path)
+            #    sound.play()
 
         def label_text_size(label, new_height):
             label.fontsize = 0.5*label.height
@@ -222,6 +227,7 @@ intros = inputReader.readInputIntros('input.txt')
 options = inputReader.readInputOptions('input.txt')
 nodes = inputReader.readInputNodes('input.txt')
 farewells = inputReader.readInputFarewells('input.txt')
+starts = inputReader.readInputConvStarts('input.txt')
 LabelBase.register(name='Avenir_LT_pro_heavy',
                 fn_regular='fonts/AvenirLTProHeavy.otf')
 

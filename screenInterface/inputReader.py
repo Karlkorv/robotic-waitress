@@ -31,15 +31,17 @@ def readInputConvStarts(filename):
     read = file.readlines()
     convStarts = {}
 
+    counter = 0
     for line in read:
         currentLine = (line.strip()).split(" - ")
-        if len(currentLine) > 1 and (currentLine[0][0]).isnumeric():
+        if len(currentLine) > 1 and currentLine[0][0] == 'c':
             # Turn Answers into a list of answers
             answText = currentLine[2].split("| ")
             # Turn AnswerIDs into a list if IDs
             answIDs = currentLine[3].split("| ")
-            convStarts.update({int(currentLine[0]): classes.convStarts(currentLine[0],  split_long_sentence(currentLine[1]), currentLine[1],
+            convStarts.update({counter : classes.convStart(counter,  split_long_sentence(currentLine[1]), currentLine[1],
                                                                 answText, answIDs, currentLine[4])})
+            counter += 1
     return convStarts
 
 def readInputOptions(filename):

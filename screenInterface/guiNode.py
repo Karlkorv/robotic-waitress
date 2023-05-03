@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
-from stevan_screen import functions
-from stevan_screen import inputReader
+from rw_screen import functions
+from rw_screen import inputReader
+from rw_interfaces.msg import RobotStatus
+from rw_interfaces.msg import IsConversationEnded
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
@@ -93,11 +95,28 @@ class MyLabel(Label):
 
 class ConversationWindow(App):
     """ConversationWindow class - the GUI window application"""
-
     def __init__(self, pipe, vid_pipe):
         self.pipe = pipe
         self.vid_pipe = vid_pipe
         self.activeConv = False
+        self.currAnimation = 'animations/roaming_eye_loop.mp4'
+        self.intros = inputReader.readInputIntros('input.txt')
+        self.options = inputReader.readInputOptions('input.txt')
+        self.nodes = inputReader.readInputNodes('input.txt')
+        self.farewells = inputReader.readInputFarewells('input.txt')
+        self.starts = inputReader.readInputConvStarts('input.txt')
+        
+
+        LabelBase.register(name='Avenir_LT_pro_heavy',
+                        fn_regular='fonts/AvenirLTProHeavy.otf')
+
+        self.model = TTS.list_models()[15] # 15 is overflow model
+        self.tts = TTS(model_name=self.model, progress_bar=False, gpu=False)
+
+        for key in self.nodes.keys():
+            node = self.nodes.get(key)
+            path = "speech/" + str(node.ID) + ".wav"
+            self.tts.tts_to_file(text=node.NoSplitText, file_path=path)
         super().__init__()
     
     def build(self):
@@ -141,12 +160,17 @@ class ConversationWindow(App):
         def next_conversation_node(instance):
             time.sleep(0.5)
             if int(instance.ButtonAnswID) == 9999:  # Exit code
-                currentNode = functions.getRandomFarewell(farewells)
+                currentNode = functions.getRandomFarewell(self.farewells)
                 grid_button.clear_widgets()
                 Clock.schedule_once(quit_conversation, 2)
+            elif int(instance.ButtonAnswID) == 8888: # New conversation code
+                currentNode = functions.getRandomConvStart(self.starts)
+                reset_buttons()
+                add_buttons(currentNode)
+                update_animation(currentNode)
             else:
                 currentNode = functions.get_node(
-                    nodes, int(instance.ButtonAnswID))
+                    self.nodes, int(instance.ButtonAnswID))
                 reset_buttons()
                 add_buttons(currentNode)
                 update_animation(currentNode)
@@ -177,8 +201,8 @@ class ConversationWindow(App):
             self.activeConv = False
 
         counter = 0
-        for key in options:
-            opt = options.get(key)
+        for key in self.options:
+            opt = self.options.get(key)
             if counter == 0:
                 frame = "imgs/frame_green.png"
                 frame_pushed = "imgs/frame_pushed_green.png"
@@ -204,7 +228,7 @@ class ConversationWindow(App):
             button.bind(on_press=next_conversation_node)
 
         # Initial label setup on startup
-        add_new_text(functions.getRandomintroNode(intros))
+        add_new_text(functions.getRandomintroNode(self.intros))
         label_op.bind(height=label_text_size)
 
                 # Add the widgets to the BoxLayout
@@ -234,51 +258,32 @@ class guiNode(Node):
     def __init__(self):
         super().__init__("guiNode")
         self.get_logger().info("'guiNode' started")
-        self.guiPublisher = self.create_publisher(isConversationEnded, "/TouchscreenFeedback", 10)
+        self.guiPublisher = self.create_publisher(IsConversationEnded, "touchscreen_feedback", 10)
         self.guiSubscriber = self.create_subscription(
-            robotStatus, "/behaviour_mode", self.start_callback, 10)
+            RobotStatus, "behaviour", self.start_callback, 10)
         
-        conv_pipe, conv_pipe_child = Pipe()
-        vid_pipe, vid_pipe_child = Pipe()
-        p1 = Process(target=guiNode.startConv, args=(conv_pipe_child, vid_pipe, ))
+        self.conv_pipe, self.conv_pipe_child = Pipe()
+        self.vid_pipe, self.vid_pipe_child = Pipe()
+        p1 = Process(target=guiNode.startConv, args=(self.conv_pipe_child, self.vid_pipe, ))
         p1.start()
-        p2 = Process(target=guiNode.startVid, args=(vid_pipe_child,))
+        p2 = Process(target=guiNode.startVid, args=(self.vid_pipe_child,))
         p2.start()
 
         Clock.schedule_interval(self.checkPipe, 0.1)  # Schedule the update function to run every 0.1 seconds    
     
-    def start_callback(self, msg: robotStatus):
-       # TODO: Translate Pseudo
-       """ if robotStatus == conversation:
-           conv_pipe.send(True) """
+    def start_callback(self, msg: RobotStatus):
+       if msg.roam == False:
+           self.conv_pipe.send(True)
     
     def checkPipe(self, dt):
         if self.conv_pipe.poll():
             convEnded = self.pipe.recv()
             if convEnded:
-                #TODO: Create isConversationEnded msg
+                msg = IsConversationEnded()
+                msg.convEnded = True;
                 self.guiPublisher.publish(msg)
     
 def main(args=None):
-    # Global variables
-    currAnimation = 'animations/roaming_eye_loop.mp4'
-    intros = inputReader.readInputIntros('input.txt')
-    options = inputReader.readInputOptions('input.txt')
-    nodes = inputReader.readInputNodes('input.txt')
-    farewells = inputReader.readInputFarewells('input.txt')
-    LabelBase.register(name='Avenir_LT_pro_heavy',
-                    fn_regular='fonts/AvenirLTProHeavy.otf')
-
-
-    model = TTS.list_models()[15] # 15 is overflow model
-    tts = TTS(model_name=model, progress_bar=False, gpu=False)
-
-    for key in nodes.keys():
-        node = nodes.get(key)
-        path = "speech/" + str(node.ID) + ".wav"
-        tts.tts_to_file(text=node.NoSplitText, file_path=path)
-
-
     mixer.init()
     rclpy.init(args=args)
     node = guiNode()
