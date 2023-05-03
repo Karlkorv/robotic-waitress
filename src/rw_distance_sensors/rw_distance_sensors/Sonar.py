@@ -1,5 +1,10 @@
 import serial
-import struct
+
+def main():
+    sonar = Sonar('/dev/ttyACM01', 9600)
+    while True:
+        #time.sleep(1)
+        sonar.getDistance()
 
 class Sonar():
     
@@ -7,16 +12,30 @@ class Sonar():
         self.portname = portname
         self.baudrate = baudrate
         # Timeout is for how long the Pi will wait for data before returning when reading
-        self.ser = serial.Serial(self.portname, self.baudrate, timeout = 1)
+        try:
+            self.ser = serial.Serial(self.portname, self.baudrate, timeout=10)
+        except serial.SerialException as e:
+            print(f"Error: Failed to open serial port {self.portname} with baud rate {self.baudrate}: {e}")
     
 
 
     def getDistance(self):
-        if self.ser.in_waiting > 0:
-            data = self.ser.read(7)
-            leftSonar, centerSonar, rightSonar = struct.unpack('>iii', data)
-        self.ser.close()
-        return (leftSonar, centerSonar, rightSonar)
+        sensorvals = None
+        if not self.ser.is_open:
+            self.ser.open()
+        #sensorvals = self.ser.readline().decode('utf-8').rstrip()
+        try:
+            byte_data = self.ser.readline()
+            print(byte_data)
+            sensorvals = byte_data.decode('utf-8').rstrip()
+        except UnicodeDecodeError:
+            self.ser.flushInput()
+            print("Flushar input")
 
-    def closePort(self):
         self.ser.close()
+        return sensorvals
+    
+    
+
+if __name__ == '__main__':
+    main()
