@@ -1,11 +1,11 @@
 %%%%%%% Options %%%%%%%
-option - 1 - Let's Talk! - 1001
-option - 2 - Show me where the bathroom is - 2001
-option - 3 - Go Away - 3001
+option - 1 - Let's Talk! - 8888
+option - 2 - Go Away! - 9999
+option - 3 - Howdy partner! - 8888
 
 %%%%%%% Intro messages %%%%%%%
 
-intro - 1 - Hey, I'm S.T.E.V.A.N| Service Tech Event Assistant Negotiator??
+intro - 1 - Hey, I'm S.T.E.V.A.N, Service Tech Event Assistant Negotiator??
 intro - 2 - This party sucks!
 intro - 3 - Hey you, can I bum a ciggarette?
 intro - 4 - WAzzzzzuuUUUp
@@ -17,11 +17,19 @@ farewell - 2 - See ya later, Alligator
 farewell - 3 - In a while, Crocodile
 
 %%%%%%% Conversation Starts %%%%%%%
-convsersation start - How are you? - Good| Bad| None of your business - 1001| 1002| 1003 - std
+conversation start 1 - How are you? - Good| Bad| None of your business - 1001| 1002| 1003 - std
 
-convsersation start - How are you today my dear? - I'm good| So-so| Not so good - 1004| 1005| 1006 - std
+conversation start 2 - How are you today my dear? - I'm good| So-so| Not so good - 1004| 1005| 1006 - std
 
-%%%%%%% Conversation %%%%%%%
+conversation start 3 - What's your favorite color? - Blue| Red| Green - 1010| 1011| 1012 - std
+
+conversation start 4 - Do you have any hobbies? - Yes, I love to read!| Not really| Yes, but robots don't have hobbies, so you probably don't. - 1013| 1014| 1015 - std
+
+conversation start 5 - What's your favorite movie? - Blade Runner| The Terminator| Wall-E - 1017| 1018| 1019 - std
+
+conversation start 6 - What's the meaning of life? - To be happy| To help others| To find your own meaning - 1020| 1021| 1022 - std
+
+%%%%%%% Conversation %%%%%%% 1
 
 1001 - Thats good! - Bye!| Cya| I'm leaving - 9999| 9999| 9999 - std
 
@@ -29,13 +37,13 @@ convsersation start - How are you today my dear? - I'm good| So-so| Not so good 
 
 1003 - Well, okay then! I don't understand why you have to use that tone with me, but you do you. - Bye!| Cya| I'm leaving - 9999| 9999| 9999 - suprised
 
-%%%%%%%%%%
+%%%%%%%%%% 2
 
-1004 - Good to hear! Myself, I’m down on 11.43 % battery. Could you point me to the charging station? - Yes, I'd be happy to!| I'm sorry, I don't know where it is| Of course not, you creep!- 9999| 9999| 9999 - std
+1004 - Good to hear! Myself, I’m down on 11.43 % battery. Could you point me to the charging station? - Yes, I'd be happy to!| I'm sorry, I don't know where it is| Of course not, you creep! - 1007| 1008| 1009 - std
 
-1005 - So-so is better than bad! Myself, I’m down on 11.43 % battery. Could you point me to the charging station? - Yes, I'd be happy to!| I'm sorry, I don't know where it is| Of course not, you creep!- 9999| 9999| 9999 - std
+1005 - So-so is better than bad! Myself, I’m down on 11.43 % battery. Could you point me to the charging station? - Yes, I'd be happy to!| I'm sorry, I don't know where it is| Of course not, you creep! - 1007| 1008| 1009 - std
 
-1006 - How sad! Myself, I’m down on 11.43 % battery. Could you point me to the charging station? - Yes, I'd be happy to!| I'm sorry, I don't know where it is| Of course not, you creep!- 1007| 9999| 9999 - std
+1006 - How sad! Myself, I’m down on 11.43 % battery. Could you point me to the charging station? - Yes, I'd be happy to!| I'm sorry, I don't know where it is| Of course not, you creep! - 1007| 1008| 1009 - std
 
 1007 - Thanks! Well I'm off! - Bye!| Cya| I'm leaving - 9999| 9999| 9999 - std
 
@@ -43,10 +51,46 @@ convsersation start - How are you today my dear? - I'm good| So-so| Not so good 
 
 1009 - You're the creep, flirting with a robot! Hmpf! - I'm sorry!| No u| Who's flirting with whom is not the issue here - 9999| 9999| 9999 - suprised
 
-%%%%%%%%%%
+%%%%%%%%%% 3
+
+1010 - Blue is a great color! - Yeah, it's my favorite too!| I prefer red myself| Green is where it's at! - 8888| 8888| 8888 - std
+
+1011 - Red is bold! - Yeah, it's my favorite too!| Blue is where it's at!| Green is nice too - 8888| 8888| 8888 - std
+
+1012 - Green is calming! - Yeah, it's my favorite too!| Red is where it's at!| Blue is nice too - 8888| 8888| 8888 - std
+
+%%%%%%%%%% 4
+
+1013 - What's your favorite book? - I love "1984" by George Orwell| I'm not much of a reader myself| Have you read "The Hitchhiker's Guide to the Galaxy"? - 8888 | 8888| 1016 - std
+
+1014 - You should try lubricating grears, it's great fun! - OK, I'll give it a try| Doesn't seem like something I'd enjoy.| I'll de-lubricate your gears if you're not careful - 8888| 8888| 8888 - std
+
+1015 - Well, I suppose you're right. I don't technically have hobbies, but I do enjoy performing tasks efficiently. - Interesting!| That sounds boring| Robots are so cool! - 8888| 8888| 8888 - std
+
+1016 - Yes, "The Hitchhiker's Guide to the Galaxy" is great! - I haven't read it, but I've heard good things| I didn't really enjoy that one| What's it about? - 8888| 8888| 8888 - std
 
 
+%%%%%%%%%% 5
 
+1017 - Blade Runner is a classic! - Yes, it's one of my favorites too| I haven't seen it| Meh, it's okay - 8888| 8888| 8888 - std
+
+1018 - The Terminator is awesome! - I love that one too!| Meh, it's okay| I haven't seen it - 8888| 8888| 8888 - std
+
+1019 - Wall-E is adorable! - It's such a heartwarming movie| I don't really like that one| I haven't seen it - 8888| 8888| 8888 - std
+
+%%%%%%%%%% 6
+
+1020 - To be happy, you say? That's a simple answer, but it's also deep. What makes you happy? - Talking with you| Not this conversation, that's fort sure!| I'm not sure, I want to tell you but maybe that wont make you happe, which wont make me happy - 1023| 1024| 1025 - std
+
+1021 - Helping others is important! - Yes, I agree!| I'm not sure I agree| I think finding your own meaning is more important - 8888| 8888| 8888 - std
+
+1022 - Finding your own meaning is key! - Yes, I agree!| I'm not sure I agree| I think helping others is more important - 8888| 8888| 8888 - std
+
+1023 - Aww! You're not to bad of a conversation dummy yourself! - Thanks!| Dummy?! What do you mean by that statement?| Aren't we all conversation dummies, at the end of the day. - 8888| 1024| 1024 - std
+
+1024 - Alrighty then, this is awkward, I'll take my leave. - No offense!| You do that.| Awkwardness is a state of mind. - 9999| 9999| 9999 - suprised
+
+1025 - I'm confused... You wanna talk about something else? - Sure!| Nah bro| Confusing times calls for confusing situations. - 8888| 8888| 8888 - suprised
 
 %%%%%%% Toilet %%%%%%%
 
