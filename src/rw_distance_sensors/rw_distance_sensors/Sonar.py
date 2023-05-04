@@ -3,7 +3,6 @@ import serial
 def main():
     sonar = Sonar('/dev/ttyACM01', 9600)
     while True:
-        #time.sleep(1)
         sonar.getDistance()
 
 class Sonar():
@@ -23,15 +22,12 @@ class Sonar():
         sensorvals = None
         if not self.ser.is_open:
             self.ser.open()
-        #sensorvals = self.ser.readline().decode('utf-8').rstrip()
-        try:
-            byte_data = self.ser.readline()
-            print(byte_data)
-            sensorvals = byte_data.decode('utf-8').rstrip()
-        except UnicodeDecodeError:
-            self.ser.flushInput()
-            print("Flushar input")
 
+        try:
+            byte_data = self.ser.readline() # Accepts a byte string in utf-8 encoding
+            sensorvals = byte_data.decode('utf-8').rstrip() # removes trailing whitespace and decodes from utf-8 to normal string
+        except UnicodeDecodeError:
+            self.ser.flushInput() # if there is something wrong with the input (e.g. misaligned newlines)
         self.ser.close()
         return sensorvals
     
