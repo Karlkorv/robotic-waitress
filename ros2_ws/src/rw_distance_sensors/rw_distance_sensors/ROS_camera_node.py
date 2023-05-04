@@ -45,7 +45,7 @@ class Camera_Publisher(Node):
                 value = conn.recv()
                 self.get_logger().info(f"{value}")
                 msg = HumanDetection()
-                msg.probability = value
+                msg.probability = float(value)
                 self.publisher_.publish(msg)
                 conn.close()
         except ConnectionRefusedError:
