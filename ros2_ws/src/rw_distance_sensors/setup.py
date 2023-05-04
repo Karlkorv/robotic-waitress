@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'sonar = rw_distance_sensors.ROS_sonar:main'
+            'sonar = rw_distance_sensors.ROS_sonar:main',
+            'camera = rw_distance_sensors.ROS_camera_node:main' 
         ],
     },
 )
