@@ -53,7 +53,7 @@ def run(model: str, camera_id: int, width: int, height: int, num_threads: int, e
     cap.release()
     cv2.destroyAllWindows()
     
-def foundHuman(result: processor.DetectionResult) -> bool:
+def foundHuman(result: processor.DetectionResult) -> float:
     for result_current in result.detections:
         category  = result_current.categories[0]
         category_name = category.category_name
