@@ -1,7 +1,7 @@
 # Authors: 
 # Erik Berglund
 # Adam Fridén Rasmussen
-# Date: 2023-02-23
+# Date: 2023-05-04
 # Based on https://automaticaddison.com/create-a-basic-publisher-and-subscriber-python-ros2-foxy/ as well as 
 # https://docs.ros.org/en/foxy/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html
 
@@ -24,24 +24,27 @@ class Sonar_Publisher(Node):
         self.timer = self.create_timer(timer_period, self.timer_callback)
 
     def timer_callback(self):
-        # lägg in data från sonar
+        # initalise new sonar on the port where the arduino is connected
         sonar = Sonar('/dev/ttyACM0', 9600)
         sonarvalue = Ultrasonic()
-        # result
+
         distance = sonar.getDistance()
         filteredValues = self.filterValues(distance)
         if(filteredValues == None):
             return
         sonarvalue.distances = filteredValues
         self.get_logger().info("[left: '%f', center: '%f', right: '%f']" % (sonarvalue.distances[0], sonarvalue.distances[1], sonarvalue.distances[2]))
-        self.publisher_.publish(sonarvalue) # publicera datan från sonar till topic 'Sonar value'
+        self.publisher_.publish(sonarvalue) # Publish sonar data to the ROS topic 'Sonar value'
         
         
+    """ 
+    Ensures there are 3 returned values within reasonable distance limits.
+    returns an array of floats with the distances 
+    """
     def filterValues(self, sonarDistance):    
             if(sonarDistance == None or sonarDistance == ''):
                 return 
             distance_values = sonarDistance.split(",")
-            print(f'distanceList is {distance_values}')
             if len(distance_values) != 3:
                 return 
             for i in range(len(distance_values)):
