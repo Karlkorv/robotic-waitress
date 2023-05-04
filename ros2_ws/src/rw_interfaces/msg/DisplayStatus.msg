@@ -1,0 +1,2 @@
+bool is_conversation_ended
+bool has_been_touched
