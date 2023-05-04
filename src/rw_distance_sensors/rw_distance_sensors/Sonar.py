@@ -17,7 +17,9 @@ class Sonar():
             print(f"Error: Failed to open serial port {self.portname} with baud rate {self.baudrate}: {e}")
     
 
-
+    """ 
+    Reads data from serial input (Arduino) and returns a string containing these values    
+    """
     def getDistance(self):
         sensorvals = None
         if not self.ser.is_open:
