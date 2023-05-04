@@ -1,0 +1,3 @@
+tflite-support
+numpy
+opencv-python
