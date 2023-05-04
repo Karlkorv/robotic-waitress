@@ -49,7 +49,7 @@ def run(model: str, camera_id: int, width: int, height: int, num_threads: int, e
         # listener väntar på att det finns en receiver som tar emot innan den skickar meddelande, vilket finns i ros2 noden.
         with Listener(('localhost', 5000)) as listener:
             with listener.accept() as conn:
-                conn.send(foundHuman(detection_result))
+                conn.send(result)
     cap.release()
     cv2.destroyAllWindows()
     
