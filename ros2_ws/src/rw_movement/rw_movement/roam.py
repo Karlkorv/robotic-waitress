@@ -2,7 +2,7 @@ import rclpy
 import rclpy.qos
 from rclpy.action import ActionClient
 from geometry_msgs.msg import Twist
-from irobot_create_msgs.msg import HazardDetection, HazardDetectionVector
+from irobot_create_msgs.msg import HazardDetection, HazardDetectionVector, IrIntensityVector
 from irobot_create_msgs.action import RotateAngle
 from rclpy.node import Node, QoSProfile
 from nav_msgs.msg import Odometry
@@ -39,6 +39,12 @@ class Roam(Node):
             self.detection_callback,
             qos_profile=qos_policy
         )
+        self.ir_intensity_sub = self.create_subscription(
+            IrIntensityVector,
+            'ir_intensity',
+            self.ir_intensity_callback,
+            qos_profile=qos_policy
+        )
         self.sonar_sub = self.create_subscription(
             Ultrasonic,
             'sonar_value',
@@ -61,7 +67,8 @@ class Roam(Node):
         if self.hazard:
             self.get_logger().info("hazard")
             self.hazardAvoidance()
-        #self.noHazardMovement()     
+        else:
+            self.noHazardMovement()     
         
     def behaviour_callback(self, msg: RobotStatus) -> None:
         self.get_logger().info("behaviour")
@@ -80,7 +87,19 @@ class Roam(Node):
         if (self.isCollisionHazard(msg) and self.cooldownIsDone()):
             self.get_logger().info("Collision hazard detected")
             self.hazard = True
+
+    def ir_intensity_callback(self, msg: IrIntensityVector) -> None:
+        if not self.roamMode:
+            return
+        if (self.isClose(msg) and self.cooldownIsDone()):
+            self.get_logger().info("IR hazard detected")
+            self.hazard = True
             
+    def isClose(self, msg: IrIntensityVector) -> bool:
+        for reading in msg.readings:
+            if reading.value > 200:
+                return True
+        return False
 
     def isCollisionHazard(self, msg: HazardDetectionVector) -> bool:
         return len(msg.detections) != 0
