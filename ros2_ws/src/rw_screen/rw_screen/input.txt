@@ -1,6 +1,6 @@
 %%%%%%% Options %%%%%%%
 option - 1 - Let's Talk! - 8888
-option - 2 - Go Away! - 9999
+option - 2 - Go Away! - 3001
 option - 3 - Howdy partner! - 8888
 
 %%%%%%% Intro messages %%%%%%%
@@ -99,7 +99,7 @@ conversation start 6 - What's the meaning of life? - To be happy| To help others
 
 %%%%%%% Go Away %%%%%%%
 
-3001 - Wow| are you a robotist? Rude. - Im so sorry! - 9999 - suprised
+3001 - Wow, are you a robotist? Rude. - Im so sorry! | FU | K - 9999 - suprised
 
 
 

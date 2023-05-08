@@ -38,7 +38,7 @@ class SayHello(App):
         # button widget
         self.button1 = Button(
                       text= "Nej tack",
-                      size=(20,20)
+                      size=(20,20),
                       size_hint= (1,0.5),
                       bold= True,
                       background_color ='#00FFCE',

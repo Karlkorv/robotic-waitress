@@ -1,0 +1,4 @@
+kivy
+TTS
+pygame
+ffyplayer
