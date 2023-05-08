@@ -19,15 +19,18 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
 import sys
+import os
 #sys.path.append('/home/ubuntu/ros2_ws/src/stevan_screen/stevan_screen/')
-sys.path.append('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/')
 
+path = os.getcwd()
+print(path)
+sys.path.append(path)
 
-options = inputReader.readInputOptions('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/input.txt')
-intros = inputReader.readInputIntros('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/input.txt')
-nodes = inputReader.readInputNodes('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/input.txt')
-farewells = inputReader.readInputFarewells('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/input.txt')
-starts = inputReader.readInputConvStarts('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/input.txt')
+options = inputReader.readInputOptions(path)
+intros = inputReader.readInputIntros(path)
+nodes = inputReader.readInputNodes(path)
+farewells = inputReader.readInputFarewells(path)
+starts = inputReader.readInputConvStarts(path)
 
 class VideoWindow(App):
 
@@ -36,8 +39,8 @@ class VideoWindow(App):
         super().__init__()
 
     def build(self):
-        self.currAnimation = '/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/animations/roaming_eye_loop.mp4'
-        self.video = Video(source=self.currAnimation, preview = '/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/robot_eye.png')
+        self.currAnimation = path + 'animations/roaming_eye_loop.mp4'
+        self.video = Video(source=self.currAnimation, preview = path + 'imgs/robot_eye.png')
         self.video.loaded = True
         self.video.allow_stretch = True
         self.video.volume = 0
@@ -104,16 +107,11 @@ class ConversationWindow(App):
         self.pipe = pipe
         self.vid_pipe = vid_pipe
         self.activeConv = False
-        self.currAnimation = '/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/animations/roaming_eye_loop.mp4'
-        # options = inputReader.readInputOptions('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/input.txt')
-        # self.intros = inputReader.readInputIntros('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/input.txt')
-        # self.nodes = inputReader.readInputNodes('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/input.txt')
-        # self.farewells = inputReader.readInputFarewells('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/input.txt')
-        # self.starts = inputReader.readInputConvStarts('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/input.txt')
+        self.currAnimation = path + 'roaming_eye_loop.mp4'
         print(f"{options.__str__()}")
 
         LabelBase.register(name='Avenir_LT_pro_heavy',
-                        fn_regular='/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/fonts/AvenirLTProHeavy.otf')
+                        fn_regular= path + 'fonts/AvenirLTProHeavy.otf')
 
         # self.model = TTS.list_models()[15] # 15 is overflow model
         # self.tts = TTS(model_name=self.model, progress_bar=False, gpu=False)
@@ -141,14 +139,14 @@ class ConversationWindow(App):
             counter = 0
             for text in node.AnswText:
                 if counter == 0:
-                    frame = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_green.png"
-                    frame_pushed = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_pushed_green.png"
+                    frame = path + "imgs/frame_green.png"
+                    frame_pushed = path + "imgs/frame_pushed_green.png"
                 elif counter == 1:
-                    frame = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_red.png"
-                    frame_pushed = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_pushed_red.png"
+                    frame = path + "imgs/frame_red.png"
+                    frame_pushed = path + "imgs/frame_pushed_red.png"
                 else :
-                    frame = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_orange.png"
-                    frame_pushed = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_pushed_orange.png"
+                    frame = path + "imgs/frame_orange.png"
+                    frame_pushed = path + "imgs/frame_pushed_orange.png"
                 b = MyButton(
                     text = text,
                     background_normal = frame,
@@ -200,7 +198,7 @@ class ConversationWindow(App):
             label.fontsize = 0.5*label.height
 
         def quit_conversation(temp):
-            self.vid_pipe.send("/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/animations/roaming_eye_loop.mp4")
+            self.vid_pipe.send(path + "animations/roaming_eye_loop.mp4")
             self.pipe.send(True)
             time.sleep(2)
             self.activeConv = False
@@ -211,14 +209,14 @@ class ConversationWindow(App):
         for key in options:
             opt = options.get(key)
             if counter == 0:
-                frame = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_green.png"
-                frame_pushed = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_pushed_green.png"
+                frame = path + "imgs/frame_green.png"
+                frame_pushed = path + "imgs/frame_pushed_green.png"
             elif counter == 1:
-                frame = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_red.png"
-                frame_pushed = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_pushed_red.png"
+                frame = path + "imgs/frame_red.png"
+                frame_pushed = path + "imgs/frame_pushed_red.png"
             else :
-                frame = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_orange.png"
-                frame_pushed = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_pushed_orange.png"
+                frame = path + "imgs/frame_orange.png"
+                frame_pushed = path + "imgs/frame_pushed_orange.png"
             assert opt is not None
             b = MyButton(
                 text = opt.Text,

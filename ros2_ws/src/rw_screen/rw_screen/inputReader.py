@@ -2,12 +2,12 @@ from rw_screen import classes
 import string
 
 
-def readInputNodes(filename):
+def readInputNodes(path):
     """
     Creates a dictionary of all the conversation nodes in the input file.
     The Key is the node's ID, the Value is a convNode object: {ID:convNode}
     """
-    file = open(filename, 'r')
+    file = open(path + "input.txt", 'r')
     read = file.readlines()
     nodes = {}
 
@@ -19,15 +19,16 @@ def readInputNodes(filename):
             # Turn AnswerIDs into a list if IDs
             answIDs = currentLine[3].split("| ")
             nodes.update({int(currentLine[0]): classes.convNode(currentLine[0],  split_long_sentence(currentLine[1]), currentLine[1],
-                                                                answText, answIDs, currentLine[4])})
+                                                                answText, answIDs, path + currentLine[4] + ".mp4")})
+    file.close()
     return nodes
 
-def readInputConvStarts(filename):
+def readInputConvStarts(path):
     """
     Creates a dictionary of all the conversation nodes in the input file.
     The Key is the node's ID, the Value is a convNode object: {ID:convNode}
     """
-    file = open(filename, 'r')
+    file = open(path + "input.txt", 'r')
     read = file.readlines()
     convStarts = {}
 
@@ -40,16 +41,17 @@ def readInputConvStarts(filename):
             # Turn AnswerIDs into a list if IDs
             answIDs = currentLine[3].split("| ")
             convStarts.update({counter : classes.convStart(counter,  split_long_sentence(currentLine[1]), currentLine[1],
-                                                                answText, answIDs, currentLine[4])})
+                                                                answText, answIDs, path + currentLine[4] + ".mp4")})
             counter += 1
+    file.close()
     return convStarts
 
-def readInputOptions(filename):
+def readInputOptions(path):
     """
     Creates a dictionary of all the conversation options in the input file.
     The Key is the option's ID, the Value is a option object: {ID:option}
     """
-    file = open(filename, 'r')
+    file = open(path + "input.txt", 'r')
     read = file.readlines()
     options = {}
 
@@ -58,15 +60,16 @@ def readInputOptions(filename):
         if len(currentLine) > 1 and currentLine[0][0] == 'o':
             options.update({int(currentLine[1]): classes.option(
                 currentLine[1], currentLine[2], currentLine[3])})
+    file.close()
     return options
 
 
-def readInputIntros(filename):
+def readInputIntros(path):
     """
     Creates a dictionary of all the intro phrases in the input file.
     The Key is the intro's ID, the Value is a intro object: {ID:intro}
     """
-    file = open(filename, 'r')
+    file = open(path + "input.txt", 'r')
     read = file.readlines()
     intros = {}
 
@@ -75,16 +78,16 @@ def readInputIntros(filename):
         if len(currentLine) > 1 and currentLine[0][0] == 'i':
             intros.update({int(currentLine[1]): classes.intro(
                 currentLine[1], split_long_sentence(currentLine[2]))})
-    
+    file.close()
     return intros
 
 
-def readInputFarewells(filename):
+def readInputFarewells(path):
     """
     Creates a dictionary of all the farewell phrases in the input file.
     The Key is the farewell's ID, the Value is a farewell object: {ID:farewell}
     """
-    file = open(filename, 'r')
+    file = open(path + "input.txt", 'r')
     read = file.readlines()
     farewells = {}
 
@@ -93,6 +96,7 @@ def readInputFarewells(filename):
         if len(currentLine) > 1 and currentLine[0][0] == 'f':
             farewells.update({int(currentLine[1]): classes.farewell(
                 currentLine[1],  split_long_sentence(currentLine[2]))})
+    file.close()
     return farewells
 
 
