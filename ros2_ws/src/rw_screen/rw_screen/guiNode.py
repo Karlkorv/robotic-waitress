@@ -23,6 +23,7 @@ import os
 #sys.path.append('/home/ubuntu/ros2_ws/src/stevan_screen/stevan_screen/')
 
 path = os.getcwd()
+path = path + '/src/rw_screen/rw_screen/'
 print(path)
 sys.path.append(path)
 
@@ -40,7 +41,7 @@ class VideoWindow(App):
 
     def build(self):
         self.currAnimation = path + 'animations/roaming_eye_loop.mp4'
-        self.video = Video(source=self.currAnimation, preview = path + 'imgs/robot_eye.png')
+        self.video = Video(source=self.currAnimation)
         self.video.loaded = True
         self.video.allow_stretch = True
         self.video.volume = 0
