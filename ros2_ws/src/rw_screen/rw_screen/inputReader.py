@@ -19,7 +19,7 @@ def readInputNodes(path):
             # Turn AnswerIDs into a list if IDs
             answIDs = currentLine[3].split("| ")
             nodes.update({int(currentLine[0]): classes.convNode(currentLine[0],  split_long_sentence(currentLine[1]), currentLine[1],
-                                                                answText, answIDs, path + currentLine[4] + ".mp4")})
+                                                                answText, answIDs, path + "animations/" + currentLine[4] + ".mp4")})
     file.close()
     return nodes
 
@@ -41,7 +41,7 @@ def readInputConvStarts(path):
             # Turn AnswerIDs into a list if IDs
             answIDs = currentLine[3].split("| ")
             convStarts.update({counter : classes.convStart(counter,  split_long_sentence(currentLine[1]), currentLine[1],
-                                                                answText, answIDs, path + currentLine[4] + ".mp4")})
+                                                                answText, answIDs, path + "animations/" + currentLine[4] + ".mp4")})
             counter += 1
     file.close()
     return convStarts
