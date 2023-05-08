@@ -10,7 +10,7 @@ class convNode:
         self.NoSplitText = NoSplitText
         self.AnswText = AnswText
         self.AnswID = AnswID
-        self.Animation = "animations/" + Animation + ".mp4"
+        self.Animation = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/animations/" + Animation + ".mp4"
 
 class convStart:
     """The conversation node class - representing a stage in a conversation
@@ -24,7 +24,7 @@ class convStart:
         self.NoSplitText = NoSplitText
         self.AnswText = AnswText
         self.AnswID = AnswID
-        self.Animation = "animations/" + Animation + ".mp4"
+        self.Animation = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/animations/" + Animation + ".mp4"
 
 
 class option:

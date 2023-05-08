@@ -1,29 +1,33 @@
-#!/usr/bin/env python3
-
 from rw_screen import functions
 from rw_screen import inputReader
-from rw_interfaces.msg import RobotStatus
-from rw_interfaces.msg import IsConversationEnded
+from rw_interfaces.msg import RobotStatus, DisplayStatus
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.graphics import BorderImage
-from kivy.clock import Clock
+from kivy.clock import Clock    
 from kivy.core.text import LabelBase
 from kivy.properties import BooleanProperty
 from kivy.uix.video import Video
-from TTS.api import TTS
-from pygame import mixer
+#from TTS.api import TTS
+# from pygame import mixer
 import time
 from multiprocessing import Process, Pipe
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
 import sys
-sys.path.append('/home/ubuntu/ros2_ws/src/stevan_screen/stevan_screen/')
+#sys.path.append('/home/ubuntu/ros2_ws/src/stevan_screen/stevan_screen/')
+sys.path.append('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/')
 
+
+options = inputReader.readInputOptions('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/input.txt')
+intros = inputReader.readInputIntros('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/input.txt')
+nodes = inputReader.readInputNodes('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/input.txt')
+farewells = inputReader.readInputFarewells('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/input.txt')
+starts = inputReader.readInputConvStarts('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/input.txt')
 
 class VideoWindow(App):
 
@@ -32,7 +36,8 @@ class VideoWindow(App):
         super().__init__()
 
     def build(self):
-        self.video = Video(source=currAnimation, preview = 'animations/robot_eye.png')
+        self.currAnimation = '/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/animations/roaming_eye_loop.mp4'
+        self.video = Video(source=self.currAnimation, preview = '/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/robot_eye.png')
         self.video.loaded = True
         self.video.allow_stretch = True
         self.video.volume = 0
@@ -42,15 +47,15 @@ class VideoWindow(App):
         return self.video
 
     def update_video_source(self, dt):
-        global currAnimation
         if self.pipe.poll():
             nextAnimation = self.pipe.recv()
-            if nextAnimation is not None and nextAnimation != currAnimation:
+            if nextAnimation is not None and nextAnimation != self.currAnimation:
+                print(nextAnimation)
                 self.video.source = nextAnimation
                 """ self.video.state = 'stop'
                 self.video.load()
                 self.video.state = 'play' """
-                currAnimation = nextAnimation
+                self.currAnimation = nextAnimation
                 nextAnimation = None
 
 class MyButton(Button):
@@ -99,24 +104,24 @@ class ConversationWindow(App):
         self.pipe = pipe
         self.vid_pipe = vid_pipe
         self.activeConv = False
-        self.currAnimation = 'animations/roaming_eye_loop.mp4'
-        self.intros = inputReader.readInputIntros('input.txt')
-        self.options = inputReader.readInputOptions('input.txt')
-        self.nodes = inputReader.readInputNodes('input.txt')
-        self.farewells = inputReader.readInputFarewells('input.txt')
-        self.starts = inputReader.readInputConvStarts('input.txt')
-        
+        self.currAnimation = '/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/animations/roaming_eye_loop.mp4'
+        # options = inputReader.readInputOptions('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/input.txt')
+        # self.intros = inputReader.readInputIntros('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/input.txt')
+        # self.nodes = inputReader.readInputNodes('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/input.txt')
+        # self.farewells = inputReader.readInputFarewells('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/input.txt')
+        # self.starts = inputReader.readInputConvStarts('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/input.txt')
+        print(f"{options.__str__()}")
 
         LabelBase.register(name='Avenir_LT_pro_heavy',
-                        fn_regular='fonts/AvenirLTProHeavy.otf')
+                        fn_regular='/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/fonts/AvenirLTProHeavy.otf')
 
-        self.model = TTS.list_models()[15] # 15 is overflow model
-        self.tts = TTS(model_name=self.model, progress_bar=False, gpu=False)
+        # self.model = TTS.list_models()[15] # 15 is overflow model
+        # self.tts = TTS(model_name=self.model, progress_bar=False, gpu=False)
 
-        for key in self.nodes.keys():
-            node = self.nodes.get(key)
-            path = "speech/" + str(node.ID) + ".wav"
-            self.tts.tts_to_file(text=node.NoSplitText, file_path=path)
+        # for key in self.nodes.keys():
+        #     node = self.nodes.get(key)
+        #     path = "speech/" + str(node.ID) + ".wav"
+        #     self.tts.tts_to_file(text=node.NoSplitText, file_path=path)
         super().__init__()
     
     def build(self):
@@ -136,14 +141,14 @@ class ConversationWindow(App):
             counter = 0
             for text in node.AnswText:
                 if counter == 0:
-                    frame = "imgs/frame_green.png"
-                    frame_pushed = "imgs/frame_pushed_green.png"
+                    frame = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_green.png"
+                    frame_pushed = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_pushed_green.png"
                 elif counter == 1:
-                    frame = "imgs/frame_red.png"
-                    frame_pushed = "imgs/frame_pushed_red.png"
+                    frame = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_red.png"
+                    frame_pushed = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_pushed_red.png"
                 else :
-                    frame = "imgs/frame_orange.png"
-                    frame_pushed = "imgs/frame_pushed_orange.png"
+                    frame = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_orange.png"
+                    frame_pushed = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_pushed_orange.png"
                 b = MyButton(
                     text = text,
                     background_normal = frame,
@@ -160,17 +165,17 @@ class ConversationWindow(App):
         def next_conversation_node(instance):
             time.sleep(0.5)
             if int(instance.ButtonAnswID) == 9999:  # Exit code
-                currentNode = functions.getRandomFarewell(self.farewells)
+                currentNode = functions.getRandomFarewell(farewells)
                 grid_button.clear_widgets()
                 Clock.schedule_once(quit_conversation, 2)
             elif int(instance.ButtonAnswID) == 8888: # New conversation code
-                currentNode = functions.getRandomConvStart(self.starts)
+                currentNode = functions.getRandomConvStart(starts)
                 reset_buttons()
                 add_buttons(currentNode)
                 update_animation(currentNode)
             else:
                 currentNode = functions.get_node(
-                    self.nodes, int(instance.ButtonAnswID))
+                    nodes, int(instance.ButtonAnswID))
                 reset_buttons()
                 add_buttons(currentNode)
                 update_animation(currentNode)
@@ -186,32 +191,35 @@ class ConversationWindow(App):
 
         def add_new_text(node):
             label_op.change_text(node.Text)
-            if int(node.ID) >= 1000:
-                path = "speech/" + str(node.ID) + ".wav"
-                sound = mixer.Sound(path)
-                sound.play()
+            # if int(node.ID) >= 1000:
+            #     path = "speech/" + str(node.ID) + ".wav"
+            #     sound = mixer.Sound(path)
+            #     sound.play()
 
         def label_text_size(label, new_height):
             label.fontsize = 0.5*label.height
 
         def quit_conversation(temp):
-            self.vid_pipe.send("animations/roaming_eye_loop.mp4")
+            self.vid_pipe.send("/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/animations/roaming_eye_loop.mp4")
             self.pipe.send(True)
             time.sleep(2)
             self.activeConv = False
 
         counter = 0
-        for key in self.options:
-            opt = self.options.get(key)
+        #self.options = inputReader.readInputOptions('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/input.txt')
+        print(f"options2: {options.__str__()}")
+        for key in options:
+            opt = options.get(key)
             if counter == 0:
-                frame = "imgs/frame_green.png"
-                frame_pushed = "imgs/frame_pushed_green.png"
+                frame = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_green.png"
+                frame_pushed = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_pushed_green.png"
             elif counter == 1:
-                frame = "imgs/frame_red.png"
-                frame_pushed = "imgs/frame_pushed_red.png"
+                frame = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_red.png"
+                frame_pushed = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_pushed_red.png"
             else :
-                frame = "imgs/frame_orange.png"
-                frame_pushed = "imgs/frame_pushed_orange.png"
+                frame = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_orange.png"
+                frame_pushed = "/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/imgs/frame_pushed_orange.png"
+            assert opt is not None
             b = MyButton(
                 text = opt.Text,
                 background_down = frame_pushed,
@@ -228,7 +236,7 @@ class ConversationWindow(App):
             button.bind(on_press=next_conversation_node)
 
         # Initial label setup on startup
-        add_new_text(functions.getRandomintroNode(self.intros))
+        add_new_text(functions.getRandomintroNode(intros))
         label_op.bind(height=label_text_size)
 
                 # Add the widgets to the BoxLayout
@@ -258,7 +266,7 @@ class guiNode(Node):
     def __init__(self):
         super().__init__("guiNode")
         self.get_logger().info("'guiNode' started")
-        self.guiPublisher = self.create_publisher(IsConversationEnded, "touchscreen_feedback", 10)
+        self.guiPublisher = self.create_publisher(DisplayStatus, "touchscreen_feedback", 10)
         self.guiSubscriber = self.create_subscription(
             RobotStatus, "behaviour", self.start_callback, 10)
         
@@ -268,7 +276,6 @@ class guiNode(Node):
         p1.start()
         p2 = Process(target=guiNode.startVid, args=(self.vid_pipe_child,))
         p2.start()
-
         Clock.schedule_interval(self.checkPipe, 0.1)  # Schedule the update function to run every 0.1 seconds    
     
     def start_callback(self, msg: RobotStatus):
@@ -279,12 +286,12 @@ class guiNode(Node):
         if self.conv_pipe.poll():
             convEnded = self.pipe.recv()
             if convEnded:
-                msg = IsConversationEnded()
-                msg.convEnded = True;
+                msg = DisplayStatus()
+                msg.is_conversation_ended = True
                 self.guiPublisher.publish(msg)
     
 def main(args=None):
-    mixer.init()
+    # mixer.init()
     rclpy.init(args=args)
     node = guiNode()
     rclpy.spin(node)

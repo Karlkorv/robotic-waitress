@@ -1,4 +1,4 @@
-import classes
+from rw_screen import classes
 import string
 
 
