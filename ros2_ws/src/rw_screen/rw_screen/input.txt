@@ -61,7 +61,7 @@ conversation start 6 - What's the meaning of life? - To be happy| To help others
 
 %%%%%%%%%% 4
 
-1013 - What's your favorite book? - I love "1984" by George Orwell| I'm not much of a reader myself| Have you read "The Hitchhiker's Guide to the Galaxy"? - 8888 | 8888| 1016 - std
+1013 - What's your favorite book? - I love "1984" by George Orwell| I'm not much of a reader myself| Have you read "The Hitchhiker's Guide to the Galaxy"? - 8888| 8888| 1016 - std
 
 1014 - You should try lubricating gears, it's great fun! - OK, I'll give it a try| Doesn't seem like something I'd enjoy.| I'll de-lubricate your gears if you're not careful - 8888| 8888| 8888 - std
 
@@ -80,17 +80,17 @@ conversation start 6 - What's the meaning of life? - To be happy| To help others
 
 %%%%%%%%%% 6
 
-1020 - To be happy, you say? That's a simple answer, but it's also deep. What makes you happy? - Talking with you| Not this conversation, that's fort sure!| I'm not sure, I want to tell you but maybe that wont make you happe, which wont make me happy - 1023| 1024| 1025 - std
+1020 - To be happy, you say? That's a simple answer, but it's also deep. What makes you happy? - Talking with you| Not this conversation, that's fort sure!| I'm not sure, I want to tell you but maybe that wont make you happy, which wont make me happy - 1023| 1024| 1025 - std
 
 1021 - Helping others is important! - Yes, I agree!| I'm not sure I agree| I think finding your own meaning is more important - 8888| 8888| 8888 - std
 
 1022 - Finding your own meaning is key! - Yes, I agree!| I'm not sure I agree| I think helping others is more important - 8888| 8888| 8888 - std
 
-1023 - Aww! You're not to bad of a conversation dummy yourself! - Thanks!| Dummy?! What do you mean by that statement?| Aren't we all conversation dummies, at the end of the day. - 8888| 1024| 1024 - std
+1023 - Aww! You're not to bad of a conversation dummy yourself! - Thanks!| Dummy?! What do you mean by that statement?| Aren't we all conversation dummies, at the end of the day. - 8888| 1024| 1025 - std
 
 1024 - Alrighty then, this is awkward, I'll take my leave. - No offense!| You do that.| Awkwardness is a state of mind. - 9999| 9999| 9999 - suprised
 
-1025 - I'm confused... You wanna talk about something else? - Sure!| Nah bro| Confusing times calls for confusing situations. - 8888| 8888| 8888 - suprised
+1025 - I'm confused... You wanna talk about something else? - Sure!| Nah bro| Confusing times calls for confusing situations. - 8888| 9999| 8888 - suprised
 
 %%%%%%% Toilet %%%%%%%
 
