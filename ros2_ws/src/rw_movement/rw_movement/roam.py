@@ -26,7 +26,7 @@ class Roam(Node):
     first_rot_call = True
     target = -1
     def __init__(self):
-        super().__init__('roam')
+        super().__init__('roam') # type: ignore
         qos_policy = rclpy.qos.QoSProfile(reliability=rclpy.qos.ReliabilityPolicy.BEST_EFFORT,
                                           depth=1)
         self.get_logger().info("Roam node started")
@@ -71,15 +71,16 @@ class Roam(Node):
             self.noHazardMovement()     
         
     def behaviour_callback(self, msg: RobotStatus) -> None:
-        self.get_logger().info("behaviour")
+        #self.get_logger().info(f"Roam in roam node changed to {msg.roam}")
         self.roamMode = msg.roam
 
     def sonar_callback(self,msg: Ultrasonic) -> None:
         if not self.roamMode:
             return
         if msg and self.cooldownIsDone(): # TODO om alla avstånd i sonar arrayen är mindre än ett visst avstånd
-            self.get_logger().info("Sonar hazard detected")
-            self.hazard = True
+            if self.nearby(msg): 
+                self.get_logger().info("Sonar hazard detected")
+                self.hazard = True
 
     def detection_callback(self, msg: HazardDetectionVector) -> None:
         if not self.roamMode:
@@ -100,7 +101,13 @@ class Roam(Node):
             if reading.value > 200:
                 return True
         return False
-
+    
+    def nearby(self, msg: Ultrasonic) -> bool:
+        for distance in msg.distances:
+            if(distance > 10):
+                return True
+        return False
+    
     def isCollisionHazard(self, msg: HazardDetectionVector) -> bool:
         return len(msg.detections) != 0
 
@@ -108,8 +115,8 @@ class Roam(Node):
         temp = 90
         self.rotate(temp)
         self.get_logger().info("hazard avoidance done")
+
     def noHazardMovement(self) -> None:
-        self.get_logger().info("no hazard")
         twist = Twist()
         twist.linear.x = 0.1
         twist.angular.z = 0.0
@@ -136,14 +143,13 @@ class Roam(Node):
             self.get_logger().info("Rotation complete")
 
     def cooldownIsDone(self):
-        return True
         if time.time() - self.lastHazardTime > self.HAZARD_TIME_INTERVAL:
             self.lastHazardTime = time.time()
             return True
         #self.get_logger().info(str(time.time() - self.lastHazardTime))
         return False
 
-def euler_from_quaternion(quaternion):
+def euler_from_quaternion(quaternion: tuple[float, float, float, float]) -> tuple[float, float, float]:
     """
     Converts quaternion (w in last place) to euler roll, pitch, yaw
     quaternion = [x, y, z, w]
@@ -167,9 +173,9 @@ def euler_from_quaternion(quaternion):
 
     return roll, pitch, yaw
 
-def get_angle_from_pose(pose):
+def get_angle_from_pose(pose: Odometry.pose) -> float: # type: ignore
     orient_list = [pose.orientation.x,pose.orientation.y,pose.orientation.z,pose.orientation.w]
-    (roll,pitch,yaw) = euler_from_quaternion(orient_list)
+    (roll,pitch,yaw) = euler_from_quaternion(orient_list) # type: ignore
 
     return yaw
 

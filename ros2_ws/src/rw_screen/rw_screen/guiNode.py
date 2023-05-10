@@ -20,6 +20,7 @@ from rclpy.node import Node
 from std_msgs.msg import String
 import sys
 import os
+from std_msgs.msg import Header
 #sys.path.append('/home/ubuntu/ros2_ws/src/stevan_screen/stevan_screen/')
 
 path = os.getcwd()
@@ -163,11 +164,13 @@ class ConversationWindow(App):
 
         def next_conversation_node(instance):
             time.sleep(0.5)
-            if int(instance.ButtonAnswID) == 9999:  # Exit code
+            EXIT_CODE = 9999
+            NEW_CONV_CODE = 8888
+            if int(instance.ButtonAnswID) == EXIT_CODE:  # Exit code
                 currentNode = functions.getRandomFarewell(farewells)
                 grid_button.clear_widgets()
                 Clock.schedule_once(quit_conversation, 2)
-            elif int(instance.ButtonAnswID) == 8888: # New conversation code
+            elif int(instance.ButtonAnswID) == NEW_CONV_CODE: # New conversation code
                 currentNode = functions.getRandomConvStart(starts)
                 reset_buttons()
                 add_buttons(currentNode)
@@ -200,13 +203,11 @@ class ConversationWindow(App):
 
         def quit_conversation(temp):
             self.vid_pipe.send(path + "animations/roaming_eye_loop.mp4")
-            self.pipe.send(True)
+            self.pipe.send("convEnd")
             time.sleep(2)
             self.activeConv = False
 
         counter = 0
-        #self.options = inputReader.readInputOptions('/home/gake/robotic-waitress/ros2_ws/src/rw_screen/rw_screen/input.txt')
-        print(f"options2: {options.__str__()}")
         for key in options:
             opt = options.get(key)
             if counter == 0:
@@ -244,14 +245,15 @@ class ConversationWindow(App):
     
         
     def checkPipe(self, dt):
-        if self.pipe.poll():
+        if self.activeConv == True:
+            return
+        elif self.pipe.poll():
             self.activeConv = self.pipe.recv()
-            if self.activeConv:
+            if self.activeConv == True:
                 self.initialize()
-        if self.activeConv == False:
+        else:
             self.root.clear_widgets()
-
-
+            
 class guiNode(Node):
 
     @staticmethod
@@ -263,30 +265,42 @@ class guiNode(Node):
         VideoWindow(pipe).run()
 
     def __init__(self):
-        super().__init__("guiNode")
+        super().__init__("guiNode") # type: ignore
         self.get_logger().info("'guiNode' started")
         self.guiPublisher = self.create_publisher(DisplayStatus, "touchscreen_feedback", 10)
         self.guiSubscriber = self.create_subscription(
             RobotStatus, "behaviour", self.start_callback, 10)
+        self.timer = self.create_timer(0.1, self.timer_callback)
         
         self.conv_pipe, self.conv_pipe_child = Pipe()
         self.vid_pipe, self.vid_pipe_child = Pipe()
-        p1 = Process(target=guiNode.startConv, args=(self.conv_pipe_child, self.vid_pipe, ))
+        p1 = Process(target=guiNode.startConv, args=(self.conv_pipe_child, self.vid_pipe,))
         p1.start()
         p2 = Process(target=guiNode.startVid, args=(self.vid_pipe_child,))
         p2.start()
-        Clock.schedule_interval(self.checkPipe, 0.1)  # Schedule the update function to run every 0.1 seconds    
+        Clock.schedule_interval(self.timer_callback, 0.1)  # Schedule the update function to run every 0.1 seconds    
     
     def start_callback(self, msg: RobotStatus):
-       if msg.roam == False:
-           self.conv_pipe.send(True)
+        if msg.roam == False:
+            header = Header()
+            header.stamp = self.get_clock().now().to_msg()
+            msg2 = DisplayStatus()
+            msg2.in_conversation = True
+            msg2.header = header
+            self.guiPublisher.publish(msg2)
+            self.conv_pipe.send(True)
     
-    def checkPipe(self, dt):
+    def timer_callback(self):
         if self.conv_pipe.poll():
-            convEnded = self.pipe.recv()
-            if convEnded:
+            pipeRes = self.conv_pipe.recv()
+            print(f"pipeRes: {pipeRes}")
+            if pipeRes == "convEnd":
+                header = Header()
+                header.stamp = self.get_clock().now().to_msg()
                 msg = DisplayStatus()
-                msg.is_conversation_ended = True
+                msg.in_conversation = False
+                msg.header = header
+                print(f"{msg}")
                 self.guiPublisher.publish(msg)
     
 def main(args=None):

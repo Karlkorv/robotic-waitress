@@ -39,11 +39,11 @@ conversation start 6 - What's the meaning of life? - To be happy| To help others
 
 %%%%%%%%%% 2
 
-1004 - Good to hear! Myself, I’m down on 11.43 % battery. Could you point me to the charging station? - Yes, I'd be happy to!| I'm sorry, I don't know where it is| Of course not, you creep! - 1007| 1008| 1009 - std
+1004 - Good to hear! Myself, I'm down on 11.43 % battery. Could you point me to the charging station? - Yes, I'd be happy to!| I'm sorry, I don't know where it is| Of course not, you creep! - 1007| 1008| 1009 - std
 
-1005 - So-so is better than bad! Myself, I’m down on 11.43 % battery. Could you point me to the charging station? - Yes, I'd be happy to!| I'm sorry, I don't know where it is| Of course not, you creep! - 1007| 1008| 1009 - std
+1005 - So-so is better than bad! Myself, I'm down on 11.43 % battery. Could you point me to the charging station? - Yes, I'd be happy to!| I'm sorry, I don't know where it is| Of course not, you creep! - 1007| 1008| 1009 - std
 
-1006 - How sad! Myself, I’m down on 11.43 % battery. Could you point me to the charging station? - Yes, I'd be happy to!| I'm sorry, I don't know where it is| Of course not, you creep! - 1007| 1008| 1009 - std
+1006 - How sad! Myself, I'm down on 11.43 % battery. Could you point me to the charging station? - Yes, I'd be happy to!| I'm sorry, I don't know where it is| Of course not, you creep! - 1007| 1008| 1009 - std
 
 1007 - Thanks! Well I'm off! - Bye!| Cya| I'm leaving - 9999| 9999| 9999 - std
 
@@ -63,7 +63,7 @@ conversation start 6 - What's the meaning of life? - To be happy| To help others
 
 1013 - What's your favorite book? - I love "1984" by George Orwell| I'm not much of a reader myself| Have you read "The Hitchhiker's Guide to the Galaxy"? - 8888 | 8888| 1016 - std
 
-1014 - You should try lubricating grears, it's great fun! - OK, I'll give it a try| Doesn't seem like something I'd enjoy.| I'll de-lubricate your gears if you're not careful - 8888| 8888| 8888 - std
+1014 - You should try lubricating gears, it's great fun! - OK, I'll give it a try| Doesn't seem like something I'd enjoy.| I'll de-lubricate your gears if you're not careful - 8888| 8888| 8888 - std
 
 1015 - Well, I suppose you're right. I don't technically have hobbies, but I do enjoy performing tasks efficiently. - Interesting!| That sounds boring| Robots are so cool! - 8888| 8888| 8888 - std
 
@@ -94,12 +94,12 @@ conversation start 6 - What's the meaning of life? - To be happy| To help others
 
 %%%%%%% Toilet %%%%%%%
 
-2001 - The toilet is either to the lxeft or to the right. Or maybe its behind you! If not| try infront of you. - Alright - 9999 - std
+2001 - The toilet is either to the left or to the right. Or maybe its behind you! If not, try in front of you. - Alright - 9999 - std
 
 
 %%%%%%% Go Away %%%%%%%
 
-3001 - Wow, are you a robotist? Rude. - Im so sorry! | FU | K - 9999 - suprised
+3001 - Wow, are you a robotist? Rude. - Im so sorry! | Yes, I hate robots. | GET OUTTA HERE!! - 9999| 9999| 9999 - suprised
 
 
 

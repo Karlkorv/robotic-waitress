@@ -1,2 +1,3 @@
 bool in_conversation
 bool has_been_touched
+std_msgs/Header header

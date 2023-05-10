@@ -12,10 +12,15 @@ def generate_launch_description():
             package='rw_movement',
             executable='roam',
             name='roam'
-        )#,
+        ),
+        Node(
+            package='rw_sensors',
+            executable='camera',
+            name='camera'
+        ),
         # Node(
-        #     package='rw_distance_sensors',
-        #     executable='sonar',
-        #     name='sonar'
-        # )
+        #     package='rw_screen',
+        #     executable='gui',
+        #     name='gui'
+        # ),
     ])
