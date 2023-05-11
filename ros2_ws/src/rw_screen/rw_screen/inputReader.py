@@ -32,7 +32,7 @@ def readInputConvStarts(path):
     read = file.readlines()
     convStarts = {}
 
-    counter = 0
+    counter = 1
     for line in read:
         currentLine = (line.strip()).split(" - ")
         if len(currentLine) > 1 and currentLine[0][0] == 'c':
