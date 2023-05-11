@@ -1,11 +1,38 @@
 from rw_screen import classes
 import string
 
+"""
+This module contains functions for reading and parsing data from an input file.
+
+Functions:
+
+readInputNodes(path): creates a dictionary of all the conversation nodes in the input file.
+The Key is the node's ID, the Value is a convNode object: {ID:convNode}
+
+readInputConvStarts(path): creates a dictionary of all the conversation nodes in the input file.
+The Key is the node's ID, the Value is a convNode object: {ID:convNode}
+
+readInputOptions(path): creates a dictionary of all the conversation options in the input file.
+The Key is the option's ID, the Value is an option object: {ID:option}
+
+readInputIntros(path): creates a dictionary of all the intro phrases in the input file.
+The Key is the intro's ID, the Value is an intro object: {ID:intro}
+
+readInputFarewells(path): creates a dictionary of all the farewell phrases in the input file.
+The Key is the farewell's ID, the Value is a farewell object: {ID:farewell}
+
+split_long_sentence(sentence): splits a sentence into lines of no more than 30 characters.
+
+"""
+
 
 def readInputNodes(path):
     """
     Creates a dictionary of all the conversation nodes in the input file.
-    The Key is the node's ID, the Value is a convNode object: {ID:convNode}
+    Args:
+    - path: A string representing the path to the input file.
+    Returns:
+    - A dictionary with keys as IDs and values as convNode objects.
     """
     file = open(path + "input.txt", 'r')
     read = file.readlines()
@@ -26,7 +53,10 @@ def readInputNodes(path):
 def readInputConvStarts(path):
     """
     Creates a dictionary of all the conversation nodes in the input file.
-    The Key is the node's ID, the Value is a convNode object: {ID:convNode}
+    Args:
+        path: A string representing the path to the input file.
+    Returns:
+    A dictionary with keys as IDs and values as convStart objects.
     """
     file = open(path + "input.txt", 'r')
     read = file.readlines()
