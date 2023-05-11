@@ -11,7 +11,7 @@ import transforms3d as t3d
 import math
 import numpy as np
 
-from rw_interfaces.msg import DetectionsVector, RobotStatus, Ultrasonic
+from rw_interfaces.msg import DetectionsVector, RobotStatus, Ultrasonic # type: ignore
 
 
 class Roam(Node):
