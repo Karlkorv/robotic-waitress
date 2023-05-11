@@ -11,7 +11,7 @@ class Main(Node):
         super().__init__('main') # type: ignore
         self.get_logger().info("Main node started")
         self.lastConv = self.get_clock().now().to_msg().sec
-        self.lastTouch = 0
+        self.lastTouch = 2**32-1
         self.in_conversation = False
         self.behaviour_pub = self.create_publisher(RobotStatus, 'behaviour', 10)
         self.camera_pub = self.create_publisher(Bool, 'camera_enabled', 10)
@@ -44,6 +44,7 @@ class Main(Node):
     def screen_callback(self, msg: DisplayStatus) -> None:
         #self.get_logger().info(f"Screen callback {msg._in_conversation} {msg.header.stamp.sec}")
         self.in_conversation = msg.in_conversation
+        self.lastTouch = msg.header.stamp.sec
         if not msg.in_conversation:
             self.lastConv = msg.header.stamp.sec
             self.lastTouch = 0
@@ -63,11 +64,12 @@ class Main(Node):
             camera_msg.data = True
             self.camera_pub.publish(camera_msg)
         LAST_TOUCH_THRESHOLD = 30
-        # if self.get_clock().now().to_msg().sec - self.lastTouch < LAST_TOUCH_THRESHOLD:
-        #     self.lastTouch = None
-        #     behaviour = RobotStatus()
-        #     behaviour.roam = True
-        #     self.behaviour_pub.publish(behaviour)
+        self.get_logger().info(f"lasttouch: {self.get_clock().now().to_msg().sec - self.lastTouch}")
+        if self.get_clock().now().to_msg().sec - self.lastTouch > LAST_TOUCH_THRESHOLD:
+            self.lastTouch = 2**32-1
+            behaviour = RobotStatus()
+            behaviour.roam = True
+            self.behaviour_pub.publish(behaviour)
             
 
             
