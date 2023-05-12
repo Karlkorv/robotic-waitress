@@ -36,10 +36,12 @@ def getRandomintroNode(intros) -> classes.intro:
 def getRandomFarewell(farewells) -> classes.farewell:
     r = random.randrange(1, len(farewells) + 1)
     return farewells.get(r)
+
 def getRandomConvStart(starts) -> classes.convStart:
     r = random.randrange(1, len(starts) + 1)
     return starts.get(r)
 
+def get_node(nodes, nodeID):
     if nodeID == "[]":
         return None
     else:
