@@ -1,2 +1,3 @@
-bool is_conversation_ended
+bool in_conversation
 bool has_been_touched
+std_msgs/Header header

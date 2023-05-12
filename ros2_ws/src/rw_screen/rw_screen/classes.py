@@ -32,10 +32,10 @@ class option:
 
     Defined by it's ID. Stores the text each button should read, and to what node each button is linked to"""
 
-    def __init__(self, ID, Text, ConvID):
+    def __init__(self, ID, Text, ButtonAnswID):
         self.ID = ID
         self.Text = Text
-        self.ConvID = ConvID
+        self.ButtonAnswID = ButtonAnswID
 
 
 class intro:
