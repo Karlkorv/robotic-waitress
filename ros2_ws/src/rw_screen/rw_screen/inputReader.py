@@ -16,6 +16,7 @@ def readInputNodes(path):
         if len(currentLine) > 1 and (currentLine[0][0]).isnumeric():
             # Turn Answers into a list of answers
             answText = currentLine[2].split("| ")
+            answText = [split_long_sentence(ans) for ans in answText]
             # Turn AnswerIDs into a list if IDs
             answIDs = currentLine[3].split("| ")
             nodes.update({int(currentLine[0]): classes.convNode(currentLine[0],  split_long_sentence(currentLine[1]), currentLine[1],
@@ -38,6 +39,7 @@ def readInputConvStarts(path):
         if len(currentLine) > 1 and currentLine[0][0] == 'c':
             # Turn Answers into a list of answers
             answText = currentLine[2].split("| ")
+            answText = [split_long_sentence(ans) for ans in answText]
             # Turn AnswerIDs into a list if IDs
             answIDs = currentLine[3].split("| ")
             convStarts.update({counter : classes.convStart(counter,  split_long_sentence(currentLine[1]), currentLine[1],

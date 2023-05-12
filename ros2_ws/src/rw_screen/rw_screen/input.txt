@@ -80,7 +80,7 @@ conversation start 6 - What's the meaning of life? - To be happy| To help others
 
 %%%%%%%%%% 6
 
-1020 - To be happy, you say? That's a simple answer, but it's also deep. What makes you happy? - Talking with you| Not this conversation, that's fort sure!| I'm not sure, I want to tell you but maybe that wont make you happe, which wont make me happy - 1023| 1024| 1025 - std
+1020 - To be happy, you say? That's a simple answer, but it's also deep. What makes you happy? - Talking with you| Not this conversation, that's fort sure!| All I can tell you is that it wont make me happy - 1023| 1024| 1025 - std
 
 1021 - Helping others is important! - Yes, I agree!| I'm not sure I agree| I think finding your own meaning is more important - 8888| 8888| 8888 - std
 
